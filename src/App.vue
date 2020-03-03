@@ -4,6 +4,11 @@
       <div class="col-sm-3 col-lg-2">
         <sidebar/>
       </div>
+      <div class="col-sm-10 col-lg-10">
+        <div class="row">
+          <router-view></router-view>
+        </div>
+      </div>
     </div>
   </div>
 </template>
