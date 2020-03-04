@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <release
-                v-for="release in releases"
+                v-for="release in releasesWithoutVideos"
                 :release="release"
                 :key="release.id"
             ></release>

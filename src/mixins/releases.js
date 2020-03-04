@@ -29,5 +29,12 @@ export default {
                 resp => this.releases = resp.body
             );
         }
+    },
+    computed: {
+        releasesWithoutVideos: function() {
+            return this.releases.filter(function(release) {
+                return release.type != "music-video";
+            });
+        }
     }
 }
