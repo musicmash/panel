@@ -26,6 +26,7 @@ export default {
 
 <style>
 body {
+    overflow-x: hidden;
     background-color: #151515;
     color: #fff;
     font-size: 14px;
