@@ -4,6 +4,7 @@ import LastThirtyDays from './pages/discover/last-30-days'
 import CurrentWeek from './pages/discover/this-week'
 import NextWeek from './pages/discover/next-week'
 import ReleaseCalendar from './pages/discover/release-calendar'
+import ReleaseCalendarDetails from './pages/discover/release-calendar/details'
 // browse
 import Artists from './pages/browse/artists'
 import Subscriptions from './pages/browse/subscriptions'
@@ -39,7 +40,13 @@ export default new VueRouter({
     },
     {
       path: "/discover/release-calendar",
-      component: ReleaseCalendar
+      component: ReleaseCalendar,
+      children: [
+        {
+          path: ":month",
+          component: ReleaseCalendarDetails
+        }
+      ]
     },
     // browse
     {
