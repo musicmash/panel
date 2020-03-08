@@ -14,6 +14,9 @@ import releaseMixin from '../../../mixins/releases'
 
 export default {
     mixins: [releaseMixin],
+    created() {
+        this.fetchData();
+    },
     watch: {
         // call again the method if the route changes
         '$route': 'fetchData'

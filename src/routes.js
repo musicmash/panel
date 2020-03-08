@@ -41,6 +41,7 @@ export default new VueRouter({
     {
       path: "/discover/release-calendar",
       component: ReleaseCalendar,
+      redirect: "/discover/release-calendar/jan",
       children: [
         {
           path: ":month",
