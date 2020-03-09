@@ -1,5 +1,8 @@
 <template>
     <div class="row">
+        <div class="empty-list" v-if="releasesWithoutVideos && releasesWithoutVideos.length == 0">
+            No releases found
+        </div>
         <release
             v-for="release in releasesWithoutVideos"
             :release="release"
@@ -59,3 +62,16 @@ export default {
 }
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.empty-list {
+    font-size: 18px;
+    line-height: normal;
+    font-weight: 400;
+    align-items: center;
+    width: 100%;
+    margin: 64px auto 0;
+    color: hsla(0,0%,100%,.3);
+    text-align: center;
+}
+</style>
