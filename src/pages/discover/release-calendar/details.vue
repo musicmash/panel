@@ -15,6 +15,16 @@
 import release from '../../../components/release'
 import releaseMixin from '../../../mixins/releases'
 
+var moment = require('moment');
+
+function format(time) {
+    return time.format('YYYY-MM-DD');
+}
+
+function parseMonth(month) {
+    return moment(month, "MMM");
+}
+
 export default {
     mixins: [releaseMixin],
     created() {
@@ -30,30 +40,9 @@ export default {
             this.loadReleases(params.since, params.till);
         },
         getPerios(month) {
-            // todo: release this with time.js
-            if (month == "jan")
-                return {"since": "2020-01-01", "till": "2020-02-01"}
-            if (month == "feb")
-                return {"since": "2020-02-01", "till": "2020-03-01"}
-            if (month == "mar")
-                return {"since": "2020-03-01", "till": "2020-04-01"}
-            if (month == "apr")
-                return {"since": "2020-04-01", "till": "2020-05-01"}
-            if (month == "may")
-                return {"since": "2020-05-01", "till": "2020-06-01"}
-            if (month == "jun")
-                return {"since": "2020-06-01", "till": "2020-07-01"}
-            if (month == "jul")
-                return {"since": "2020-07-01", "till": "2020-08-01"}
-            if (month == "aug")
-                return {"since": "2020-08-01", "till": "2020-09-01"}
-            if (month == "sep")
-                return {"since": "2020-09-01", "till": "2020-10-01"}
-            if (month == "oct")
-                return {"since": "2020-10-01", "till": "2020-11-01"}
-            if (month == "nov")
-                return {"since": "2020-11-01", "till": "2020-12-01"}
-            return {"since": "2020-12-01", "till": "2021-01-01"}
+            var since = parseMonth(month);
+            var till = parseMonth(month).add(1, 'month');
+            return {"since": format(since), "till": format(till)}
         }
     },
     components: {

@@ -1,3 +1,18 @@
+var moment = require('moment');
+
+function format(time) {
+    return time.format('YYYY-MM-DD');
+}
+
+function now() {
+    return moment().utc()
+}
+
+function startOfWeek() {
+    // in moment.js start of week it's sunday
+    return now().startOf('week').add(1, 'day');
+}
+
 export default {
     data() {
         return {
@@ -14,19 +29,19 @@ export default {
             );
         },
         loadPastMonthReleases() {
-            var since = "2020-02-01"
-            var till = "2020-02-10"
-            return this.loadReleases(since, till);
+            var till = now().add(1, 'day'); // include today releases
+            var since = now().subtract(30, 'days');
+            return this.loadReleases(format(since), format(till));
         },
         loadWeeklyReleases() {
-            var since = "2020-03-01"
-            var till = "2020-03-10"
-            return this.loadReleases(since, till);
+            var since = startOfWeek();
+            var till = startOfWeek().add(1, 'week');
+            return this.loadReleases(format(since), format(till));
         },
         loadNextWeekReleases() {
-            var since = "2020-03-10"
-            var till = "2020-03-17"
-            return this.loadReleases(since, till);
+            var since = startOfWeek().add(1, 'week');
+            var till = startOfWeek().add(2, 'weeks');
+            return this.loadReleases(format(since), format(till));
         }
     },
     computed: {
