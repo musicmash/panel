@@ -13,7 +13,7 @@ export default {
                 resp => this.releases = resp.body
             );
         },
-        loadPastMounthReleases() {
+        loadPastMonthReleases() {
             var since = "2020-02-01"
             var till = "2020-02-10"
             return this.loadReleases(since, till);

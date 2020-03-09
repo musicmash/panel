@@ -22,7 +22,7 @@ import releaseMixin from '../../mixins/releases'
 export default {
     mixins: [releaseMixin],
     mounted() {
-        this.loadPastMounthReleases();
+        this.loadPastMonthReleases();
     },
     components: {
         release
