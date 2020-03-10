@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import release from '../../components/release.vue'
-import releaseMixin from '../../mixins/releases'
+import release from '@/components/release.vue'
+import releaseMixin from '@/mixins/releases'
 
 export default {
     mixins: [releaseMixin],

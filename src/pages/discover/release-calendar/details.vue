@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import release from '../../../components/release'
-import releaseMixin from '../../../mixins/releases'
+import release from '@/components/release'
+import releaseMixin from '@/mixins/releases'
 
 var moment = require('moment');
 
