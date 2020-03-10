@@ -36,10 +36,10 @@ export default {
     },
     methods: {
         fetchData() {
-            var params = this.getPerios(this.$route.params.month);
+            var params = this.getPeriods(this.$route.params.month);
             this.loadReleases(params.since, params.till);
         },
-        getPerios(month) {
+        getPeriods(month) {
             var since = parseMonth(month);
             var till = parseMonth(month).add(1, 'month');
             return {"since": format(since), "till": format(till)}
