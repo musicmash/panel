@@ -18,7 +18,7 @@
             <div class="release-link">
                 <span class="release-info-prefix">Listen on&nbsp;</span>
                 <a v-if="release.itunes_id.length != ''" :href="'itmss://music.apple.com/us/' + release.type + '/' + release.itunes_id"><i class="fab fa-apple"></i></a>
-                <a v-if="release.spotify_id.length != ''" :href="'spotify:album:' + release.spotify_id"><i class="fab fa-apple"></i></a>
+                <a v-if="release.spotify_id.length != ''" :href="'spotify:album:' + release.spotify_id"><i class="fab fa-spotify"></i></a>
             </div>
         </div>
     </div>
