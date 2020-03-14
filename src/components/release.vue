@@ -3,12 +3,12 @@
         <div class="release-poster">
             <img class="release-poster-img" :src="release.poster|resizeImage('264x264')" alt="">
             <ul class="action">
-                <li class="action-item" v-if="release.itunes_id.length != ''">
-                    <button class="action-item-btn" type="button" aria-label="play">
+                <li class="action-item" v-if="releaseExistsOnAppleMusic">
+                    <a class="action-item-btn" :href="linkOnAppleMusic">
                         <svg class="svg-icon svg-icon-play" focusable="false" height="1em" width="1em" viewBox="0 0 12 12" aria-hidden="true">
                             <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.5.5v11l9-5.5z"></path>
                         </svg>
-                    </button>
+                    </a>
                 </li>
             </ul>
             <!-- <img class="release-poster-blur" :src="release.poster|resizeImage('76x76')" alt=""> -->
@@ -47,6 +47,14 @@ export default {
   name: 'release',
   props: {
     release: Object
+  },
+  computed: {
+        releaseExistsOnAppleMusic: function() {
+            return this.release.itunes_id != "";
+        },
+        linkOnAppleMusic: function() {
+            return `itmss://music.apple.com/us/${this.release.type}/${this.release.itunes_id}`;
+        }
   },
   filters: {
     resizeImage(value, to) {
