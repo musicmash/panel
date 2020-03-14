@@ -142,6 +142,16 @@ ul {
     display: inline-block;
     vertical-align: top;
 }
+.action-item:nth-child(1n+2) {
+    margin-left: 10px;
+    opacity: 0;
+    -webkit-transition-duration:.15s;
+    transition-duration:.15s;
+    -webkit-transition-property:opacity,-webkit-transform;
+    transition-property:opacity,-webkit-transform;
+    transition-property:opacity,transform;
+    transition-property:opacity,transform,-webkit-transform;
+}
 .action-item-btn {
     opacity: 1;
     background-color: #fff;
@@ -178,6 +188,15 @@ ul {
     cursor: pointer;
     transform: scale3d(1.2,1.2,1.2);
     -webkit-transform: scale3d(1.2,1.2,1.2);
+}
+.release > .release-poster:hover > .action > .action-item:nth-child(1n+2) {
+    opacity: 1;
+    -webkit-transition-duration:.15s;
+    transition-duration:.15s;
+    -webkit-transition-property:opacity,-webkit-transform;
+    transition-property:opacity,-webkit-transform;
+    transition-property:opacity,transform;
+    transition-property:opacity,transform,-webkit-transform;
 }
 .svg-icon {
     fill: black;
