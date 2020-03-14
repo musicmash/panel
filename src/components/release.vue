@@ -24,6 +24,13 @@
                         </svg>
                     </a>
                 </li>
+                <li class="action-item" v-if="releaseExistsOnDeezer">
+                    <a class="action-item-btn" :href="linkOnDeezer">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12pt" height="12pt" viewBox="0 0 12 12" version="1.1">
+                            <path style="stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;" d="M 9 1.5 L 9 2.25 L 10.5 2.25 L 10.5 1.5 Z M 5.25 2.625 L 5.25 3.375 L 6.75 3.375 L 6.75 2.625 Z M 9 2.625 L 9 3.375 L 10.5 3.375 L 10.5 2.625 Z M 5.25 3.75 L 5.25 4.5 L 6.75 4.5 L 6.75 3.75 Z M 9 3.75 L 9 4.5 L 10.5 4.5 L 10.5 3.75 Z M 5.25 4.875 L 5.25 5.625 L 6.75 5.625 L 6.75 4.875 Z M 9 4.875 L 9 5.625 L 10.5 5.625 L 10.5 4.875 Z M 1.5 6 L 1.5 6.75 L 3 6.75 L 3 6 Z M 5.25 6 L 5.25 6.75 L 6.75 6.75 L 6.75 6 Z M 7.125 6 L 7.125 6.75 L 8.625 6.75 L 8.625 6 Z M 9 6 L 9 6.75 L 10.5 6.75 L 10.5 6 Z M 1.5 7.125 L 1.5 7.875 L 3 7.875 L 3 7.125 Z M 3.375 7.125 L 3.375 7.875 L 4.875 7.875 L 4.875 7.125 Z M 5.25 7.125 L 5.25 7.875 L 6.75 7.875 L 6.75 7.125 Z M 7.125 7.125 L 7.125 7.875 L 8.625 7.875 L 8.625 7.125 Z M 9 7.125 L 9 7.875 L 10.5 7.875 L 10.5 7.125 Z M 1.5 8.25 L 1.5 9 L 3 9 L 3 8.25 Z M 3.375 8.25 L 3.375 9 L 4.875 9 L 4.875 8.25 Z M 5.25 8.25 L 5.25 9 L 6.75 9 L 6.75 8.25 Z M 7.125 8.25 L 7.125 9 L 8.625 9 L 8.625 8.25 Z M 9 8.25 L 9 9 L 10.5 9 L 10.5 8.25 Z M 1.5 9.375 L 1.5 10.125 L 3 10.125 L 3 9.375 Z M 3.375 9.375 L 3.375 10.125 L 4.875 10.125 L 4.875 9.375 Z M 5.25 9.375 L 5.25 10.125 L 6.75 10.125 L 6.75 9.375 Z M 7.125 9.375 L 7.125 10.125 L 8.625 10.125 L 8.625 9.375 Z M 9 9.375 L 9 10.125 L 10.5 10.125 L 10.5 9.375 Z M 9 9.375 "/>
+                        </svg>
+                    </a>
+                </li>
             </ul>
             <!-- <img class="release-poster-blur" :src="release.poster|resizeImage('76x76')" alt=""> -->
         </div>
@@ -74,6 +81,12 @@ export default {
         },
         linkOnSpotify: function() {
             return `spotify:album:${this.release.spotify_id}`;
+        },
+        releaseExistsOnDeezer: function() {
+            return this.release.deezer_id != "";
+        },
+        linkOnDeezer: function() {
+            return `https://deezer.com/en/${this.release.type}/${this.release.deezer_id}`;
         }
   },
   filters: {
