@@ -3,7 +3,7 @@
         <div class="release-poster">
             <img class="release-poster-img" :src="release.poster|resizeImage('264x264')" alt="">
             <ul class="action">
-                <li class="action-item">
+                <li class="action-item" v-if="release.itunes_id.length != ''">
                     <button class="action-item-btn" type="button" aria-label="play">
                         <svg class="svg-icon svg-icon-play" focusable="false" height="1em" width="1em" viewBox="0 0 12 12" aria-hidden="true">
                             <path fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.5.5v11l9-5.5z"></path>
@@ -14,20 +14,29 @@
             <!-- <img class="release-poster-blur" :src="release.poster|resizeImage('76x76')" alt=""> -->
         </div>
         <div class="release-details">
-            <div class="release-date">
-                <span>{{release.released | date}}</span>
-            </div>
-            <!-- <div class="release-explicit" v-if="release.explicit">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 9"><path d="M3.9 7h1.9c.4 0 .7-.2.7-.5s-.3-.4-.7-.4H4.1V4.9h1.5c.4 0 .7-.1.7-.4 0-.3-.3-.5-.7-.5H4.1V2.9h1.7c.4 0 .7-.2.7-.5 0-.2-.3-.4-.7-.4H3.9c-.6 0-.9.3-.9.7v3.7c0 .3.3.6.9.6zM1.6 0h5.8C8.5 0 9 .5 9 1.6v5.9C9 8.5 8.5 9 7.4 9H1.6C.5 9 0 8.5 0 7.4V1.6C0 .5.5 0 1.6 0z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-            </div> -->
             <div class="release-title">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 9 9"
+                    class="release-explicit"
+                    v-if="release.explicit"
+                >
+                    <path d="M3.9 7h1.9c.4 0 .7-.2.7-.5s-.3-.4-.7-.4H4.1V4.9h1.5c.4 0 .7-.1.7-.4 0-.3-.3-.5-.7-.5H4.1V2.9h1.7c.4 0 .7-.2.7-.5 0-.2-.3-.4-.7-.4H3.9c-.6 0-.9.3-.9.7v3.7c0 .3.3.6.9.6zM1.6 0h5.8C8.5 0 9 .5 9 1.6v5.9C9 8.5 8.5 9 7.4 9H1.6C.5 9 0 8.5 0 7.4V1.6C0 .5.5 0 1.6 0z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                </svg>
                 <span>{{release.title}}</span>
             </div>
-            <span class="release-info-prefix">by</span>&nbsp;<a class="release-artist" href="#">{{release.artist_name}}</a>
-            <div class="release-link">
+            <div class="release-artist">
+                <span>by&nbsp;</span>
+                <a href="#" class="release-artist-link">{{release.artist_name}}</a>
+            </div>
+            <!-- <div class="release-link">
                 <span class="release-info-prefix">Listen on&nbsp;</span>
                 <a v-if="release.itunes_id.length != ''" :href="'itmss://music.apple.com/us/' + release.type + '/' + release.itunes_id"><i class="fab fa-apple"></i></a>
                 <a v-if="release.spotify_id.length != ''" :href="'spotify:album:' + release.spotify_id"><i class="fab fa-spotify"></i></a>
+            </div> -->
+            <div class="release-date">
+                <span>on&nbsp;</span>
+                <span>{{release.released | date}}</span>
             </div>
         </div>
     </div>
@@ -54,26 +63,22 @@ export default {
     max-width: 300px;
     width: 300px;
     height: 370px;
-    cursor: pointer;
 }
 .release-poster {
     height: 264px;
     width: 264px;
     opacity: 1;
     background-color: rgba(0,0,0, 1);
+    cursor: pointer;
 }
 .release-poster-img {
     border-radius: 4px;
-    -webkit-transition-duration:.2s;
-    transition-duration:.2s;
+    -webkit-transition-duration:.1s;
+    transition-duration:.1s;
     -webkit-transition-property:opacity;
     transition-property:opacity;
     -webkit-transition-timing-function:ease-in;
     transition-timing-function:ease-in
-}
-.release-details {
-    height: inherit;
-    width: inherit;
 }
 ul {
     list-style: none;
@@ -116,10 +121,7 @@ ul {
     -ms-flex-align: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
-    -webkit-transform:scale(1);
-    -ms-transform:scale(1);
-    transform:scale(1);
-     -webkit-transition-duration:.15s;
+    -webkit-transition-duration:.15s;
     transition-duration:.15s;
     -webkit-transition-property:opacity,-webkit-transform;
     transition-property:opacity,-webkit-transform;
@@ -129,15 +131,67 @@ ul {
 }
 .release > .release-poster:hover > .release-poster-img {
     opacity: 0.7;
+    cursor: pointer;
 }
 .release > .release-poster > .action > .action-item > .action-item-btn:hover {
+    cursor: pointer;
     transform: scale3d(1.2,1.2,1.2);
     -webkit-transform: scale3d(1.2,1.2,1.2);
 }
-
 .svg-icon {
     fill: black;
     stroke: black;
+}
+.release-details {
+    height: inherit;
+    width: inherit;
+    padding-top: 8px;
+}
+.release-explicit {
+    fill: #fff;
+    background-color: #151515;
+    width: 12px;
+    height: 15px;
+    margin-bottom: 2px;
+    margin-right: 5px;
+}
+.release-title {
+    font-size: 15px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 264px;
+}
+.release-artist {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 264px;
+    color: #9DA2A4;
+    margin-top: 3px;
+}
+.release-artist-link {
+    color: white;
+    background-image: none;
+}
+.release-artist-link:hover {
+    color: white;
+    text-decoration: underline;
+}
+.release-date {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 264px;
+    color: #9DA2A4;
+    margin-top: 3px;
 }
 /* .release {
     box-sizing: border-box;
