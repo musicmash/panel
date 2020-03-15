@@ -113,12 +113,12 @@ export default {
 }
 .release-poster-img {
     border-radius: 4px;
-    -webkit-transition-duration:.1s;
-    transition-duration:.1s;
-    -webkit-transition-property:opacity;
-    transition-property:opacity;
-    -webkit-transition-timing-function:ease-in;
-    transition-timing-function:ease-in
+    -webkit-transition-duration: .1s;
+    transition-duration: .1s;
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+    -webkit-transition-timing-function: ease-in;
+    transition-timing-function: ease-in
 }
 ul {
     list-style: none;
@@ -144,12 +144,12 @@ ul {
 .action-item:nth-child(1n+2) {
     margin-left: 10px;
     opacity: 0;
-    -webkit-transition-duration:.15s;
-    transition-duration:.15s;
-    -webkit-transition-property:opacity,-webkit-transform;
-    transition-property:opacity,-webkit-transform;
-    transition-property:opacity,transform;
-    transition-property:opacity,transform,-webkit-transform;
+    -webkit-transition-duration: .15s;
+    transition-duration: .15s;
+    -webkit-transition-property: opacity,-webkit-transform;
+    transition-property: opacity,-webkit-transform;
+    transition-property: opacity,transform;
+    transition-property: opacity,transform,-webkit-transform;
 }
 .action-item-btn {
     opacity: 1;
@@ -171,12 +171,12 @@ ul {
     -ms-flex-align: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
-    -webkit-transition-duration:.15s;
-    transition-duration:.15s;
-    -webkit-transition-property:opacity,-webkit-transform;
-    transition-property:opacity,-webkit-transform;
-    transition-property:opacity,transform;
-    transition-property:opacity,transform,-webkit-transform;
+    -webkit-transition-duration: .15s;
+    transition-duration: .15s;
+    -webkit-transition-property: opacity,-webkit-transform;
+    transition-property: opacity,-webkit-transform;
+    transition-property: opacity,transform;
+    transition-property: opacity,transform,-webkit-transform;
     z-index: 1;
 }
 .release > .release-poster:hover > .release-poster-img {
@@ -190,12 +190,12 @@ ul {
 }
 .release > .release-poster:hover > .action > .action-item:nth-child(1n+2) {
     opacity: 1;
-    -webkit-transition-duration:.15s;
-    transition-duration:.15s;
-    -webkit-transition-property:opacity,-webkit-transform;
-    transition-property:opacity,-webkit-transform;
-    transition-property:opacity,transform;
-    transition-property:opacity,transform,-webkit-transform;
+    -webkit-transition-duration: .15s;
+    transition-duration: .15s;
+    -webkit-transition-property: opacity,-webkit-transform;
+    transition-property: opacity,-webkit-transform;
+    transition-property: opacity,transform;
+    transition-property: opacity,transform,-webkit-transform;
 }
 .svg-icon {
     fill: black;
@@ -273,9 +273,9 @@ ul {
     transform: scale(1);
 }
 .release-poster-blur {
-    margin-top:-300px;
-    width:249px;
-    height:249px;
+    margin-top: -300px;
+    width: 249px;
+    height: 249px;
     z-index: -1;
     visibility: hidden;
 }
