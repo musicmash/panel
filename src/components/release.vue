@@ -1,5 +1,5 @@
 <template>
-    <div class="release">
+    <div class="release col-3 mr-5 mb-5">
         <div class="release-poster">
             <img class="release-poster-img" :src="release.poster|resizeImage('264x264')" alt="">
             <ul class="action">
@@ -100,10 +100,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .release {
-    min-width: 300px;
-    max-width: 300px;
-    width: 300px;
-    height: 370px;
+    max-width: 264px;
+    max-height: auto;
+    width: 264px;
 }
 .release-poster {
     height: 264px;
