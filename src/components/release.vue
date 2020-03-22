@@ -32,7 +32,6 @@
                     </a>
                 </li>
             </ul>
-            <!-- <img class="release-poster-blur" :src="release.poster|resizeImage('76x76')" alt=""> -->
         </div>
         <div class="release-details">
             <div class="release-title">
@@ -50,11 +49,6 @@
                 <span>by&nbsp;</span>
                 <a href="#" class="release-artist-link">{{release.artist_name}}</a>
             </div>
-            <!-- <div class="release-link">
-                <span class="release-info-prefix">Listen on&nbsp;</span>
-                <a v-if="release.itunes_id.length != ''" :href="'itmss://music.apple.com/us/' + release.type + '/' + release.itunes_id"><i class="fab fa-apple"></i></a>
-                <a v-if="release.spotify_id.length != ''" :href="'spotify:album:' + release.spotify_id"><i class="fab fa-spotify"></i></a>
-            </div> -->
             <div class="release-date">
                 <span>on&nbsp;</span>
                 <span>{{release.released | date}}</span>
@@ -252,88 +246,4 @@ ul {
     color: #9DA2A4;
     margin-top: 3px;
 }
-/* .release {
-    box-sizing: border-box;
-    max-width: 264px;
-    max-height: auto;
-}
-.release:hover {
-    max-height: 400px;
-    position: relative;
-    z-index: 1;
-}
-.release-poster {
-    width: 249px;
-    height: 249px;
-    max-width: inherit;
-    max-height: inherit;
-    border-radius: 4px;
-    display: inline-block;
-    transition: transform .2s;
-    transform: scale(1);
-}
-.release-poster-blur {
-    margin-top: -300px;
-    width: 249px;
-    height: 249px;
-    z-index: -1;
-    visibility: hidden;
-}
-.release-poster-img {
-    width: 234px;
-    height: 234px;
-    margin: 7px;
-    border-radius: 4px;
-    overflow: hidden;
-    position: relative;
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-    vertical-align: top;
-    transition: transform .2s;
-    z-index: 1;
-}
-.release-poster:hover {
-    transition: transform .2s;
-    transform: scale(1.03);
-}
-.release-poster:hover .release-poster-blur {
-    transform: scale(.90) translateY(calc(4% + 14px)) translateZ(0);
-    -webkit-filter: blur(30px) brightness(130%);
-    filter: blur(30px) brightness(130%);
-    opacity: .55;
-    visibility: visible;
-}
-.release-details {
-    margin-top: -15px;
-    margin-left: 6px;
-}
-.release-info-prefix {
-    color: #9DA2A4;
-}
-.release-explicit {
-    fill: #fff;
-    background-color: #151515;
-    width: 12px;
-    margin-bottom: 3px;
-}
-.release-title {
-    font-weight: 700;
-    font-size: 14px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: var(--text-primary);
-    width: 240px;
-}
-.release-artist {
-    line-height: 17px;
-    font-size: 12px;
-}
-.release-date {
-    color: #9DA2A4;
-}
-.release-link {
-    color: var(--text-primary);
-    text-decoration: none;
-} */
 </style>
