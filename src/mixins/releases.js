@@ -16,6 +16,7 @@ function startOfWeek() {
 export default {
     data() {
         return {
+            allReleases: [],
             releases: []
         }
     },
@@ -25,7 +26,11 @@ export default {
     methods: {
         loadReleases(since, till) {
             return this.resource.get({"since": since, "till": till}).then(
-                resp => this.releases = resp.body
+                resp => {
+                    this.releases = [];
+                    this.allReleases = resp.body;
+                    this.loadNextReleases(0, 24);
+                }
             );
         },
         loadPastMonthReleases() {
@@ -42,7 +47,15 @@ export default {
             var since = startOfWeek().add(1, 'week');
             var till = startOfWeek().add(2, 'weeks');
             return this.loadReleases(format(since), format(till));
-        }
+        },
+        loadNextReleases(offset, limit) {
+            var max = offset + limit;
+            if (max > this.allReleases.length)
+                max = this.allReleases.length
+
+            for (let i = offset; i < max; i++)
+                this.releases.push(this.allReleases[i])
+        },
     },
     computed: {
         releasesWithoutVideos: function() {

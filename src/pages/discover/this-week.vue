@@ -18,9 +18,10 @@
 <script>
 import release from '@/components/release.vue'
 import releaseMixin from '@/mixins/releases'
+import loaderMixin from '@/mixins/infinity-loader'
 
 export default {
-    mixins: [releaseMixin],
+    mixins: [releaseMixin, loaderMixin],
     mounted() {
         this.loadWeeklyReleases();
     },

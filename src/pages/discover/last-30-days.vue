@@ -18,11 +18,15 @@
 <script>
 import release from '@/components/release.vue'
 import releaseMixin from '@/mixins/releases'
+import loaderMixin from '@/mixins/infinity-loader'
 
 export default {
-    mixins: [releaseMixin],
+    mixins: [releaseMixin, loaderMixin],
     mounted() {
         this.loadPastMonthReleases();
+        this.subscribeOnScroll((offset, limit) => {
+            this.loadNextReleases(offset, limit);
+        })
     },
     components: {
         release

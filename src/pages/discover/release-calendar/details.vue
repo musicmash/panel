@@ -14,6 +14,7 @@
 <script>
 import release from '@/components/release'
 import releaseMixin from '@/mixins/releases'
+import loaderMixin from '@/mixins/infinity-loader'
 
 var moment = require('moment');
 
@@ -26,9 +27,12 @@ function parseMonth(month) {
 }
 
 export default {
-    mixins: [releaseMixin],
+    mixins: [releaseMixin, loaderMixin],
     created() {
         this.fetchData();
+        this.subscribeOnScroll((offset, limit) => {
+            this.loadNextReleases(offset, limit);
+        })
     },
     watch: {
         // call again the method if the route changes
@@ -36,6 +40,7 @@ export default {
     },
     methods: {
         fetchData() {
+            this.resetLoader();
             var params = this.getPeriods(this.$route.params.month);
             this.loadReleases(params.since, params.till);
         },
