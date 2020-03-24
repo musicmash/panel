@@ -2,7 +2,7 @@
   <div id="app" class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-lg-2">
-        <sidebar/>
+        <sidebar class="sticky-top"/>
       </div>
       <div class="col-sm-10 col-lg-10">
         <div class="row">
