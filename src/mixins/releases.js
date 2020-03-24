@@ -24,11 +24,17 @@ export default {
         this.resource = this.$resource("releases");
     },
     methods: {
+        excludeVideos (releases) {
+            return releases.filter(function (release) {
+                return release.type != "music-video";
+            });
+        },
         loadReleases(since, till) {
             return this.resource.get({"since": since, "till": till}).then(
                 resp => {
                     this.releases = [];
-                    this.allReleases = resp.body;
+                    // exclude videos on the backend
+                    this.allReleases = this.excludeVideos(resp.body);
                     this.loadNextReleases(0, 24);
                 }
             );
@@ -56,12 +62,5 @@ export default {
             for (let i = offset; i < max; i++)
                 this.releases.push(this.allReleases[i])
         },
-    },
-    computed: {
-        releasesWithoutVideos: function() {
-            return this.releases.filter(function(release) {
-                return release.type != "music-video";
-            });
-        }
     }
 }

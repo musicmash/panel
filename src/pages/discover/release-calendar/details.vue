@@ -1,10 +1,10 @@
 <template>
     <div class="row">
-        <div class="empty-list" v-if="releasesWithoutVideos && releasesWithoutVideos.length == 0">
+        <div class="empty-list" v-if="releases && releases.length == 0">
             No releases found
         </div>
         <release
-            v-for="release in releasesWithoutVideos"
+            v-for="release in releases"
             :release="release"
             :key="release.id"
         ></release>
