@@ -1,10 +1,7 @@
 <template>
   <div id="app" class="container-fluid">
     <div class="row">
-      <div class="col-sm-3 col-lg-2">
-        <sidebar class="sticky-top"/>
-      </div>
-      <div class="col-sm-10 col-lg-10">
+      <div class="col-sm-12 col-lg-12">
         <div class="row">
           <router-view></router-view>
         </div>
@@ -14,12 +11,9 @@
 </template>
 
 <script>
-import sidebar from '@/components/sidebar.vue'
-
 export default {
   name: 'App',
   components: {
-    sidebar
   }
 }
 </script>
