@@ -1,13 +1,11 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-sm-12 col-lg-12">
-                <h1 class="heading">This week</h1>
-            </div>
+            <h1 class="heading mx-4">This week</h1>
         </div>
         <div class="row">
             <release
-                class="col-3 mr-5 mb-5"
+                class="col-3 mx-4 mb-4 p-0"
                 v-for="release in releases"
                 :release="release"
                 :key="release.id"

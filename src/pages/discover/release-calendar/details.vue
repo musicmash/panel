@@ -4,7 +4,7 @@
             No releases found
         </div>
         <release
-            class="col-3 mr-5 mb-5"
+            class="col-3 mx-4 mb-4 p-0"
             v-for="release in releases"
             :release="release"
             :key="release.id"

@@ -1,16 +1,14 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-sm-12 col-lg-12">
-                <h1 class="heading">Release calendar</h1>
-            </div>
+            <h1 class="heading mx-4">Release calendar</h1>
         </div>
         <div class="row">
-            <nav class="navbar navbar-expand p-0 pb-4">
+            <nav class="navbar navbar-expand mx-4 mb-4 p-0">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <router-link
-                            class="nav-link calendar-month p-0 ml-3"
+                            class="nav-link calendar-month p-0"
                             active-class="calendar-month-active"
                             to="/discover/release-calendar/jan"
                         >Jan</router-link>
