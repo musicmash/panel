@@ -1,9 +1,11 @@
 <template>
-  <div id="app" class="container-fluid">
-    <div class="row">
-      <div class="col-sm-12 col-lg-12">
-        <div class="row">
-          <router-view></router-view>
+  <div id="app">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-lg-12">
+          <div class="row">
+            <router-view></router-view>
+          </div>
         </div>
       </div>
     </div>
