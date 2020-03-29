@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <navbar />
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12 col-lg-12">
@@ -13,9 +14,12 @@
 </template>
 
 <script>
+import navbar from '@/components/navbar'
+
 export default {
   name: 'App',
   components: {
+    navbar,
   }
 }
 </script>
