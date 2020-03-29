@@ -1,5 +1,5 @@
 <template>
-    <div class="release col-3 mr-5 mb-5">
+    <div class="release">
         <div class="release-poster">
             <img class="release-poster-img" :src="release.poster|resizeImage('264x264')" alt="">
             <ul class="action">
