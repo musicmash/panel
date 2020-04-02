@@ -35,12 +35,19 @@ export default {
     background-color: rgba(255, 255, 255, 0.15);
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
+    /* border: 1px solid rgba(255, 255, 255, 0.15); */
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 .sb-input:focus {
     background-color: black;
     box-shadow: none;
     outline: 0 none;
-    border: 1px solid rgba(255, 255, 255, 0.15);;
+    /* border: 1px solid rgba(255, 255, 255, 0.15); */
+    /* border-left: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15); */
     transition: none;
 }
 .sb-input::-moz-selection { color: red}
@@ -52,6 +59,7 @@ export default {
     background-color: rgba(255, 255, 255, 0.15);
     border-bottom-right-radius: 6px;
     border-top-right-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 .sb-button-search-svg {
     width: 24px;
