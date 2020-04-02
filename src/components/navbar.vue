@@ -8,10 +8,10 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item mr-3">
-                    <a class="nav-button active" href="#">Releases</a>
+                    <router-link class="nav-button" to="/discover/last-30-days" active-class="active">Releases</router-link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-button disabled" href="#">Subscriptions</a>
+                    <router-link class="nav-button" to="/browse/subscriptions" active-class="active">Subscriptions</router-link>
                 </li>
             </ul>
 
