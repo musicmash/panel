@@ -6,6 +6,10 @@
             placeholder="Search artist or release"
             aria-label="Search artist or release"
             aria-describedby="button-addon2"
+            autocapitalize="off"
+            autocorrect="off"
+            maxlength="150"
+            spellcheck="false"
         >
         <div class="input-group-append ml-0">
             <button class="sb-button-search" type="submit">
