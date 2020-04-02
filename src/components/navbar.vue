@@ -7,11 +7,11 @@
 
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <button type="button" class="btn btn-primary">Releases</button>
+                <li class="nav-item mr-3">
+                    <a class="nav-button active" href="#">Releases</a>
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="btn btn-primary disabled">Subscriptions</button>
+                    <a class="nav-button disabled" href="#">Subscriptions</a>
                 </li>
             </ul>
 
@@ -55,4 +55,26 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.nav-button {
+    cursor: pointer;
+    display: inline-block;
+    transition: none;
+
+    padding-top: 7px;
+    padding-bottom: 12px;
+
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+
+    background-image: none;
+    border-bottom: 4px solid transparent;
+}
+.nav-button:hover {
+    border-bottom: 4px solid rgb(197, 0, 33);
+}
+.active {
+    border-bottom: 4px solid rgb(197, 0, 33);
+}
 </style>
