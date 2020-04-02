@@ -15,10 +15,7 @@
                 </li>
             </ul>
 
-            <form class="form-inline">
-                <input class="form-control mr-sm-" type="search" placeholder="Search artist, band or release" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
+            <searchbox/>
 
             <div class="login_register ml-auto">
                 <ul class="navbar-nav invisible">
@@ -48,8 +45,13 @@
 </template>
 
 <script>
+import searchbox from '@/components/searchbox'
+
 export default {
     name: "navbar",
+    components: {
+        searchbox
+    }
 }
 </script>
 
