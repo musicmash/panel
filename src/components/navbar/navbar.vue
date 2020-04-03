@@ -17,26 +17,12 @@
 
             <searchbox/>
 
-            <div class="login_register ml-auto">
-                <ul class="navbar-nav invisible">
-                    <li class="nav-item active">
-                        <button type="button" class="btn btn-primary">Login</button>
-                    </li>
-                    <li class="nav-item active">
-                        <button type="button" class="btn btn-primary">Register</button>
-                    </li>
-                </ul>
-            </div>
-
-            <ul class="navbar-nav invisible">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Use light-theme</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Log out</a>
-                    </div>
+            <ul class="navbar-nav ml-auto invisible">
+                <li class="mr-3">
+                    <router-link class="nav-button" to="#" active-class="active">Login</router-link>
+                </li>
+                <li>
+                    <router-link class="nav-button" to="#" active-class="active">Register</router-link>
                 </li>
             </ul>
         </div>
