@@ -77,41 +77,42 @@ export default {
 .sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #7386D5;
-    color: #fff;
+    background: #1A1B1C;
+    color: #C3BEB5;
     transition: all 0.3s;
 }
 .sidebar.active {
     margin-left: -250px;
 }
 .sidebar .sidebar-header {
-    padding: 20px;
-    background: #6d7fcc;
+    font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: .5rem 1rem;
+    background: inherit;
+    color: #C3BEB5;
 }
 .sidebar ul.components {
-    padding: 20px 0;
-}
-.sidebar ul p {
-    color: #fff;
-    padding: 10px;
+    padding: .5rem 1rem;
 }
 .sidebar ul li a {
-    padding: 10px;
-    font-size: 1.1em;
+    color: rgb(186, 181, 171);
+    font-size: 16px;
+    font-weight: 550;
     display: block;
+    transition: none;
+    text-decoration: none;
 }
 .sidebar ul li a:hover {
-    color: #7386D5;
-    background: #fff;
+    color: #FFFFFF;
+    background: #191A1B;
 }
 .sidebar ul li.active>a, a[aria-expanded="true"] {
-    color: #fff;
-    background: #6d7fcc;
+    background: inherit;
 }
 a[data-toggle="collapse"] {
     position: relative;
 }
-
 .dropdown-toggle::after {
     display: block;
     position: absolute;
@@ -121,9 +122,11 @@ a[data-toggle="collapse"] {
 }
 
 ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #6d7fcc;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    padding-left: 20px !important;
+    background: inherit;
 }
 
 @media (max-width: 768px) {
