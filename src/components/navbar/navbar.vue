@@ -8,10 +8,10 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="mr-3">
-                    <router-link class="nav-button" to="/discover/last-30-days" active-class="active">Releases</router-link>
+                    <navbutton to="/discover/last-30-days" text="Releases"></navbutton>
                 </li>
                 <li>
-                    <router-link class="nav-button" to="/browse/subscriptions" active-class="active">Subscriptions</router-link>
+                    <navbutton to="/browse/subscriptions" text="Subscriptions"></navbutton>
                 </li>
             </ul>
 
@@ -19,10 +19,10 @@
 
             <ul class="navbar-nav ml-auto invisible">
                 <li class="mr-3">
-                    <router-link class="nav-button" to="#" active-class="active">Login</router-link>
+                    <navbutton to="#" text="Login"></navbutton>
                 </li>
                 <li>
-                    <router-link class="nav-button" to="#" active-class="active">Register</router-link>
+                    <navbutton to="#" text="Register"></navbutton>
                 </li>
             </ul>
         </div>
@@ -32,37 +32,13 @@
 
 <script>
 import searchbox from '@/components/navbar/searchbox'
+import navbutton from '@/components/navbar/navbutton'
 
 export default {
     name: "navbar",
     components: {
-        searchbox
+        searchbox,
+        navbutton
     }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.nav-button {
-    cursor: pointer;
-    display: inline-block;
-    transition: none;
-
-    padding-top: 7px;
-    padding-bottom: 12px;
-
-    color: white;
-    text-decoration: none;
-    font-size: 17px;
-    font-weight: bold;
-
-    background-image: none;
-    border-bottom: 4px solid transparent;
-}
-.nav-button:hover {
-    border-bottom: 4px solid rgb(197, 0, 33);
-}
-.active {
-    border-bottom: 4px solid rgb(197, 0, 33);
-}
-</style>
