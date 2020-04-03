@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import searchbox from '@/components/searchbox'
+import searchbox from '@/components/navbar/searchbox'
 
 export default {
     name: "navbar",
