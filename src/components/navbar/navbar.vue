@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="mr-3">
-                    <navbutton to="/discover/last-30-days" text="Releases"></navbutton>
+                    <navbutton to="/all-releases" text="Releases"></navbutton>
                 </li>
                 <li>
                     <navbutton to="/browse/subscriptions" text="Subscriptions"></navbutton>
