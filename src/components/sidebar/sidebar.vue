@@ -18,13 +18,19 @@
                 </a>
                 <ul class="collapse list-unstyled show" id="when-dropdown">
                     <li>
-                        <a href="#" class="mt-2">Last 30 days</a>
+                        <a href="#" class="mt-2" v-on:click="getPastMonthReleases()">
+                            Last 30 days
+                        </a>
                     </li>
                     <li>
-                        <a href="#">This week</a>
+                        <a href="#" v-on:click="getWeeklyReleases()">
+                            This week
+                        </a>
                     </li>
                     <li>
-                        <a href="#">Next week</a>
+                        <a href="#" v-on:click="getNextWeekReleases()">
+                            Next week
+                        </a>
                     </li>
                     <li>
                         <router-link to="/discover/release-calendar">Calendar</router-link>
@@ -64,9 +70,21 @@ export default {
         }
     },
     methods: {
+        // view
         collapse: function() {
             this.isActive = !this.isActive;
-        }
+        },
+
+        // api
+        getPastMonthReleases: function() {
+            this.$store.dispatch("releases/getPastMonthReleases");
+        },
+        getWeeklyReleases: function() {
+            this.$store.dispatch("releases/getWeeklyReleases");
+        },
+        getNextWeekReleases: function() {
+            this.$store.dispatch("releases/getNextWeekReleases");
+        },
     }
 }
 </script>

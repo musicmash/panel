@@ -4,6 +4,7 @@ import VueResource from 'vue-resource'
 import App from '@/App'
 import router from '@/routes'
 import DateFilter from '@/filters/date'
+import store from '@/store'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
@@ -15,5 +16,6 @@ Vue.http.headers.common['x-user-name'] = 'objque@gmail.com';
 
 new Vue({
   render: h => h(App),
-  router: router
+  router: router,
+  store: store,
 }).$mount('#app')
