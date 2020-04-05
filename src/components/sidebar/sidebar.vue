@@ -18,17 +18,17 @@
                 </a>
                 <ul class="collapse list-unstyled show" id="when-dropdown">
                     <li>
-                        <a href="#" class="mt-2" v-on:click="getPastMonthReleases()">
+                        <a href="#" :class="{ active: filterType=='last-30-days'}" v-on:click="getPastMonthReleases()" class="mt-2">
                             Last 30 days
                         </a>
                     </li>
                     <li>
-                        <a href="#" v-on:click="getWeeklyReleases()">
+                        <a href="#" :class="{ active: filterType=='this-week'}" v-on:click="getWeeklyReleases()">
                             This week
                         </a>
                     </li>
                     <li>
-                        <a href="#" v-on:click="getNextWeekReleases()">
+                        <a href="#" :class="{ active: filterType=='next-week'}" v-on:click="getNextWeekReleases()">
                             Next week
                         </a>
                     </li>
@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     name: "sidebar",
     data() {
@@ -69,6 +70,9 @@ export default {
             isActive: false,
         }
     },
+    computed: mapState({
+        filterType: state => state.releases.filterType,
+    }),
     methods: {
         // view
         collapse: function() {
@@ -125,6 +129,13 @@ export default {
     color: #FFFFFF;
     background: #191A1B;
 }
+.sidebar .active {
+    color: #FFFFFF;
+    background: #191A1B;
+}
+.sidebar .active:hover {
+    cursor: default;
+}
 .sidebar ul li.active>a, a[aria-expanded="true"] {
     background: inherit;
 }
@@ -143,7 +154,7 @@ ul ul a {
     height: 32px;
     line-height: 32px;
     font-size: 14px;
-    padding-left: 20px !important;
+    margin-left: 20px !important;
     background: inherit;
 }
 

@@ -2,7 +2,8 @@ import api from "@/api"
 
 // initial state
 const state = {
-    filter: "All releases",
+    filter: "",
+    filterType: "",
     all: [],
 }
 
@@ -13,19 +14,19 @@ const getters = {}
 const actions = {
     getPastMonthReleases({ commit }) {
         api.getPastMonthReleases(releases => {
-            commit("setFilter", "Last 30 days");
+            commit("setFilterType", "last-30-days");
             commit("setReleases", releases);
         })
     },
     getWeeklyReleases({ commit }) {
         api.getWeeklyReleases(releases => {
-            commit("setFilter", "This week");
+            commit("setFilterType", "this-week");
             commit("setReleases", releases);
         })
     },
     getNextWeekReleases({ commit }) {
         api.getNextWeekReleases(releases => {
-            commit("setFilter", "Next week");
+            commit("setFilterType", "next-week");
             commit("setReleases", releases);
         })
     },
@@ -36,8 +37,13 @@ const mutations = {
     setReleases(state, Releases) {
         state.all = Releases
     },
-    setFilter(state, value) {
-        state.filter = value;
+    setFilterType(state, type) {
+        state.filter = "Last 30 days"
+        if (type == "this-week")
+            state.filter = "This week";
+        if (type == "next-week")
+            state.filter = "Next week";
+        state.filterType = type;
     }
 }
 
