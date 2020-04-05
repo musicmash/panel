@@ -16,7 +16,7 @@
 
             <div class="releases">
                 <div class="row">
-                    <h1 class="heading mx-4">Last 30 days</h1>
+                    <h1 class="heading mx-4">{{ filter }}</h1>
                 </div>
                 <div class="row">
                     <release
@@ -38,6 +38,7 @@ import { mapState } from 'vuex'
 
 export default {
     computed: mapState({
+        filter: state => state.releases.filter,
         releases: state => state.releases.all,
     }),
     components: {
