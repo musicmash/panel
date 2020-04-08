@@ -72,4 +72,9 @@ export default {
 .releases {
     padding: .5rem 1rem;
 }
+
+.heading {
+    font-size: 72px;
+    font-weight: 700;
+}
 </style>
