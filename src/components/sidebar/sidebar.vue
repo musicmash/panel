@@ -131,6 +131,7 @@ export default {
 }
 .sidebar .active {
     color: #FFFFFF;
+    font-weight: 700;
     background: #191A1B;
 }
 .sidebar .active:hover {
