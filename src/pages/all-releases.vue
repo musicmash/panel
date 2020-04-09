@@ -12,7 +12,7 @@
                 </button>
             </div>
             <div class="p-0">
-                <h1 class="heading mx-4">{{ filter }}</h1>
+                <h1 class="header mx-4">{{ filter }}</h1>
             </div>
 
             <div class="releases">
@@ -71,7 +71,7 @@ export default {
     padding: .5rem 1rem;
 }
 
-.heading {
+.header {
     font-size: 50px;
     font-weight: 700;
 }
