@@ -11,7 +11,6 @@ import Subscriptions from '@/pages/browse/subscriptions'
 import Releases from '@/pages/browse/releases'
 import MusicVideos from '@/pages/browse/music-videos'
 // without group
-import Home from '@/pages/home'
 import AllReleases from '@/pages/all-releases'
 
 export default new VueRouter({
@@ -19,7 +18,7 @@ export default new VueRouter({
     // without group
     {
       path: "",
-      component: Home
+      redirect: "/all-releases"
     },
     // discover
     {
