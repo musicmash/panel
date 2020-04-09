@@ -1,33 +1,15 @@
 <template>
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-fluid justify-content-between p-0">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="mr-3">
-                    <navbutton to="/all-releases" text="Releases"></navbutton>
-                </li>
-                <li>
-                    <navbutton to="/browse/subscriptions" text="Subscriptions"></navbutton>
-                </li>
-            </ul>
-
-            <searchbox/>
-
-            <ul class="navbar-nav ml-auto invisible">
-                <li class="mr-3">
-                    <navbutton to="#" text="Login"></navbutton>
-                </li>
-                <li>
-                    <navbutton to="#" text="Register"></navbutton>
-                </li>
-            </ul>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-5 col-lg-4 mt-3">
+                <navbutton class="mr-4" to="/all-releases" text="Releases" />
+                <navbutton to="/browse/subscriptions" text="Subscriptions" />
+            </div>
+            <div class="col-sm-7 col-lg-4 my-3">
+                 <searchbox/>
+            </div>
         </div>
     </div>
-</nav>
 </template>
 
 <script>
