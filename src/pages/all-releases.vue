@@ -12,7 +12,8 @@
                 </button>
             </div>
             <div class="p-0">
-                <h1 class="header mx-4">{{ filter }}</h1>
+                <h1 class="header ml-4 d-inline">{{ filter }}</h1>
+                <h1 class="sub-header ml-2 d-inline align-center">({{ releases.length }} results)</h1>
             </div>
 
             <div class="releases">
@@ -73,6 +74,11 @@ export default {
 
 .header {
     font-size: 50px;
+    font-weight: 700;
+}
+.sub-header {
+    color: #7a7a7a;
+    font-size: 35px;
     font-weight: 700;
 }
 </style>
