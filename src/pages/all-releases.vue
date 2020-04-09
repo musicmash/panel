@@ -2,22 +2,20 @@
     <div class="wrapper">
         <sidebar ref="sidebar" />
         <div class="content">
-            <nav class="navbar navbar-expand-lg navbar-dark p-0">
-                <div class="navbar-content">
-                    <button
-                        class="btn btn-info"
-                        type="button"
-                        v-on:click="$refs.sidebar.collapse()"
-                    >
-                        Toggle Filters
-                    </button>
-                </div>
-            </nav>
+            <div class="mx-4 p-0 d-md-none">
+                <button
+                    class="btn btn-info"
+                    type="button"
+                    v-on:click="$refs.sidebar.collapse()"
+                >
+                    Toggle Filters
+                </button>
+            </div>
+            <div class="p-0">
+                <h1 class="heading mx-4">{{ filter }}</h1>
+            </div>
 
             <div class="releases">
-                <div class="row">
-                    <h1 class="heading mx-4">{{ filter }}</h1>
-                </div>
                 <div class="row">
                     <release
                         class="col-3 mx-4 mb-4 p-0"
@@ -74,7 +72,7 @@ export default {
 }
 
 .heading {
-    font-size: 72px;
+    font-size: 50px;
     font-weight: 700;
 }
 </style>
