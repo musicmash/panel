@@ -1,26 +1,21 @@
 import VueRouter from 'vue-router'
-// discover
 import LastThirtyDays from '@/pages/discover/last-30-days'
 import CurrentWeek from '@/pages/discover/this-week'
 import NextWeek from '@/pages/discover/next-week'
 import ReleaseCalendar from '@/pages/discover/release-calendar'
 import ReleaseCalendarDetails from '@/pages/discover/release-calendar/details'
-// browse
 import Artists from '@/pages/browse/artists'
 import Subscriptions from '@/pages/browse/subscriptions'
 import Releases from '@/pages/browse/releases'
 import MusicVideos from '@/pages/browse/music-videos'
-// without group
 import AllReleases from '@/pages/all-releases'
 
 export default new VueRouter({
   routes: [
-    // without group
     {
       path: "",
       redirect: "/all-releases"
     },
-    // discover
     {
       path: "/all-releases",
       component: AllReleases
@@ -48,7 +43,6 @@ export default new VueRouter({
         }
       ]
     },
-    // browse
     {
       path: "/browse/artists",
       component: Artists
