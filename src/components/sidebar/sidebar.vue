@@ -75,7 +75,7 @@ export default {
     }),
     methods: {
         // view
-        collapse: function() {
+        toggle: function() {
             this.isActive = !this.isActive;
         },
 

@@ -6,7 +6,7 @@
                 <button
                     class="btn btn-info"
                     type="button"
-                    v-on:click="$refs.sidebar.collapse()"
+                    v-on:click="$refs.sidebar.toggle()"
                 >
                     Toggle Filters
                 </button>
