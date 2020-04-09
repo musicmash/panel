@@ -1,13 +1,7 @@
 import VueRouter from 'vue-router'
-import LastThirtyDays from '@/pages/discover/last-30-days'
-import CurrentWeek from '@/pages/discover/this-week'
-import NextWeek from '@/pages/discover/next-week'
 import ReleaseCalendar from '@/pages/discover/release-calendar'
 import ReleaseCalendarDetails from '@/pages/discover/release-calendar/details'
-import Artists from '@/pages/browse/artists'
 import Subscriptions from '@/pages/browse/subscriptions'
-import Releases from '@/pages/browse/releases'
-import MusicVideos from '@/pages/browse/music-videos'
 import AllReleases from '@/pages/all-releases'
 
 export default new VueRouter({
@@ -21,18 +15,6 @@ export default new VueRouter({
       component: AllReleases
     },
     {
-      path: "/discover/last-30-days",
-      component: LastThirtyDays
-    },
-    {
-      path: "/discover/this-week",
-      component: CurrentWeek
-    },
-    {
-      path: "/discover/next-week",
-      component: NextWeek
-    },
-    {
       path: "/discover/release-calendar",
       component: ReleaseCalendar,
       redirect: "/discover/release-calendar/jan",
@@ -44,21 +26,9 @@ export default new VueRouter({
       ]
     },
     {
-      path: "/browse/artists",
-      component: Artists
-    },
-    {
       path: "/browse/subscriptions",
       component: Subscriptions
     },
-    {
-      path: "/browse/releases",
-      component: Releases
-    },
-    {
-      path: "/browse/music-videos",
-      component: MusicVideos
-    }
   ],
   mode: "history"
 })
