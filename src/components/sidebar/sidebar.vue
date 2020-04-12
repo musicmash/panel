@@ -120,7 +120,7 @@ export default {
 .sidebar ul li a {
     color: rgb(186, 181, 171);
     font-size: 16px;
-    font-weight: 550;
+    font-weight: 600;
     display: block;
     transition: none;
     text-decoration: none;
