@@ -2,25 +2,18 @@
     <div class="wrapper">
         <sidebar ref="sidebar" />
         <div class="content">
-            <div class="mx-3 p-0 d-md-none">
-                <button
-                    class="btn btn-info"
-                    type="button"
-                    v-on:click="$refs.sidebar.toggle()"
-                >
-                    Toggle Filters
-                </button>
-            </div>
-
-            <div class="p-0">
-                <h1 class="header ml-3 d-inline">{{ filter }}</h1>
-                <h1 class="sub-header ml-2 d-inline align-center">
+            <div
+                class="d-flex flex-column flex-md-row align-items-center"
+            >
+                <collapser class="ml-3" v-on:click="$refs.sidebar.toggle()" />
+                <h1 class="header ml-2">{{ filter }}</h1>
+                <h1 class="sub-header ml-2">
                     ({{ releasesAll.length }} results)
                 </h1>
             </div>
 
             <div class="releases">
-                <div class="row">
+                <div class="row d-flex flex-row align-items-center">
                     <release
                         class="col-3 mx-3 mb-4 p-0"
                         v-for="release in releasesBatch"
@@ -38,6 +31,7 @@
 import sidebar from "@/components/sidebar/sidebar";
 import release from "@/components/release";
 import observer from "@/components/observer";
+import collapser from "@/components/collapser";
 import { mapState } from "vuex";
 
 export default {
@@ -47,6 +41,7 @@ export default {
         releasesAll: (state) => state.releases.all,
     }),
     components: {
+        collapser,
         sidebar,
         release,
         observer,
@@ -84,7 +79,7 @@ export default {
 }
 
 .releases {
-    padding: 0.5rem 1rem;
+    padding: 0 1rem;
 }
 
 .header {
@@ -92,8 +87,8 @@ export default {
     font-weight: 700;
 }
 .sub-header {
-    color: #7a7a7a;
-    font-size: 35px;
+    font-size: 40px;
     font-weight: 700;
+    color: #7a7a7a;
 }
 </style>
