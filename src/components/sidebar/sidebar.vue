@@ -113,7 +113,7 @@ export default {
 .sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #1a1b1c;
+    background: #191a1b;
     color: #c3beb5;
     transition: all 0.3s;
 }
