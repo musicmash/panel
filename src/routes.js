@@ -7,6 +7,10 @@ import AllReleases from "@/pages/all-releases";
 export default new VueRouter({
     routes: [
         {
+            path: "*",
+            redirect: "/all-releases",
+        },
+        {
             path: "",
             redirect: "/all-releases",
         },
