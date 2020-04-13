@@ -79,7 +79,7 @@ export default {
 }
 
 .releases {
-    padding: 0 1rem;
+    padding: 0.5rem 1rem;
 }
 
 .header {
