@@ -10,11 +10,23 @@
             autocorrect="off"
             maxlength="150"
             spellcheck="false"
-        >
+        />
         <div class="input-group-append ml-0">
             <button class="sb-button-search" type="submit">
-                <svg class="sb-button-search-svg" width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px">
-                    <path fill-rule="evenodd" d="M13.192 14.606a7 7 0 111.414-1.414l3.101 3.1-1.414 1.415-3.1-3.1zM14 9A5 5 0 114 9a5 5 0 0110 0z" clip-rule="evenodd"></path>
+                <svg
+                    class="sb-button-search-svg"
+                    width="100%"
+                    height="100%"
+                    version="1.1"
+                    viewBox="0 0 20 20"
+                    x="0px"
+                    y="0px"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        d="M13.192 14.606a7 7 0 111.414-1.414l3.101 3.1-1.414 1.415-3.1-3.1zM14 9A5 5 0 114 9a5 5 0 0110 0z"
+                        clip-rule="evenodd"
+                    ></path>
                 </svg>
             </button>
         </div>
@@ -24,7 +36,7 @@
 <script>
 export default {
     name: "searchbox",
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -54,8 +66,12 @@ export default {
     border-bottom: 1px solid rgba(255, 255, 255, 0.15); */
     transition: none;
 }
-.sb-input::-moz-selection { color: red}
-.sb-input::selection { color: red; }
+.sb-input::-moz-selection {
+    color: red;
+}
+.sb-input::selection {
+    color: red;
+}
 .sb-button-search {
     background-clip: padding-box;
     border: var(--border-width-input) solid var(--color-border-input);

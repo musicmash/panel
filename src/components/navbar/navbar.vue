@@ -6,21 +6,21 @@
                 <navbutton to="/browse/subscriptions" text="Subscriptions" />
             </div>
             <div class="col-sm-7 col-lg-4 my-3">
-                 <searchbox/>
+                <searchbox />
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import searchbox from '@/components/navbar/searchbox'
-import navbutton from '@/components/navbar/navbutton'
+import searchbox from "@/components/navbar/searchbox";
+import navbutton from "@/components/navbar/navbutton";
 
 export default {
     name: "navbar",
     components: {
         searchbox,
-        navbutton
-    }
-}
+        navbutton,
+    },
+};
 </script>

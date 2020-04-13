@@ -14,7 +14,9 @@
 
             <div class="p-0">
                 <h1 class="header ml-3 d-inline">{{ filter }}</h1>
-                <h1 class="sub-header ml-2 d-inline align-center">({{ releasesAll.length }} results)</h1>
+                <h1 class="sub-header ml-2 d-inline align-center">
+                    ({{ releasesAll.length }} results)
+                </h1>
             </div>
 
             <div class="releases">
@@ -33,34 +35,34 @@
 </template>
 
 <script>
-import sidebar from '@/components/sidebar/sidebar'
-import release from '@/components/release'
-import observer from '@/components/observer'
-import { mapState } from 'vuex'
+import sidebar from "@/components/sidebar/sidebar";
+import release from "@/components/release";
+import observer from "@/components/observer";
+import { mapState } from "vuex";
 
 export default {
     computed: mapState({
-        filter: state => state.releases.filter,
-        releasesBatch: state => state.releases.batch,
-        releasesAll: state => state.releases.all,
+        filter: (state) => state.releases.filter,
+        releasesBatch: (state) => state.releases.batch,
+        releasesAll: (state) => state.releases.all,
     }),
     components: {
         sidebar,
         release,
-        observer
+        observer,
     },
     created() {
         this.$store.dispatch("releases/getPastMonthReleases");
     },
     methods: {
-        load: function() {
-           this.$store.dispatch("releases/loadNextBatch");
+        load: function () {
+            this.$store.dispatch("releases/loadNextBatch");
         },
         intersected: function () {
             this.load();
         },
-    }
-}
+    },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -82,7 +84,7 @@ export default {
 }
 
 .releases {
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
 }
 
 .header {

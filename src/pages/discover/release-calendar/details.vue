@@ -13,14 +13,14 @@
 </template>
 
 <script>
-import release from '@/components/release'
-import releaseMixin from '@/mixins/releases'
-import loaderMixin from '@/mixins/infinity-loader'
+import release from "@/components/release";
+import releaseMixin from "@/mixins/releases";
+import loaderMixin from "@/mixins/infinity-loader";
 
-var moment = require('moment');
+var moment = require("moment");
 
 function format(time) {
-    return time.format('YYYY-MM-DD');
+    return time.format("YYYY-MM-DD");
 }
 
 function parseMonth(month) {
@@ -33,11 +33,11 @@ export default {
         this.fetchData();
         this.subscribeOnScroll((offset, limit) => {
             this.loadNextReleases(offset, limit);
-        })
+        });
     },
     watch: {
         // call again the method if the route changes
-        '$route': 'fetchData'
+        $route: "fetchData",
     },
     methods: {
         fetchData() {
@@ -47,14 +47,14 @@ export default {
         },
         getPeriods(month) {
             var since = parseMonth(month);
-            var till = parseMonth(month).add(1, 'month');
-            return {"since": format(since), "till": format(till)}
-        }
+            var till = parseMonth(month).add(1, "month");
+            return { since: format(since), till: format(till) };
+        },
     },
     components: {
-        release
+        release,
     },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -66,7 +66,7 @@ export default {
     align-items: center;
     width: 100%;
     margin: 64px auto 0;
-    color: hsla(0,0%,100%,.3);
+    color: hsla(0, 0%, 100%, 0.3);
     text-align: center;
 }
 </style>

@@ -1,18 +1,14 @@
 <template>
-    <router-link
-        class="nav-button"
-        :to="to"
-        active-class="active"
-    >
-        {{text}}
+    <router-link class="nav-button" :to="to" active-class="active">
+        {{ text }}
     </router-link>
 </template>
 
 <script>
 export default {
     name: "navbutton",
-    props: ["to", "text"]
-}
+    props: ["to", "text"],
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

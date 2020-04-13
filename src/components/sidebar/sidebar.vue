@@ -18,22 +18,37 @@
                 </a>
                 <ul class="collapse list-unstyled show" id="when-dropdown">
                     <li>
-                        <a href="#" :class="{ active: filterType=='last-30-days'}" v-on:click="getPastMonthReleases()" class="mt-2">
+                        <a
+                            href="#"
+                            :class="{ active: filterType == 'last-30-days' }"
+                            v-on:click="getPastMonthReleases()"
+                            class="mt-2"
+                        >
                             Last 30 days
                         </a>
                     </li>
                     <li>
-                        <a href="#" :class="{ active: filterType=='this-week'}" v-on:click="getWeeklyReleases()">
+                        <a
+                            href="#"
+                            :class="{ active: filterType == 'this-week' }"
+                            v-on:click="getWeeklyReleases()"
+                        >
                             This week
                         </a>
                     </li>
                     <li>
-                        <a href="#" :class="{ active: filterType=='next-week'}" v-on:click="getNextWeekReleases()">
+                        <a
+                            href="#"
+                            :class="{ active: filterType == 'next-week' }"
+                            v-on:click="getNextWeekReleases()"
+                        >
                             Next week
                         </a>
                     </li>
                     <li>
-                        <router-link to="/discover/release-calendar">Calendar</router-link>
+                        <router-link to="/discover/release-calendar"
+                            >Calendar</router-link
+                        >
                     </li>
                 </ul>
             </li>
@@ -62,45 +77,44 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 export default {
     name: "sidebar",
     data() {
         return {
             isActive: false,
-        }
+        };
     },
     computed: mapState({
-        filterType: state => state.releases.filterType,
+        filterType: (state) => state.releases.filterType,
     }),
     methods: {
         // view
-        toggle: function() {
+        toggle: function () {
             this.isActive = !this.isActive;
         },
 
         // api
-        getPastMonthReleases: function() {
+        getPastMonthReleases: function () {
             this.$store.dispatch("releases/getPastMonthReleases");
         },
-        getWeeklyReleases: function() {
+        getWeeklyReleases: function () {
             this.$store.dispatch("releases/getWeeklyReleases");
         },
-        getNextWeekReleases: function() {
+        getNextWeekReleases: function () {
             this.$store.dispatch("releases/getNextWeekReleases");
         },
-    }
-}
+    },
+};
 </script>
-
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #1A1B1C;
-    color: #C3BEB5;
+    background: #1a1b1c;
+    color: #c3beb5;
     transition: all 0.3s;
 }
 .sidebar.active {
@@ -110,12 +124,12 @@ export default {
     font-size: 17px;
     font-weight: bold;
     text-transform: uppercase;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     background: inherit;
-    color: #C3BEB5;
+    color: #c3beb5;
 }
 .sidebar ul.components {
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
 }
 .sidebar ul li a {
     color: rgb(186, 181, 171);
@@ -126,18 +140,19 @@ export default {
     text-decoration: none;
 }
 .sidebar ul li a:hover {
-    color: #FFFFFF;
-    background: #191A1B;
+    color: #ffffff;
+    background: #191a1b;
 }
 .sidebar .active {
-    color: #FFFFFF;
+    color: #ffffff;
     font-weight: 700;
-    background: #191A1B;
+    background: #191a1b;
 }
 .sidebar .active:hover {
     cursor: default;
 }
-.sidebar ul li.active>a, a[aria-expanded="true"] {
+.sidebar ul li.active > a,
+a[aria-expanded="true"] {
     background: inherit;
 }
 a[data-toggle="collapse"] {

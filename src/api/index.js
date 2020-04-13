@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require("axios");
 const moment = require("moment");
 
 const api = axios.create({
@@ -6,7 +6,7 @@ const api = axios.create({
     timeout: 1000,
     headers: {
         "x-user-name": "objque@gmail.com",
-    }
+    },
 });
 
 function format(time) {
@@ -14,7 +14,7 @@ function format(time) {
 }
 
 function now() {
-    return moment().utc()
+    return moment().utc();
 }
 
 function startOfWeek() {
@@ -44,17 +44,17 @@ export default {
                 since: since,
                 till: till,
             },
-        }).then(
-            response => {
+        })
+            .then((response) => {
                 cb(this.excludeVideos(response.data));
-            }
-        ).catch(function (error) {
-            console.log(error);
-        });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     },
     excludeVideos(releases) {
         return releases.filter(function (release) {
             return release.type != "music-video";
         });
     },
-}
+};
