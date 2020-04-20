@@ -10,16 +10,14 @@
                 </h1>
             </div>
 
-            <div class="releases">
-                <div class="row d-flex flex-row align-items-center">
-                    <release
-                        class="col-3 mx-3 mb-4 p-0"
-                        v-for="release in releasesBatch"
-                        :release="release"
-                        :key="release.id"
-                    ></release>
-                    <observer v-on:intersect="intersected"></observer>
-                </div>
+            <div class="row m-3">
+                <release
+                    class="mr-5 mb-5"
+                    v-for="release in releasesBatch"
+                    :release="release"
+                    :key="release.id"
+                ></release>
+                <observer v-on:intersect="intersected"></observer>
             </div>
         </div>
     </div>
@@ -74,10 +72,6 @@ export default {
 
 .navbar-content {
     padding-left: 1rem;
-}
-
-.releases {
-    padding: 0.5rem 1rem;
 }
 
 .header {
