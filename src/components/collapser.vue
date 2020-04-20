@@ -30,7 +30,9 @@ export default {
     height: 40px;
     min-width: 40px;
     min-height: 40px;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #191a1b;
 }
 .collapser:hover {
