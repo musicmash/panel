@@ -6,9 +6,9 @@ export default {
                 offset: 0,
 
                 // how many items will be loaded
-                limit: 24
-            }
-        }
+                limit: 24,
+            },
+        };
     },
     mounted() {
         this.resetLoader();
@@ -16,7 +16,9 @@ export default {
     methods: {
         subscribeOnScroll(callback) {
             window.onscroll = () => {
-                let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+                let bottomOfWindow =
+                    document.documentElement.scrollTop + window.innerHeight ===
+                    document.documentElement.offsetHeight;
 
                 if (bottomOfWindow) {
                     this.loader.offset += this.loader.limit;
@@ -28,6 +30,6 @@ export default {
             // reset loader offset value between pages.
             // this may be rewritten with uniq in-memory object
             this.loader.offset = 0;
-        }
-    }
-}
+        },
+    },
+};

@@ -1,96 +1,106 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-sm-12 col-lg-12">
-                <h1 class="heading">Release calendar</h1>
-            </div>
+            <h1 class="heading mx-4">Release calendar</h1>
         </div>
         <div class="row">
-            <nav class="navbar navbar-expand p-0 pb-4">
+            <nav class="navbar navbar-expand mx-4 mb-4 p-0">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <router-link
-                            class="nav-link calendar-month p-0 ml-3"
+                            class="nav-link calendar-month p-0"
                             active-class="calendar-month-active"
                             to="/discover/release-calendar/jan"
-                        >Jan</router-link>
+                            >Jan</router-link
+                        >
                     </li>
                     <li class="nav-item">
                         <router-link
                             class="nav-link calendar-month p-0"
                             active-class="calendar-month-active"
                             to="/discover/release-calendar/feb"
-                        >Feb</router-link>
+                            >Feb</router-link
+                        >
                     </li>
                     <li class="nav-item">
                         <router-link
                             class="nav-link calendar-month p-0"
                             active-class="calendar-month-active"
                             to="/discover/release-calendar/mar"
-                        >Mar</router-link>
+                            >Mar</router-link
+                        >
                     </li>
                     <li class="nav-item">
                         <router-link
                             class="nav-link calendar-month p-0"
                             active-class="calendar-month-active"
                             to="/discover/release-calendar/apr"
-                        >Apr</router-link>
+                            >Apr</router-link
+                        >
                     </li>
                     <li class="nav-item">
                         <router-link
                             class="nav-link calendar-month p-0"
                             active-class="calendar-month-active"
                             to="/discover/release-calendar/may"
-                        >May</router-link>
+                            >May</router-link
+                        >
                     </li>
                     <li class="nav-item">
                         <router-link
                             class="nav-link calendar-month p-0"
                             active-class="calendar-month-active"
                             to="/discover/release-calendar/jun"
-                        >Jun</router-link>
+                            >Jun</router-link
+                        >
                     </li>
                     <li class="nav-item">
                         <router-link
                             class="nav-link calendar-month p-0"
                             active-class="calendar-month-active"
                             to="/discover/release-calendar/jul"
-                        >Jul</router-link>
+                            >Jul</router-link
+                        >
                     </li>
                     <li class="nav-item">
                         <router-link
                             class="nav-link calendar-month p-0"
                             active-class="calendar-month-active"
                             to="/discover/release-calendar/aug"
-                        >Aug</router-link>
+                            >Aug</router-link
+                        >
                     </li>
                     <li class="nav-item">
                         <router-link
                             class="nav-link calendar-month p-0"
                             active-class="calendar-month-active"
                             to="/discover/release-calendar/sep"
-                        >Sep</router-link>
+                            >Sep</router-link
+                        >
                     </li>
                     <li class="nav-item">
                         <router-link
                             class="nav-link calendar-month p-0"
                             active-class="calendar-month-active"
                             to="/discover/release-calendar/oct"
-                        >Oct</router-link>
+                            >Oct</router-link
+                        >
                     </li>
                     <li class="nav-item">
                         <router-link
                             class="nav-link calendar-month p-0"
                             active-class="calendar-month-active"
                             to="/discover/release-calendar/nov"
-                        >Nov</router-link>
+                            >Nov</router-link
+                        >
                     </li>
                     <li class="nav-item">
                         <router-link
                             class="nav-link calendar-month p-0"
                             active-class="calendar-month-active"
                             to="/discover/release-calendar/dec"
-                        >Dec</router-link>
+                            >Dec</router-link
+                        >
                     </li>
                 </ul>
             </nav>
@@ -120,9 +130,10 @@
     padding-bottom: 1px;
     margin-right: 16px;
     border-bottom: 1px solid transparent;
-    color: hsla(0,0%,100%,.4);
+    color: hsla(0, 0%, 100%, 0.4);
     cursor: pointer;
-    -webkit-transition: all .3s; transition: all .3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
 }
 .calendar-month:hover {
     border-color: #fff;
