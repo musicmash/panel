@@ -8,16 +8,14 @@
                 </h1>
             </div>
 
-            <div class="subscriptions">
-                <div class="row d-flex flex-row align-items-center">
-                    <subscription
-                        class="col-3 mx-3 mb-4 p-0"
-                        v-for="subscription in subscriptionsBatch"
-                        :subscription="subscription"
-                        :key="subscription.id"
-                    ></subscription>
-                    <observer v-on:intersect="intersected"></observer>
-                </div>
+            <div class="row m-3">
+                <subscription
+                    class="mr-5 mb-5"
+                    v-for="subscription in subscriptionsBatch"
+                    :subscription="subscription"
+                    :key="subscription.id"
+                ></subscription>
+                <observer v-on:intersect="intersected"></observer>
             </div>
         </div>
     </div>
@@ -68,10 +66,6 @@ export default {
 
 .navbar-content {
     padding-left: 1rem;
-}
-
-.subscriptions {
-    padding: 0.5rem 1rem;
 }
 
 .header {
