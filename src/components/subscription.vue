@@ -55,6 +55,7 @@ export default {
 .subscription-poster-img {
     width: inherit;
     height: inherit;
+    object-fit: cover;
     border-radius: inherit;
     -webkit-transition-duration: .1s;
     transition-duration: .1s;
