@@ -1,5 +1,5 @@
 <template>
-    <div class="subscription col-3 mr-5 mb-5">
+    <div class="subscription">
         <div class="subscription-poster">
             <img class="subscription-poster-img" :src="subscription.artist_poster" alt="">
             <ul class="action d-flex justify-content-center">
@@ -40,12 +40,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .subscription {
+    max-width: 264px;
+    max-height: auto;
     width: 264px;
-    height: 264px;
 }
 .subscription-poster {
-    height: inherit;
-    width: inherit;
+    height: 264px;
+    width: 264px;
     opacity: 1;
     background-color: rgba(0,0,0, 1);
     cursor: pointer;
