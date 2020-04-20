@@ -2,7 +2,7 @@
     <div class="wrapper">
         <div class="content">
             <div class="d-flex flex-column flex-md-row align-items-center">
-                <h1 class="header ml-2">My subscriptions</h1>
+                <h1 class="header ml-3">My subscriptions</h1>
                 <h1 class="sub-header ml-2">
                     ({{ subscriptionsAll.length }} results)
                 </h1>
