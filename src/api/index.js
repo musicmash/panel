@@ -23,6 +23,7 @@ function startOfWeek() {
 }
 
 export default {
+    // releases
     getPastMonthReleases(cb) {
         var till = now().add(1, "day"); // include today releases
         var since = now().subtract(30, "days");
@@ -56,5 +57,36 @@ export default {
         return releases.filter(function (release) {
             return release.type != "music-video";
         });
+    },
+
+    // subscriptions
+    getSubscriptions(cb) {
+        api.get("/subscriptions")
+            .then((response) => {
+                cb(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    },
+    subscribe(cb, subscription) {
+        // subscription should be { artist_id: 12345}
+        api.post("/subscriptions", subscription)
+            .then(() => {
+                cb();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    },
+    unsubscribe(cb, subscription) {
+        // subscription should be { artist_id: 12345}
+        api.delete("/subscriptions", subscription)
+            .then(() => {
+                cb();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     },
 };
