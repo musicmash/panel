@@ -2,9 +2,7 @@
     <div class="wrapper">
         <sidebar ref="sidebar" />
         <div class="content">
-            <div
-                class="d-flex flex-column flex-md-row align-items-center"
-            >
+            <div class="d-flex flex-column flex-md-row align-items-center">
                 <collapser class="ml-3" v-on:click="$refs.sidebar.toggle()" />
                 <h1 class="header ml-2">{{ filter }}</h1>
                 <h1 class="sub-header ml-2">
