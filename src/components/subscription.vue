@@ -4,7 +4,7 @@
             <img class="subscription-poster-img" :src="subscription.artist_poster" alt="">
             <ul class="action d-flex justify-content-center">
                 <li class="action-item">
-                    <button class="action-item-btn">
+                    <button class="action-item-btn" @click="toggle">
                         <svg
                             focusable="false"
                             height="1em"
@@ -39,6 +39,11 @@ export default {
         isSubscribed: true,
     }
   },
+  methods: {
+      toggle: function() {
+          console.log("subscription toggled", this.isSubscribed);
+          this.isSubscribed = !this.isSubscribed;
+      }
   }
 }
 </script>
