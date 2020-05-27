@@ -2,9 +2,7 @@
     <div class="wrapper">
         <sidebar ref="sidebar" />
         <div class="content">
-            <div
-                class="d-flex flex-column flex-md-row align-items-center"
-            >
+            <div class="d-flex flex-column flex-md-row align-items-center">
                 <collapser class="ml-3" v-on:click="$refs.sidebar.toggle()" />
                 <h1 class="header ml-2">{{ filter }}</h1>
                 <h1 class="sub-header ml-2">
@@ -12,16 +10,14 @@
                 </h1>
             </div>
 
-            <div class="releases">
-                <div class="row d-flex flex-row align-items-center">
-                    <release
-                        class="col-3 mx-3 mb-4 p-0"
-                        v-for="release in releasesBatch"
-                        :release="release"
-                        :key="release.id"
-                    ></release>
-                    <observer v-on:intersect="intersected"></observer>
-                </div>
+            <div class="row m-3">
+                <release
+                    class="mr-5 mb-5"
+                    v-for="release in releasesBatch"
+                    :release="release"
+                    :key="release.id"
+                ></release>
+                <observer v-on:intersect="intersected"></observer>
             </div>
         </div>
     </div>
@@ -76,10 +72,6 @@ export default {
 
 .navbar-content {
     padding-left: 1rem;
-}
-
-.releases {
-    padding: 0.5rem 1rem;
 }
 
 .header {
