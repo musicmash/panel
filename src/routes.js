@@ -3,7 +3,7 @@ import ReleaseCalendar from "@/pages/discover/release-calendar";
 import ReleaseCalendarDetails from "@/pages/discover/release-calendar/details";
 import Subscriptions from "@/pages/browse/subscriptions";
 import AllReleases from "@/pages/all-releases";
-import MainPage from "@/pages/main"
+import MainPage from "@/pages/main";
 
 export default new VueRouter({
     routes: [
