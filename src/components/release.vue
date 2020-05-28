@@ -163,10 +163,12 @@ export default {
     height: 264px;
     width: 264px;
     opacity: 1;
-    background-color: rgba(0, 0, 0, 1);
     cursor: pointer;
 }
 .release-poster-img {
+    height: 264px;
+    width: 264px;
+    object-fit: cover;
     border-radius: 4px;
     -webkit-transition-duration: 0.1s;
     transition-duration: 0.1s;
@@ -289,11 +291,9 @@ ul {
     margin-top: 3px;
 }
 .release-artist-link {
-    color: white;
     background-image: none;
 }
 .release-artist-link:hover {
-    color: white;
     text-decoration: underline;
 }
 .release-date {
