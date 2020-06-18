@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center my-3">
         <release
-            class="mr-2 p-0"
+            class="mr-3 mb-3 p-0"
             v-for="release in releases"
             :release="release"
             :text="release"
