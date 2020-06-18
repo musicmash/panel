@@ -27,25 +27,20 @@ export default {
     getPastMonthReleases(cb) {
         var till = now().add(1, "day"); // include today releases
         var since = now().subtract(30, "days");
-        this.getReleases(cb, format(since), format(till));
+        this.getReleases(cb, {since: format(since), till: format(till)});
     },
     getWeeklyReleases(cb) {
         var since = startOfWeek();
         var till = startOfWeek().add(1, "week");
-        this.getReleases(cb, format(since), format(till));
+        this.getReleases(cb, {since: format(since), till: format(till)});
     },
     getNextWeekReleases(cb) {
         var since = startOfWeek().add(1, "week");
         var till = startOfWeek().add(2, "weeks");
-        this.getReleases(cb, format(since), format(till));
+        this.getReleases(cb, {since: format(since), till: format(till)});
     },
-    getReleases(cb, since, till) {
-        api.get("/releases", {
-            params: {
-                since: since,
-                till: till,
-            },
-        })
+    getReleases(cb, params) {
+        api.get("/releases", { params: params })
             .then((response) => {
                 cb(this.excludeVideos(response.data));
             })
