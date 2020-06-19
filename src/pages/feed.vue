@@ -2,7 +2,7 @@
     <div>
         <div class="container-fluid">
             <div class="container">
-                <ul class="nav nav-tabs justify-content-center mb-4">
+                <ul class="nav nav-tabs justify-content-center mb-4" id="top">
                     <li class="nav-item">
                       <a class="nav-link active" href="#!">Recent</a>
                     </li>
@@ -34,6 +34,13 @@
                 <observer v-on:intersect="intersected"></observer>
             </div>
         </div>
+
+        <a class="btn-scroll-top show" href="#top" data-scroll="">
+            <span class="btn-scroll-top-tooltip text-muted font-size-sm mr-2">Top</span>
+            <i class="btn-scroll-top-icon fe-arrow-up">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+            </i>
+        </a>
     </div>
 </template>
 
@@ -110,5 +117,60 @@ export default {
 }
 .nav-tabs .nav-link:not(.active):hover {
     color:#6e84a3;
+}
+
+
+.btn-scroll-top.show {
+    right: 1.25rem;
+    opacity: 1;
+}
+.btn-scroll-top {
+    display: block;
+    position: fixed;
+    right: -4.125rem;
+    bottom: 1.25rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    transition: right 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55),opacity 0.3s,background-color 0.25s ease-in-out;
+    border-radius: .75rem;
+    background-color: rgba(55,56,78,0.25);
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    z-index: 1025;
+}
+.btn-scroll-top .btn-scroll-top-tooltip {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    transition: opacity .25s ease-in-out, visibility .25s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+}
+.font-size-sm {
+    font-size: .875rem !important;
+}
+.text-muted {
+    color: #9e9fb4 !important;
+}
+.btn-scroll-top > .btn-scroll-top-icon {
+    font-size: 1.125rem;
+    font-weight: bold;
+    line-height: 2.625rem;
+}
+[class^="fe-"], [class*=" fe-"] {
+    display: inline-block;
+    font-family: 'feather' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 </style>
