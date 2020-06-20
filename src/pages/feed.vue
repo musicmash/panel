@@ -7,13 +7,13 @@
                       <a class="nav-link active" href="#!">Recent</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#!">Daily</a>
+                      <a class="nav-link disabled" href="#!">Daily</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#!">Weekly</a>
+                      <a class="nav-link disabled" href="#!">Weekly</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#!">Monthly</a>
+                      <a class="nav-link disabled" href="#!">Monthly</a>
                     </li>
                     <!-- <li class="nav-item"> -->
                       <!-- <a class="nav-link disabled" href="#!">Disabled</a> -->
