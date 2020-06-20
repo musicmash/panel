@@ -1,26 +1,25 @@
 <template>
     <div>
-        <div class="container-fluid">
-            <div class="container">
-                <ul class="nav nav-tabs justify-content-center mb-4" id="top">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#!">Recent</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link disabled" href="#!">Daily</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link disabled" href="#!">Weekly</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link disabled" href="#!">Monthly</a>
-                    </li>
-                    <!-- <li class="nav-item"> -->
-                      <!-- <a class="nav-link disabled" href="#!">Disabled</a> -->
-                    <!-- </li> -->
-                  </ul>
-            </div>
+        <div class="container">
+            <ul class="nav nav-tabs justify-content-center mb-4" id="top">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#!">Recent</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#!">Daily</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#!">Weekly</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#!">Monthly</a>
+                </li>
+                <!-- <li class="nav-item"> -->
+                    <!-- <a class="nav-link disabled" href="#!">Disabled</a> -->
+                <!-- </li> -->
+                </ul>
         </div>
+
         <div class="container">
             <div class="row justify-content-center my-3">
                 <release
