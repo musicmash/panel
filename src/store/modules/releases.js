@@ -58,8 +58,8 @@ const actions = {
     },
 
     loadNextFeed({ state, commit }) {
-        var till = moment().utc().format("YYYY-MM-DD");
-        var since = moment().utc().subtract(3, "month").format("YYYY-MM-DD");
+        var till = moment().format("YYYY-MM-DD");
+        var since = moment().subtract(3, "month").format("YYYY-MM-DD");
         api.getReleases((releases) => {
             commit("appendBatch", releases);
         }, {
