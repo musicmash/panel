@@ -9,17 +9,19 @@
                     <div class="d-flex justify-content-end mt-3">
                         <div class="row">
                             <div class="col-12">
-                                <a
-                                    href="#"
+                                <router-link
+                                    to="/login"
                                     class="btn btn-md btn-link"
                                     style="color: white;"
-                                    >Login</a
                                 >
-                                <a
-                                    href="#"
+                                    Login
+                                </router-link>
+                                <router-link
+                                    to="/join"
                                     class="btn btn-md btn-outline-success"
-                                    >Join free</a
                                 >
+                                    Join free
+                                </router-link>
                             </div>
                         </div>
                     </div>
