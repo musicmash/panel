@@ -6,7 +6,7 @@
             <div class="col-12 col-md-5 col-lg-4 py-5">
                 <h1 class="font-bold text-center mb-4">Welcome back 👋</h1>
 
-                <form class="mb-3">
+                <form class="mx-1 mb-3">
                     <div class="form-group">
                         <label for="email" class="sr-only">Email Address</label>
                         <input
