@@ -3,27 +3,32 @@
         <div
             class="row align-items-center justify-content-center no-gutters min-vh-100"
         >
-            <div class="col-12 col-md-5 col-lg-4 py-5">
+            <div class="col-12 col-md-5 col-lg-5 py-5">
+                <div class="alert alert-danger" v-if="error">
+                    {{error.message}}
+                </div>
                 <h1 class="font-bold text-center mb-4">Welcome back 👋</h1>
 
-                <form class="mx-1 mb-3">
+                <form class="mx-1 mb-3" @submit.prevent="pressed">
                     <div class="form-group">
                         <label for="email" class="sr-only">Email Address</label>
                         <input
+                            id="email"
                             type="email"
                             class="form-control form-control-lg"
-                            id="email"
                             placeholder="Enter your email"
+                            v-model="email"
                         />
                     </div>
 
                     <div class="form-group">
                         <label for="password" class="sr-only">Password</label>
                         <input
+                            id="password"
                             type="password"
                             class="form-control form-control-lg"
-                            id="password"
                             placeholder="Enter your password"
+                            v-model="password"
                         />
                     </div>
 
@@ -62,7 +67,31 @@
 </template>
 
 <script>
-export default {};
+import * as firebase from "firebase/app";
+import "firebase/auth";
+
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+      error: ""
+    };
+  },
+  methods: {
+    pressed() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(() => {
+          this.$router.replace({ name: "feed" });
+        })
+        .catch(error => {
+          this.error = error;
+        });
+    }
+  }
+};
 </script>
 
 <style scoped>

@@ -4,6 +4,12 @@
             class="row align-items-center justify-content-center no-gutters min-vh-100"
         >
             <div class="col-12 col-md-5 col-lg-5 py-5">
+                <div class="alert alert-danger" v-if="error">
+                    {{error.message}}
+                </div>
+                <div class="alert alert-success" v-if="isFormSubmitted">
+                    If your email address exists in our database, and you haven't requested a password reset in the last 30 minutes, you will receive a password recovery link at your email address in a few minutes.
+                </div>
                 <h1 class="font-bold text-center">Forgot your password? 🤔</h1>
 
                 <p class="text-center mb-6">
@@ -11,14 +17,15 @@
                     we’ll send you a link to reset your password.
                 </p>
 
-                <form class="mb-3">
+                <form class="mx-1 mb-3" @submit.prevent="pressed">
                     <div class="form-group">
                         <label for="email" class="sr-only">Email Address</label>
                         <input
+                            id="email"
                             type="email"
                             class="form-control form-control-lg"
-                            id="email"
                             placeholder="Enter your email"
+                            v-model="email"
                         />
                     </div>
 
@@ -40,7 +47,32 @@
 </template>
 
 <script>
-export default {};
+import * as firebase from "firebase/app";
+import "firebase/auth";
+
+export default {
+  data() {
+    return {
+      email: "",
+      error: "",
+      isFormSubmitted: false
+    };
+  },
+  methods: {
+    pressed() {
+      firebase
+        .auth()
+        .sendPasswordResetEmail(this.email)
+        .then(() => {
+            this.email = "";
+            this.isFormSubmitted = true;
+        })
+        .catch(error => {
+          this.error = error;
+        });
+    }
+  }
+};
 </script>
 
 <style scoped>
