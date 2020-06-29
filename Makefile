@@ -5,3 +5,6 @@ node:
 
 prettier p:
 	prettier --write --tab-width=4 ./src
+
+image:
+	docker build -t web-ui:latest .
