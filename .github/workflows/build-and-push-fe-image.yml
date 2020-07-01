@@ -9,7 +9,6 @@ jobs:
     env:
       DOCKER_BUILDKIT: 1
       IMAGE_NAME: ${{ github.repository }}
-      IMAGE_TAG: ${{ github.sha }}
 
     steps:
       - name: Checkout
@@ -31,9 +30,7 @@ jobs:
             --cache-from $IMAGE_NAME-builder-stage:latest \
             --cache-from $IMAGE_NAME:latest \
             --tag $IMAGE_NAME:latest \
-            --tag $IMAGE_NAME:$IMAGE_TAG \
             --tag docker.pkg.github.com/$IMAGE_NAME/web-ui:latest \
-            --tag docker.pkg.github.com/$IMAGE_NAME/web-ui:$IMAGE_TAG \
             .
 
       - name: Login to hubs
@@ -49,9 +46,7 @@ jobs:
         run: |
           docker push $IMAGE_NAME-builder-stage:latest
           docker push $IMAGE_NAME:latest
-          docker push $IMAGE_NAME:$IMAGE_TAG
           docker push docker.pkg.github.com/$IMAGE_NAME/web-ui:latest
-          docker push docker.pkg.github.com/$IMAGE_NAME/web-ui:$IMAGE_TAG
 
       - name: Logout
         run: |
