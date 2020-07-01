@@ -20,5 +20,27 @@ jobs:
           docker build \
             --tag $IMAGE_NAME:latest \
             --tag $IMAGE_NAME:$IMAGE_TAG \
+            --tag docker.pkg.github.com/$IMAGE_NAME/web-ui:latest \
+            --tag docker.pkg.github.com/$IMAGE_NAME/web-ui:$IMAGE_TAG \
             .
 
+      - name: Login to hubs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOCKERHUB_ACTOR: ${{ secrets.DOCKERHUB_ACTOR }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: |
+          docker login docker.pkg.github.com -u $GITHUB_ACTOR    -p $GITHUB_TOKEN
+          docker login                       -u $DOCKERHUB_ACTOR -p $DOCKERHUB_TOKEN
+
+      - name: Push image to hubs
+        run: |
+          docker push $IMAGE_NAME:latest
+          docker push $IMAGE_NAME:$IMAGE_TAG
+          docker push docker.pkg.github.com/$IMAGE_NAME/web-ui:latest
+          docker push docker.pkg.github.com/$IMAGE_NAME/web-ui:$IMAGE_TAG
+
+      - name: Logout
+        run: |
+          docker logout docker.pkg.github.com
+          docker logout
