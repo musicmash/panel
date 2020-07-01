@@ -1,0 +1,24 @@
+on: [push]
+
+name: Build and push fe image
+
+jobs:
+  build:
+    name: Build and push fe image to github packages and docker hub
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_BUILDKIT: 1
+      IMAGE_NAME: ${{ github.repository }}
+      IMAGE_TAG: ${{ github.sha }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build the Docker image
+        run: |
+          docker build \
+            --tag $IMAGE_NAME:latest \
+            --tag $IMAGE_NAME:$IMAGE_TAG \
+            .
+
