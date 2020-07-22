@@ -36,4 +36,13 @@ firebase.auth().onAuthStateChanged(() => {
             store: store,
         }).$mount("#app");
     }
+
+    firebase.auth().currentUser.getIdToken( /* forceRefresh */ true).then(function (idToken) {
+        // Send token to your backend via HTTPS
+        // ...
+        console.log(idToken);
+    }).catch(function (error) {
+        // Handle error
+        console.log(error);
+    });
 });
