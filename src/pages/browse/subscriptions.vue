@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import subscription from '@/components/subscription'
+import subscription from "@/components/subscription";
 import observer from "@/components/observer";
 import { mapState } from "vuex";
 
@@ -48,7 +48,6 @@ export default {
     },
 };
 </script>
-
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

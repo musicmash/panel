@@ -5,7 +5,7 @@
         >
             <div class="col-12 col-md-5 col-lg-5 py-5">
                 <div class="alert alert-danger" v-if="error">
-                    {{error.message}}
+                    {{ error.message }}
                 </div>
                 <h1 class="font-bold text-center mb-4">Welcome back 👋</h1>
 
@@ -71,26 +71,26 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 
 export default {
-  data() {
-    return {
-      email: "",
-      password: "",
-      error: ""
-    };
-  },
-  methods: {
-    pressed() {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(() => {
-          this.$router.replace({ name: "feed" });
-        })
-        .catch(error => {
-          this.error = error;
-        });
-    }
-  }
+    data() {
+        return {
+            email: "",
+            password: "",
+            error: "",
+        };
+    },
+    methods: {
+        pressed() {
+            firebase
+                .auth()
+                .signInWithEmailAndPassword(this.email, this.password)
+                .then(() => {
+                    this.$router.replace({ name: "feed" });
+                })
+                .catch((error) => {
+                    this.error = error;
+                });
+        },
+    },
 };
 </script>
 

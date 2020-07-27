@@ -6,9 +6,9 @@ import Subscriptions from "@/pages/browse/subscriptions";
 import AllReleases from "@/pages/all-releases";
 import MainPage from "@/pages/main";
 import FeedPage from "@/pages/feed";
-import LoginPage from "@/pages/login"
-import JoinPage from "@/pages/join"
-import ResetPage from "@/pages/reset"
+import LoginPage from "@/pages/login";
+import JoinPage from "@/pages/join";
+import ResetPage from "@/pages/reset";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 
@@ -20,7 +20,7 @@ const routes = [
         component: MainPage,
         meta: {
             showFeedIfAuth: true,
-        }
+        },
     },
     {
         name: "login",
@@ -28,7 +28,7 @@ const routes = [
         component: LoginPage,
         meta: {
             showFeedIfAuth: true,
-        }
+        },
     },
     {
         name: "join",
@@ -36,7 +36,7 @@ const routes = [
         component: JoinPage,
         meta: {
             showFeedIfAuth: true,
-        }
+        },
     },
     {
         name: "reset",
@@ -44,15 +44,15 @@ const routes = [
         component: ResetPage,
         meta: {
             showFeedIfAuth: true,
-        }
+        },
     },
     {
         name: "feed",
         path: "/feed",
         component: FeedPage,
         meta: {
-            requiresAuth: true
-        }
+            requiresAuth: true,
+        },
     },
     {
         path: "/all-releases",
@@ -62,32 +62,33 @@ const routes = [
         path: "/discover/release-calendar",
         component: ReleaseCalendar,
         redirect: "/discover/release-calendar/jan",
-        children: [{
-            path: ":month",
-            component: ReleaseCalendarDetails,
-        }],
+        children: [
+            {
+                path: ":month",
+                component: ReleaseCalendarDetails,
+            },
+        ],
     },
     {
         path: "/browse/subscriptions",
         component: Subscriptions,
     },
-]
+];
 
-const router =  new VueRouter({
+const router = new VueRouter({
     routes,
     mode: "history",
 });
 
 router.beforeEach((to, from, next) => {
-    const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-    const showFeedIfAuth = to.matched.some(record => record.meta.showFeedIfAuth);
+    const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+    const showFeedIfAuth = to.matched.some(
+        (record) => record.meta.showFeedIfAuth
+    );
     const isAuthenticated = firebase.auth().currentUser;
-    if (requiresAuth && !isAuthenticated)
-        next("/login");
-    else if (showFeedIfAuth && isAuthenticated)
-        next("/feed");
-    else
-        next();
+    if (requiresAuth && !isAuthenticated) next("/login");
+    else if (showFeedIfAuth && isAuthenticated) next("/feed");
+    else next();
 });
 
 export default router;

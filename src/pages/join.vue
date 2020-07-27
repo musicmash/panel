@@ -5,7 +5,7 @@
         >
             <div class="col-12 col-md-5 col-lg-6 py-5">
                 <div class="alert alert-danger" v-if="error">
-                    {{error.message}}
+                    {{ error.message }}
                 </div>
                 <h1 class="font-bold text-center">Join Us 🚀</h1>
 
@@ -70,30 +70,31 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 
 export default {
-  data() {
-    return {
-      name: "",
-      email: "",
-      password: "",
-      error: ""
-    };
-  },
-  methods: {
-    pressed() {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
-        .then(data => {
-            data.user.updateProfile({
-                displayName: this.name,
-            })
-            .catch(error => (this.error = error));
+    data() {
+        return {
+            name: "",
+            email: "",
+            password: "",
+            error: "",
+        };
+    },
+    methods: {
+        pressed() {
+            firebase
+                .auth()
+                .createUserWithEmailAndPassword(this.email, this.password)
+                .then((data) => {
+                    data.user
+                        .updateProfile({
+                            displayName: this.name,
+                        })
+                        .catch((error) => (this.error = error));
 
-            this.$router.replace({ name: "feed" });
-        })
-        .catch(error => (this.error = error));
-    }
-  }
+                    this.$router.replace({ name: "feed" });
+                })
+                .catch((error) => (this.error = error));
+        },
+    },
 };
 </script>
 

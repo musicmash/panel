@@ -5,10 +5,13 @@
         >
             <div class="col-12 col-md-5 col-lg-5 py-5">
                 <div class="alert alert-danger" v-if="error">
-                    {{error.message}}
+                    {{ error.message }}
                 </div>
                 <div class="alert alert-success" v-if="isFormSubmitted">
-                    If your email address exists in our database, and you haven't requested a password reset in the last 30 minutes, you will receive a password recovery link at your email address in a few minutes.
+                    If your email address exists in our database, and you
+                    haven't requested a password reset in the last 30 minutes,
+                    you will receive a password recovery link at your email
+                    address in a few minutes.
                 </div>
                 <h1 class="font-bold text-center">Forgot your password? 🤔</h1>
 
@@ -51,27 +54,27 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 
 export default {
-  data() {
-    return {
-      email: "",
-      error: "",
-      isFormSubmitted: false
-    };
-  },
-  methods: {
-    pressed() {
-      firebase
-        .auth()
-        .sendPasswordResetEmail(this.email)
-        .then(() => {
-            this.email = "";
-            this.isFormSubmitted = true;
-        })
-        .catch(error => {
-          this.error = error;
-        });
-    }
-  }
+    data() {
+        return {
+            email: "",
+            error: "",
+            isFormSubmitted: false,
+        };
+    },
+    methods: {
+        pressed() {
+            firebase
+                .auth()
+                .sendPasswordResetEmail(this.email)
+                .then(() => {
+                    this.email = "";
+                    this.isFormSubmitted = true;
+                })
+                .catch((error) => {
+                    this.error = error;
+                });
+        },
+    },
 };
 </script>
 
