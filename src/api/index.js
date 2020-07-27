@@ -1,12 +1,12 @@
+import firebase from "firebase/app";
+import "firebase/auth";
+
 const axios = require("axios");
 const moment = require("moment");
 
 const api = axios.create({
-    baseURL: "http://185.91.53.208:8844/v1",
+    baseURL: "/v1",
     timeout: 1000,
-    headers: {
-        "x-user-name": "objque@gmail.com",
-    },
 });
 
 function format(time) {
@@ -40,11 +40,25 @@ export default {
         this.getReleases(cb, {since: format(since), till: format(till)});
     },
     getReleases(cb, params) {
-        api.get("/releases", { params: params })
-            .then((response) => {
-                cb(this.excludeVideos(response.data));
+        firebase
+            .auth()
+            .currentUser.getIdToken(/* forceRefresh */ false)
+            .then(function (idToken) {
+                api.get("/releases", {
+                    params: params,
+                    headers: {
+                        "x-musicmash-access-token": idToken,
+                    },
+                })
+                    .then((response) => {
+                        cb(this.excludeVideos(response.data));
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             })
             .catch(function (error) {
+                // Handle error
                 console.log(error);
             });
     },

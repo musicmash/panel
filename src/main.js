@@ -4,14 +4,13 @@ import App from "@/App";
 import router from "@/routes";
 import DateFilter from "@/filters/date";
 import store from "@/store";
-import * as firebase from "firebase/app";
+import firebase from "firebase/app";
 import "firebase/auth";
 
 Vue.config.productionTip = false;
 Vue.use(VueResource);
 Vue.filter("date", DateFilter);
 
-Vue.http.options.root = "http://185.91.53.208:8844/v1";
 Vue.http.headers.common["x-user-name"] = "objque@gmail.com";
 
 const firebaseConfig = {
@@ -36,13 +35,4 @@ firebase.auth().onAuthStateChanged(() => {
             store: store,
         }).$mount("#app");
     }
-
-    firebase.auth().currentUser.getIdToken( /* forceRefresh */ true).then(function (idToken) {
-        // Send token to your backend via HTTPS
-        // ...
-        console.log(idToken);
-    }).catch(function (error) {
-        // Handle error
-        console.log(error);
-    });
 });
