@@ -50,22 +50,23 @@ export default {
                         "x-musicmash-access-token": idToken,
                     },
                 })
-                    .then((response) => {
-                        cb(this.excludeVideos(response.data));
-                    })
-                    .catch(function (error) {
-                        console.log(error);
+                .then(response => response.data)
+                .then(releases => {
+                    return releases.filter(function (release) {
+                      return release.type != "music-video";
                     });
+                })
+                .then(releases => {
+                    cb(releases);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             })
             .catch(function (error) {
                 // Handle error
                 console.log(error);
             });
-    },
-    excludeVideos(releases) {
-        return releases.filter(function (release) {
-            return release.type != "music-video";
-        });
     },
 
     // subscriptions
