@@ -71,11 +71,25 @@ export default {
 
     // subscriptions
     getSubscriptions(cb) {
-        api.get("/subscriptions")
-            .then((response) => {
-                cb(response.data);
+        firebase
+            .auth()
+            .currentUser.getIdToken( /* forceRefresh */ false)
+            .then(function (idToken) {
+                api.get("/subscriptions", {
+                    headers: {
+                        "x-musicmash-access-token": idToken,
+                    },
+                })
+                .then(response => response.data)
+                .then(subscriptions => {
+                    cb(subscriptions);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             })
             .catch(function (error) {
+                // Handle error
                 console.log(error);
             });
     },

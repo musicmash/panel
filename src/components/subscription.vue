@@ -195,11 +195,9 @@ ul {
     text-overflow: ellipsis;
 }
 .subscription-link {
-    color: white;
     background-image: none;
 }
 .subscription-link:hover {
-    color: white;
     text-decoration: underline;
 }
 </style>

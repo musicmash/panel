@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import ReleaseCalendar from "@/pages/discover/release-calendar";
 import ReleaseCalendarDetails from "@/pages/discover/release-calendar/details";
-import Subscriptions from "@/pages/browse/subscriptions";
+import Subscriptions from "@/pages/subscriptions";
 import AllReleases from "@/pages/all-releases";
 import MainPage from "@/pages/main";
 import FeedPage from "@/pages/feed";
@@ -55,6 +55,13 @@ const routes = [
         },
     },
     {
+        path: "/subscriptions",
+        component: Subscriptions,
+        meta: {
+            requiresAuth: true,
+        },
+    },
+    {
         path: "/all-releases",
         component: AllReleases,
     },
@@ -68,10 +75,6 @@ const routes = [
                 component: ReleaseCalendarDetails,
             },
         ],
-    },
-    {
-        path: "/browse/subscriptions",
-        component: Subscriptions,
     },
 ];
 
