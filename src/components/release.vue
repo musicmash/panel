@@ -151,6 +151,7 @@ export default {
 .release-poster {
     height: 264px;
     width: 264px;
+    box-shadow: rgba(32, 32, 32, 0.2) 0px 0px 15px;
     opacity: 1;
     cursor: pointer;
 }
@@ -158,7 +159,7 @@ export default {
     height: 264px;
     width: 264px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 8px;
     -webkit-transition-duration: 0.1s;
     transition-duration: 0.1s;
     -webkit-transition-property: opacity;
