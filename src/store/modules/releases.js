@@ -1,4 +1,5 @@
 import api from "@/api";
+const moment = require("moment");
 
 // initial state
 const state = {
@@ -40,6 +41,7 @@ const actions = {
         });
     },
 
+    // deprecated
     loadNextBatch({ state, commit }) {
         if (state.batch.length == state.all.length) return;
 
@@ -53,6 +55,25 @@ const actions = {
         for (var i = start; i < max; i++) batch.push(state.all[i]);
 
         commit("appendBatch", batch);
+    },
+
+    loadNextFeed({ state, commit }) {
+        var till = moment().format("YYYY-MM-DD");
+        var since = moment().subtract(3, "month").format("YYYY-MM-DD");
+        api.getReleases(
+            (releases) => {
+                commit("appendBatch", releases);
+            },
+            {
+                since: since,
+                till: till,
+                offset: state.batch.length,
+                limit: state.batchSize,
+
+                // remove when backend will support filter by few types per one request
+                type: "album",
+            }
+        );
     },
 };
 

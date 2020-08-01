@@ -1,12 +1,12 @@
+import firebase from "firebase/app";
+import "firebase/auth";
+
 const axios = require("axios");
 const moment = require("moment");
 
 const api = axios.create({
-    baseURL: "http://185.91.53.208:8844/v1",
+    baseURL: "/v1",
     timeout: 1000,
-    headers: {
-        "x-user-name": "objque@gmail.com",
-    },
 });
 
 function format(time) {
@@ -27,45 +27,69 @@ export default {
     getPastMonthReleases(cb) {
         var till = now().add(1, "day"); // include today releases
         var since = now().subtract(30, "days");
-        this.getReleases(cb, format(since), format(till));
+        this.getReleases(cb, { since: format(since), till: format(till) });
     },
     getWeeklyReleases(cb) {
         var since = startOfWeek();
         var till = startOfWeek().add(1, "week");
-        this.getReleases(cb, format(since), format(till));
+        this.getReleases(cb, { since: format(since), till: format(till) });
     },
     getNextWeekReleases(cb) {
         var since = startOfWeek().add(1, "week");
         var till = startOfWeek().add(2, "weeks");
-        this.getReleases(cb, format(since), format(till));
+        this.getReleases(cb, { since: format(since), till: format(till) });
     },
-    getReleases(cb, since, till) {
-        api.get("/releases", {
-            params: {
-                since: since,
-                till: till,
-            },
-        })
-            .then((response) => {
-                cb(this.excludeVideos(response.data));
+    getReleases(cb, params) {
+        firebase
+            .auth()
+            .currentUser.getIdToken(/* forceRefresh */ false)
+            .then(function (idToken) {
+                api.get("/releases", {
+                    params: params,
+                    headers: {
+                        "x-musicmash-access-token": idToken,
+                    },
+                })
+                .then(response => response.data)
+                .then(releases => {
+                    return releases.filter(function (release) {
+                      return release.type != "music-video";
+                    });
+                })
+                .then(releases => {
+                    cb(releases);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             })
             .catch(function (error) {
+                // Handle error
                 console.log(error);
             });
-    },
-    excludeVideos(releases) {
-        return releases.filter(function (release) {
-            return release.type != "music-video";
-        });
     },
 
     // subscriptions
     getSubscriptions(cb) {
-        api.get("/subscriptions")
-            .then((response) => {
-                cb(response.data);
+        firebase
+            .auth()
+            .currentUser.getIdToken( /* forceRefresh */ false)
+            .then(function (idToken) {
+                api.get("/subscriptions", {
+                    headers: {
+                        "x-musicmash-access-token": idToken,
+                    },
+                })
+                .then(response => response.data)
+                .then(subscriptions => {
+                    cb(subscriptions);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             })
             .catch(function (error) {
+                // Handle error
                 console.log(error);
             });
     },

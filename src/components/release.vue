@@ -90,18 +90,7 @@
         </div>
         <div class="release-details">
             <div class="release-title">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 9 9"
-                    class="release-explicit"
-                    v-if="release.explicit"
-                >
-                    <path
-                        d="M3.9 7h1.9c.4 0 .7-.2.7-.5s-.3-.4-.7-.4H4.1V4.9h1.5c.4 0 .7-.1.7-.4 0-.3-.3-.5-.7-.5H4.1V2.9h1.7c.4 0 .7-.2.7-.5 0-.2-.3-.4-.7-.4H3.9c-.6 0-.9.3-.9.7v3.7c0 .3.3.6.9.6zM1.6 0h5.8C8.5 0 9 .5 9 1.6v5.9C9 8.5 8.5 9 7.4 9H1.6C.5 9 0 8.5 0 7.4V1.6C0 .5.5 0 1.6 0z"
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                    ></path>
-                </svg>
+                <span v-if="release.explicit">🅴&nbsp;</span>
                 <span>{{ release.title }}</span>
             </div>
             <div class="release-artist">
@@ -126,19 +115,19 @@ export default {
     },
     computed: {
         releaseExistsOnAppleMusic: function () {
-            return this.release.itunes_id != "";
+            return this.release.itunes_id != null;
         },
         linkOnAppleMusic: function () {
             return `itmss://music.apple.com/us/${this.release.type}/${this.release.itunes_id}`;
         },
         releaseExistsOnSpotify: function () {
-            return this.release.spotify_id != "";
+            return this.release.spotify_id != null;
         },
         linkOnSpotify: function () {
             return `spotify:album:${this.release.spotify_id}`;
         },
         releaseExistsOnDeezer: function () {
-            return this.release.deezer_id != "";
+            return this.release.deezer_id != null;
         },
         linkOnDeezer: function () {
             return `https://deezer.com/en/${this.release.type}/${this.release.deezer_id}`;
@@ -162,12 +151,15 @@ export default {
 .release-poster {
     height: 264px;
     width: 264px;
+    box-shadow: rgba(32, 32, 32, 0.2) 0px 0px 15px;
     opacity: 1;
-    background-color: rgba(0, 0, 0, 1);
     cursor: pointer;
 }
 .release-poster-img {
-    border-radius: 4px;
+    height: 264px;
+    width: 264px;
+    object-fit: cover;
+    border-radius: 8px;
     -webkit-transition-duration: 0.1s;
     transition-duration: 0.1s;
     -webkit-transition-property: opacity;
@@ -289,11 +281,9 @@ ul {
     margin-top: 3px;
 }
 .release-artist-link {
-    color: white;
     background-image: none;
 }
 .release-artist-link:hover {
-    color: white;
     text-decoration: underline;
 }
 .release-date {
