@@ -1,9 +1,8 @@
-import api from "@/api";
+import { SubscriptionService } from "@/common/api.service";
 
 // initial state
 const state = {
-    batchSize: 24,
-    batch: [],
+    list: [],
 };
 
 // getters
@@ -11,17 +10,17 @@ const getters = {};
 
 // actions
 const actions = {
-    loadNext({ commit }) {
-        api.getSubscriptions((subscriptions) => {
-            commit("appendBatch", subscriptions);
-        });
+    fetch({ commit }) {
+        SubscriptionService.get()
+            .then((resp) => resp.data)
+            .then((subscriptions) => commit("set", subscriptions));
     },
 };
 
 // mutations
 const mutations = {
-    appendBatch(state, subscriptions) {
-        state.batch = state.batch.concat(subscriptions);
+    set(state, subscriptions) {
+        state.list = subscriptions;
     },
 };
 

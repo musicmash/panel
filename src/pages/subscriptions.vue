@@ -64,13 +64,18 @@ import { mapState } from "vuex";
 
 export default {
     computed: mapState({
-        subscriptions: (state) => state.subscriptions.batch,
+        subscriptions: (state) => state.subscriptions.list,
     }),
     components: {
         subscription,
     },
-    mounted: function() {
-        this.$store.dispatch("subscriptions/loadNext");
+    mounted() {
+        this.fetchSubscriptions();
+    },
+    methods: {
+        fetchSubscriptions() {
+            this.$store.dispatch("subscriptions/fetch");
+        },
     },
 };
 </script>
