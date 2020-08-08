@@ -46,7 +46,12 @@ const ApiService = {
 export default ApiService;
 
 export const SubscriptionService = {
-    get() {
-        return ApiService.get("subscriptions");
+    get(limit = 24, offset = 0) {
+        return ApiService.query("subscriptions", {
+            params: {
+                limit: limit,
+                offset: offset,
+            },
+        });
     },
 };

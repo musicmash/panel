@@ -30,6 +30,7 @@
                     :key="subscription.id"
                 >
                 </subscription>
+                <observer v-on:intersect="intersected"></observer>
             </div>
         </div>
 
@@ -60,21 +61,23 @@
 
 <script>
 import subscription from "@/components/subscription";
+import observer from "@/components/observer";
 import { mapState } from "vuex";
 
 export default {
     computed: mapState({
-        subscriptions: (state) => state.subscriptions.list,
+        subscriptions: (state) => state.subscriptions.batch,
     }),
     components: {
         subscription,
-    },
-    mounted() {
-        this.fetchSubscriptions();
+        observer,
     },
     methods: {
-        fetchSubscriptions() {
-            this.$store.dispatch("subscriptions/fetch");
+        load: function () {
+            this.$store.dispatch("subscriptions/loadNextBatch");
+        },
+        intersected: function () {
+            this.load();
         },
     },
 };

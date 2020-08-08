@@ -2,7 +2,8 @@ import { SubscriptionService } from "@/common/api.service";
 
 // initial state
 const state = {
-    list: [],
+    batchSize: 24,
+    batch: [],
 };
 
 // getters
@@ -10,17 +11,20 @@ const getters = {};
 
 // actions
 const actions = {
-    fetch({ commit }) {
-        SubscriptionService.get()
+    loadNextBatch({ state, commit }) {
+        var limit = state.batchSize;
+        var offset = state.batch.length;
+
+        SubscriptionService.get(limit, offset)
             .then((resp) => resp.data)
-            .then((subscriptions) => commit("set", subscriptions));
+            .then((subscriptions) => commit("append", subscriptions));
     },
 };
 
 // mutations
 const mutations = {
-    set(state, subscriptions) {
-        state.list = subscriptions;
+    append(state, batch) {
+        state.batch = state.batch.concat(batch);
     },
 };
 
