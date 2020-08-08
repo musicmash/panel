@@ -1,0 +1,33 @@
+on: [pull_request]
+
+name: Build and lint code on pull request
+
+jobs:
+  build:
+    name: Build and lint code on pull request
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: ${{ github.repository }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Pull latest images
+        run: |
+          docker pull $IMAGE_NAME:latest || true
+          docker pull $IMAGE_NAME-builder-stage:latest || true
+
+      - name: Build the Docker image
+        run: |
+          docker build \
+            --target builder \
+            --cache-from $IMAGE_NAME-builder-stage:latest \
+            -t $IMAGE_NAME-builder-stage \
+            .
+          docker build \
+            --cache-from $IMAGE_NAME-builder-stage:latest \
+            --cache-from $IMAGE_NAME:latest \
+            --tag $IMAGE_NAME:latest \
+            --tag docker.pkg.github.com/$IMAGE_NAME/web-ui:latest \
+            .
