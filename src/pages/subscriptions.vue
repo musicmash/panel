@@ -30,6 +30,7 @@
                     :key="subscription.id"
                 >
                 </subscription>
+                <observer v-on:intersect="intersected"></observer>
             </div>
         </div>
 
@@ -60,6 +61,7 @@
 
 <script>
 import subscription from "@/components/subscription";
+import observer from "@/components/observer";
 import { mapState } from "vuex";
 
 export default {
@@ -68,9 +70,15 @@ export default {
     }),
     components: {
         subscription,
+        observer,
     },
-    mounted: function() {
-        this.$store.dispatch("subscriptions/loadNext");
+    methods: {
+        load: function () {
+            this.$store.dispatch("subscriptions/loadNextBatch");
+        },
+        intersected: function () {
+            this.load();
+        },
     },
 };
 </script>
