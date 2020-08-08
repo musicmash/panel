@@ -1,8 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-
-const axios = require("axios");
-const moment = require("moment");
+import axios from "axios";
+import moment from "moment";
 
 const api = axios.create({
     baseURL: "/v1",

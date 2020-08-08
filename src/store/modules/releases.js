@@ -1,5 +1,5 @@
 import api from "@/api";
-const moment = require("moment");
+import moment from "moment"
 
 // initial state
 const state = {

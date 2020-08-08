@@ -16,8 +16,7 @@
 import release from "@/components/release";
 import releaseMixin from "@/mixins/releases";
 import loaderMixin from "@/mixins/infinity-loader";
-
-var moment = require("moment");
+import moment from "moment";
 
 function format(time) {
     return time.format("YYYY-MM-DD");

@@ -1,4 +1,4 @@
-var moment = require("moment");
+import moment from "moment";
 
 function format(time) {
     return time.format("YYYY-MM-DD");
