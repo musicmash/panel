@@ -26,16 +26,16 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-// replace with mutex if it's possible
-let app;
-firebase.auth().onAuthStateChanged(() => {
-    if (!app) {
-        ApiService.init().then(() => {
-            app = new Vue({
-                render: (h) => h(App),
-                router: router,
-                store: store,
-            }).$mount("#app");
-        });
-    }
+firebase.auth().onAuthStateChanged(state => {
+    if (state != null)
+        ApiService.init();
 });
+
+let app;
+if (!app) {
+    app = new Vue({
+        render: (h) => h(App),
+        router: router,
+        store: store,
+    }).$mount("#app");
+}
