@@ -6,28 +6,23 @@ jobs:
   build:
     name: Build and lint code on pull request
     runs-on: ubuntu-latest
-    env:
-      IMAGE_NAME: ${{ github.repository }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Pull latest images
-        run: |
-          docker pull $IMAGE_NAME:latest || true
-          docker pull $IMAGE_NAME-builder-stage:latest || true
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
 
-      - name: Build the Docker image
+      - name: Install node_modules
+        run: npm install
+
+      - name: Run eslint
         run: |
-          docker build \
-            --target builder \
-            --cache-from $IMAGE_NAME-builder-stage:latest \
-            -t $IMAGE_NAME-builder-stage \
-            .
-          docker build \
-            --cache-from $IMAGE_NAME-builder-stage:latest \
-            --cache-from $IMAGE_NAME:latest \
-            --tag $IMAGE_NAME:latest \
-            --tag docker.pkg.github.com/$IMAGE_NAME/web-ui:latest \
-            .
+          npm i -g eslint
+          eslint --debug ./src
+
+      - name: Build dist
+        run: npm run build --prod
