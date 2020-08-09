@@ -26,16 +26,15 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-firebase.auth().onAuthStateChanged(state => {
-    if (state != null)
-        ApiService.init();
-});
-
 let app;
-if (!app) {
-    app = new Vue({
-        render: (h) => h(App),
-        router: router,
-        store: store,
-    }).$mount("#app");
-}
+firebase.auth().onAuthStateChanged((state) => {
+    if (state !== null) ApiService.init();
+
+    if (!app) {
+        app = new Vue({
+            store,
+            router,
+            render: (h) => h(App),
+        }).$mount("#app");
+    }
+});
