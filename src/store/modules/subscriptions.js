@@ -12,8 +12,8 @@ const getters = {};
 // actions
 const actions = {
     loadNextBatch({ state, commit }) {
-        var limit = state.batchSize;
-        var offset = state.batch.length;
+        const limit = state.batchSize;
+        const offset = state.batch.length;
 
         SubscriptionService.get(limit, offset)
             .then((resp) => resp.data)

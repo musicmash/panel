@@ -88,11 +88,15 @@ export default {
                         .updateProfile({
                             displayName: this.name,
                         })
-                        .catch((error) => (this.error = error));
+                        .catch((error) => {
+                            this.error = error;
+                        });
 
                     this.$router.replace({ name: "feed" });
                 })
-                .catch((error) => (this.error = error));
+                .catch((error) => {
+                    this.error = error;
+                });
         },
     },
 };

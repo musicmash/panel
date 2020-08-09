@@ -1,4 +1,4 @@
-var moment = require("moment");
+import moment from "moment";
 
 function format(time) {
     return time.format("YYYY-MM-DD");
@@ -26,36 +26,34 @@ export default {
     methods: {
         excludeVideos(releases) {
             return releases.filter(function (release) {
-                return release.type != "music-video";
+                return release.type !== "music-video";
             });
         },
         loadReleases(since, till) {
-            return this.resource
-                .get({ since: since, till: till })
-                .then((resp) => {
-                    this.releases = [];
-                    // exclude videos on the backend
-                    this.allReleases = this.excludeVideos(resp.body);
-                    this.loadNextReleases(0, 24);
-                });
+            return this.resource.get({ since, till }).then((resp) => {
+                this.releases = [];
+                // exclude videos on the backend
+                this.allReleases = this.excludeVideos(resp.body);
+                this.loadNextReleases(0, 24);
+            });
         },
         loadPastMonthReleases() {
-            var till = now().add(1, "day"); // include today releases
-            var since = now().subtract(30, "days");
+            const till = now().add(1, "day"); // include today releases
+            const since = now().subtract(30, "days");
             return this.loadReleases(format(since), format(till));
         },
         loadWeeklyReleases() {
-            var since = startOfWeek();
-            var till = startOfWeek().add(1, "week");
+            const since = startOfWeek();
+            const till = startOfWeek().add(1, "week");
             return this.loadReleases(format(since), format(till));
         },
         loadNextWeekReleases() {
-            var since = startOfWeek().add(1, "week");
-            var till = startOfWeek().add(2, "weeks");
+            const since = startOfWeek().add(1, "week");
+            const till = startOfWeek().add(2, "weeks");
             return this.loadReleases(format(since), format(till));
         },
         loadNextReleases(offset, limit) {
-            var max = offset + limit;
+            let max = offset + limit;
             if (max > this.allReleases.length) max = this.allReleases.length;
 
             for (let i = offset; i < max; i++)

@@ -10,3 +10,19 @@ prettier p:
 
 image:
 	docker build -t web-ui:latest .
+
+prepare-lint:
+	npm i -g eslint
+
+	npm install --save-dev \
+		prettier-eslint \
+		babel-eslint \
+		eslint-config-airbnb-base \
+		eslint-config-prettier \
+		eslint-plugin-import \
+		eslint-plugin-vue
+
+	eslint ./src
+
+lint:
+	eslint ./src

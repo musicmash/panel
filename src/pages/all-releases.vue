@@ -46,10 +46,10 @@ export default {
         this.$store.dispatch("releases/getPastMonthReleases");
     },
     methods: {
-        load: function () {
+        load() {
             this.$store.dispatch("releases/loadNextBatch");
         },
-        intersected: function () {
+        intersected() {
             this.load();
         },
     },

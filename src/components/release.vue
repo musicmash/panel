@@ -114,22 +114,22 @@ export default {
         release: Object,
     },
     computed: {
-        releaseExistsOnAppleMusic: function () {
+        releaseExistsOnAppleMusic() {
             return this.release.itunes_id != null;
         },
-        linkOnAppleMusic: function () {
+        linkOnAppleMusic() {
             return `itmss://music.apple.com/us/${this.release.type}/${this.release.itunes_id}`;
         },
-        releaseExistsOnSpotify: function () {
+        releaseExistsOnSpotify() {
             return this.release.spotify_id != null;
         },
-        linkOnSpotify: function () {
+        linkOnSpotify() {
             return `spotify:album:${this.release.spotify_id}`;
         },
-        releaseExistsOnDeezer: function () {
+        releaseExistsOnDeezer() {
             return this.release.deezer_id != null;
         },
-        linkOnDeezer: function () {
+        linkOnDeezer() {
             return `https://deezer.com/en/${this.release.type}/${this.release.deezer_id}`;
         },
     },

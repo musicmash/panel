@@ -78,6 +78,7 @@
 
 <script>
 import { mapState } from "vuex";
+
 export default {
     name: "sidebar",
     data() {
@@ -90,18 +91,18 @@ export default {
     }),
     methods: {
         // view
-        toggle: function () {
+        toggle() {
             this.isActive = !this.isActive;
         },
 
         // api
-        getPastMonthReleases: function () {
+        getPastMonthReleases() {
             this.$store.dispatch("releases/getPastMonthReleases");
         },
-        getWeeklyReleases: function () {
+        getWeeklyReleases() {
             this.$store.dispatch("releases/getWeeklyReleases");
         },
-        getNextWeekReleases: function () {
+        getNextWeekReleases() {
             this.$store.dispatch("releases/getNextWeekReleases");
         },
     },
