@@ -24,18 +24,18 @@ function startOfWeek() {
 export default {
     // releases
     getPastMonthReleases(cb) {
-        var till = now().add(1, "day"); // include today releases
-        var since = now().subtract(30, "days");
+        const till = now().add(1, "day"); // include today releases
+        const since = now().subtract(30, "days");
         this.getReleases(cb, { since: format(since), till: format(till) });
     },
     getWeeklyReleases(cb) {
-        var since = startOfWeek();
-        var till = startOfWeek().add(1, "week");
+        const since = startOfWeek();
+        const till = startOfWeek().add(1, "week");
         this.getReleases(cb, { since: format(since), till: format(till) });
     },
     getNextWeekReleases(cb) {
-        var since = startOfWeek().add(1, "week");
-        var till = startOfWeek().add(2, "weeks");
+        const since = startOfWeek().add(1, "week");
+        const till = startOfWeek().add(2, "weeks");
         this.getReleases(cb, { since: format(since), till: format(till) });
     },
     getReleases(cb, params) {
@@ -44,23 +44,23 @@ export default {
             .currentUser.getIdToken(/* forceRefresh */ false)
             .then(function (idToken) {
                 api.get("/releases", {
-                    params: params,
+                    params,
                     headers: {
                         "x-musicmash-access-token": idToken,
                     },
                 })
-                .then(response => response.data)
-                .then(releases => {
-                    return releases.filter(function (release) {
-                      return release.type != "music-video";
+                    .then((response) => response.data)
+                    .then((releases) => {
+                        return releases.filter(function (release) {
+                            return release.type !== "music-video";
+                        });
+                    })
+                    .then((releases) => {
+                        cb(releases);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
                     });
-                })
-                .then(releases => {
-                    cb(releases);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
             })
             .catch(function (error) {
                 // Handle error
@@ -72,20 +72,20 @@ export default {
     getSubscriptions(cb) {
         firebase
             .auth()
-            .currentUser.getIdToken( /* forceRefresh */ false)
+            .currentUser.getIdToken(/* forceRefresh */ false)
             .then(function (idToken) {
                 api.get("/subscriptions", {
                     headers: {
                         "x-musicmash-access-token": idToken,
                     },
                 })
-                .then(response => response.data)
-                .then(subscriptions => {
-                    cb(subscriptions);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+                    .then((response) => response.data)
+                    .then((subscriptions) => {
+                        cb(subscriptions);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             })
             .catch(function (error) {
                 // Handle error

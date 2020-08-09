@@ -1,5 +1,5 @@
 import api from "@/api";
-import moment from "moment"
+import moment from "moment";
 
 // initial state
 const state = {
@@ -43,30 +43,30 @@ const actions = {
 
     // deprecated
     loadNextBatch({ state, commit }) {
-        if (state.batch.length == state.all.length) return;
+        if (state.batch.length === state.all.length) return;
 
-        var batch = [],
-            start = state.batch.length,
-            max = state.batch.length + state.batchSize;
+        const batch = [];
+        const start = state.batch.length;
+        let max = state.batch.length + state.batchSize;
 
         // if we overflow length of all releases
         if (max > state.all.length) max = state.all.length;
 
-        for (var i = start; i < max; i++) batch.push(state.all[i]);
+        for (let i = start; i < max; i++) batch.push(state.all[i]);
 
         commit("appendBatch", batch);
     },
 
     loadNextFeed({ state, commit }) {
-        var till = moment().format("YYYY-MM-DD");
-        var since = moment().subtract(3, "month").format("YYYY-MM-DD");
+        const till = moment().format("YYYY-MM-DD");
+        const since = moment().subtract(3, "month").format("YYYY-MM-DD");
         api.getReleases(
             (releases) => {
                 commit("appendBatch", releases);
             },
             {
-                since: since,
-                till: till,
+                since,
+                till,
                 offset: state.batch.length,
                 limit: state.batchSize,
 
@@ -84,8 +84,8 @@ const mutations = {
     },
     setFilterType(state, type) {
         state.filter = "Last 30 days";
-        if (type == "this-week") state.filter = "This week";
-        if (type == "next-week") state.filter = "Next week";
+        if (type === "this-week") state.filter = "This week";
+        if (type === "next-week") state.filter = "Next week";
         state.filterType = type;
     },
     appendBatch(state, releases) {

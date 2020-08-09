@@ -16,7 +16,7 @@ export default {
     methods: {
         subscribeOnScroll(callback) {
             window.onscroll = () => {
-                let bottomOfWindow =
+                const bottomOfWindow =
                     document.documentElement.scrollTop + window.innerHeight ===
                     document.documentElement.offsetHeight;
 
