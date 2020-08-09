@@ -28,8 +28,8 @@ jobs:
 
       - name: Run eslint
         run: |
-          npm i -g eslint
-          eslint --debug ./src
+          make prepare-lint
+          make lint
 
       - name: Build dist
         run: npm run build --prod
