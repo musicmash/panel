@@ -51,7 +51,7 @@ export default {
         };
     },
     methods: {
-        toggle: function () {
+        toggle() {
             console.log("subscription toggled", this.isSubscribed);
             this.isSubscribed = !this.isSubscribed;
         },

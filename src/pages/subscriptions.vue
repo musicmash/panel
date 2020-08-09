@@ -73,10 +73,10 @@ export default {
         observer,
     },
     methods: {
-        load: function () {
+        load() {
             this.$store.dispatch("subscriptions/loadNextBatch");
         },
-        intersected: function () {
+        intersected() {
             this.load();
         },
     },

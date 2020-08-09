@@ -41,12 +41,12 @@ export default {
     methods: {
         fetchData() {
             this.resetLoader();
-            var params = this.getPeriods(this.$route.params.month);
+            const params = this.getPeriods(this.$route.params.month);
             this.loadReleases(params.since, params.till);
         },
         getPeriods(month) {
-            var since = parseMonth(month);
-            var till = parseMonth(month).add(1, "month");
+            const since = parseMonth(month);
+            const till = parseMonth(month).add(1, "month");
             return { since: format(since), till: format(till) };
         },
     },
