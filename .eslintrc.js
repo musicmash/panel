@@ -10,8 +10,7 @@ module.exports = {
         "prettier"
     ],
     "parserOptions": {
-        "ecmaVersion": 11,
-        "sourceType": "module"
+        "parser": "babel-eslint"
     },
     "plugins": [
         "node",
