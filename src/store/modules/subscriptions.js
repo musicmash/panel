@@ -26,6 +26,9 @@ const mutations = {
     append(state, batch) {
         state.batch = state.batch.concat(batch);
     },
+    reset(state) {
+        state.batch = [];
+    },
 };
 
 export default {
