@@ -1,5 +1,6 @@
 <template>
     <div>
+        <navbar />
         <div class="container">
             <ul class="nav nav-tabs justify-content-center mb-4" id="top">
                 <li class="nav-item">
@@ -60,6 +61,7 @@
 </template>
 
 <script>
+import NavBar from "@/components/navbar/NavBar";
 import subscription from "@/components/subscription";
 import observer from "@/components/observer";
 import { mapState } from "vuex";
@@ -69,6 +71,7 @@ export default {
         subscriptions: (state) => state.subscriptions.batch,
     }),
     components: {
+        navbar: NavBar,
         subscription,
         observer,
     },
