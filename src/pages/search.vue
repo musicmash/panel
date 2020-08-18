@@ -13,7 +13,16 @@
         </div>
 
         <div class="container">
-            <div class="row justify-content-center my-3"></div>
+            <div class="row justify-content-center my-3">
+                <artist
+                    class="mr-3 mb-3 p-0"
+                    v-for="artist in artists"
+                    :artist="artist"
+                    :text="artist"
+                    :key="artist.id"
+                >
+                </artist>
+            </div>
         </div>
 
         <a class="btn-scroll-top show" href="#top" data-scroll="">
@@ -43,6 +52,7 @@
 
 <script>
 import NavBar from "@/components/navbar/NavBar";
+import artist from "@/components/artist";
 import { mapState } from "vuex";
 
 export default {
@@ -52,12 +62,13 @@ export default {
     }),
     components: {
         navbar: NavBar,
+        artist,
     },
     watch: {
         $route() {
             this.query = this.$route.query.query;
             this.$store.dispatch("search/doSearch", this.query);
-        }
+        },
     },
     data() {
         return {
