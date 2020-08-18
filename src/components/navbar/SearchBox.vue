@@ -10,9 +10,27 @@
         autocorrect="off"
         maxlength="150"
         spellcheck="false"
+        v-on:keyup.enter="doSearch"
+        v-model="query"
     />
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            query: this.$route.query.query,
+        };
+    },
+    methods: {
+        doSearch() {
+            // vuejs can't navigate to duplicated router
+            if (this.query !== this.$route.query.query)
+                this.$router.push({
+                    path: "/search",
+                    query: { query: this.query },
+                });
+        },
+    },
+};
 </script>
