@@ -47,13 +47,17 @@ import { mapState } from "vuex";
 
 export default {
     computed: mapState({
-        releases: (state) => state.releases.batch,
+        artists: (state) => state.search.artists,
+        releases: (state) => state.search.releases,
     }),
     components: {
         navbar: NavBar,
     },
-    mounted() {
-        this.query = this.$route.query.query;
+    watch: {
+        $route() {
+            this.query = this.$route.query.query;
+            this.$store.dispatch("search/doSearch", this.query);
+        }
     },
     data() {
         return {
