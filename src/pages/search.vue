@@ -70,6 +70,10 @@ export default {
             this.$store.dispatch("search/doSearch", this.query);
         },
     },
+    mounted() {
+        this.query = this.$route.query.query;
+        this.$store.dispatch("search/doSearch", this.query);
+    },
     data() {
         return {
             query: "",
