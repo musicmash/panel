@@ -11,6 +11,9 @@
                         v-on:click="setArtistsAsCurrentView()"
                     >
                         Artists
+                        <span class="badge badge-light">
+                            {{ this.artists.length }}
+                        </span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -21,6 +24,9 @@
                         v-on:click="setReleasesAsCurrentView()"
                     >
                         Releases
+                        <span class="badge badge-light">
+                            {{ this.releases.length }}
+                        </span>
                     </a>
                 </li>
             </ul>
@@ -246,5 +252,9 @@ export default {
     vertical-align: middle;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+.badge-light {
+    color: #212529;
+    background-color: #f5f2f2;
 }
 </style>
