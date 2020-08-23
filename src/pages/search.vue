@@ -34,6 +34,15 @@
 
         <div class="container">
             <loader v-if="isLoading" />
+            <empty
+                v-if="
+                    this.artists.length == 0 &&
+                    this.releases.length == 0 &&
+                    this.query != '' &&
+                    !this.isLoading
+                "
+                text="there are no results for this search"
+            />
 
             <div
                 class="row justify-content-center my-3"
@@ -94,6 +103,7 @@ import NavBar from "@/components/navbar/NavBar";
 import artist from "@/components/artist";
 import release from "@/components/release";
 import loader from "@/components/loader";
+import empty from "@/components/empty";
 import { mapState } from "vuex";
 
 const View = {
@@ -112,6 +122,7 @@ export default {
         artist,
         release,
         loader,
+        empty,
     },
     watch: {
         $route() {
