@@ -85,6 +85,7 @@ export default {
     },
     methods: {
         doSearch(query) {
+            this.$store.commit("search/reset");
             if (query.length > 0)
                 this.$store.dispatch("search/doSearch", query);
         },
