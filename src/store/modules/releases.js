@@ -20,7 +20,7 @@ const actions = {
         api.getPastMonthReleases((releases) => {
             commit("setFilterType", "last-30-days");
             commit("setReleases", releases);
-            commit("resetBatch");
+            commit("reset");
             dispatch("loadNextBatch");
         });
     },
@@ -28,7 +28,7 @@ const actions = {
         api.getWeeklyReleases((releases) => {
             commit("setFilterType", "this-week");
             commit("setReleases", releases);
-            commit("resetBatch");
+            commit("reset");
             dispatch("loadNextBatch");
         });
     },
@@ -36,7 +36,7 @@ const actions = {
         api.getNextWeekReleases((releases) => {
             commit("setFilterType", "next-week");
             commit("setReleases", releases);
-            commit("resetBatch");
+            commit("reset");
             dispatch("loadNextBatch");
         });
     },
@@ -54,7 +54,7 @@ const actions = {
 
         for (let i = start; i < max; i++) batch.push(state.all[i]);
 
-        commit("appendBatch", batch);
+        commit("append", batch);
     },
 
     loadNextFeed({ state, commit }) {
@@ -62,7 +62,7 @@ const actions = {
         const since = moment().subtract(3, "month").format("YYYY-MM-DD");
         api.getReleases(
             (releases) => {
-                commit("appendBatch", releases);
+                commit("append", releases);
             },
             {
                 since,
@@ -88,10 +88,10 @@ const mutations = {
         if (type === "next-week") state.filter = "Next week";
         state.filterType = type;
     },
-    appendBatch(state, releases) {
+    append(state, releases) {
         state.batch = state.batch.concat(releases);
     },
-    resetBatch(state) {
+    reset(state) {
         state.batch = [];
     },
 };

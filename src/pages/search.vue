@@ -4,38 +4,81 @@
         <div class="container">
             <ul class="nav nav-tabs justify-content-center mb-4" id="top">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#!">Recent</a>
+                    <a
+                        href="#"
+                        class="nav-link"
+                        v-bind:class="{ active: currentView === View.Artists }"
+                        v-on:click="setArtistsAsCurrentView()"
+                    >
+                        Artists
+                        <span class="badge badge-light">
+                            {{ this.artists.length }}
+                        </span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#!">Daily</a>
+                    <a
+                        href="#"
+                        class="nav-link"
+                        v-bind:class="{ active: currentView === View.Releases }"
+                        v-on:click="setReleasesAsCurrentView()"
+                    >
+                        Releases
+                        <span class="badge badge-light">
+                            {{ this.releases.length }}
+                        </span>
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#!">Weekly</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#!">Monthly</a>
-                </li>
-                <!-- <li class="nav-item"> -->
-                <!-- <a class="nav-link disabled" href="#!">Disabled</a> -->
-                <!-- </li> -->
             </ul>
         </div>
 
         <div class="container">
-            <div class="row justify-content-center my-3">
-                <subscription
+            <loader v-if="isLoading" />
+            <empty
+                v-if="
+                    this.artists.length == 0 &&
+                    this.releases.length == 0 &&
+                    this.query != '' &&
+                    !this.isLoading
+                "
+                text="there are no results for this search"
+            />
+
+            <div
+                class="row justify-content-center my-3"
+                v-if="currentView === 'artists'"
+            >
+                <artist
                     class="mr-3 mb-3 p-0"
-                    v-for="subscription in subscriptions"
-                    :subscription="subscription"
-                    :text="subscription"
-                    :key="subscription.id"
+                    v-for="artist in artists"
+                    :artist="artist"
+                    :text="artist"
+                    :key="artist.id"
                 >
-                </subscription>
-                <observer v-on:intersect="intersected"></observer>
+                </artist>
+            </div>
+
+            <div
+                class="row justify-content-center my-3"
+                v-if="currentView === 'releases'"
+            >
+                <release
+                    class="mr-3 mb-3 p-0"
+                    v-for="release in releases"
+                    :release="release"
+                    :text="release"
+                    :key="release.id"
+                >
+                </release>
             </div>
         </div>
 
-        <a class="btn-scroll-top show" href="#top" data-scroll="">
+        <a
+            class="btn-scroll-top show"
+            href="#top"
+            data-scroll=""
+            v-if="this.artists.length > 0 && this.releases.length > 0"
+        >
             <span class="btn-scroll-top-tooltip text-muted font-size-sm mr-2"
                 >Top</span
             >
@@ -62,25 +105,58 @@
 
 <script>
 import NavBar from "@/components/navbar/NavBar";
-import subscription from "@/components/subscription";
-import observer from "@/components/observer";
+import artist from "@/components/artist";
+import release from "@/components/release";
+import loader from "@/components/loader";
+import empty from "@/components/empty";
 import { mapState } from "vuex";
+
+const View = {
+    Artists: "artists",
+    Releases: "releases",
+};
 
 export default {
     computed: mapState({
-        subscriptions: (state) => state.subscriptions.batch,
+        artists: (state) => state.search.artists,
+        releases: (state) => state.search.releases,
+        isLoading: (state) => state.search.isLoading,
     }),
     components: {
         navbar: NavBar,
-        subscription,
-        observer,
+        artist,
+        release,
+        loader,
+        empty,
+    },
+    watch: {
+        $route() {
+            this.query = this.$route.query.query ? this.$route.query.query : "";
+            this.doSearch(this.query);
+        },
+    },
+    mounted() {
+        this.query = this.$route.query.query ? this.$route.query.query : "";
+        this.doSearch(this.query);
+    },
+    data() {
+        return {
+            View,
+            query: "",
+            currentView: View.Artists,
+        };
     },
     methods: {
-        load() {
-            this.$store.dispatch("subscriptions/loadNextBatch");
+        doSearch(query) {
+            this.$store.commit("search/reset");
+            if (query.length > 0)
+                this.$store.dispatch("search/doSearch", query);
         },
-        intersected() {
-            this.load();
+        setArtistsAsCurrentView() {
+            this.currentView = View.Artists;
+        },
+        setReleasesAsCurrentView() {
+            this.currentView = View.Releases;
         },
     },
 };
@@ -192,5 +268,9 @@ export default {
     vertical-align: middle;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+.badge-light {
+    color: #212529;
+    background-color: #f5f2f2;
 }
 </style>

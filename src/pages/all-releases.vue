@@ -70,10 +70,6 @@ export default {
     transition: all 0.3s;
 }
 
-.navbar-content {
-    padding-left: 1rem;
-}
-
 .header {
     font-size: 50px;
     font-weight: 700;

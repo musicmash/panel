@@ -9,6 +9,7 @@ import FeedPage from "@/pages/feed";
 import LoginPage from "@/pages/login";
 import JoinPage from "@/pages/join";
 import ResetPage from "@/pages/reset";
+import SearchPage from "@/pages/search";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 
@@ -57,6 +58,13 @@ const routes = [
     {
         path: "/subscriptions",
         component: Subscriptions,
+        meta: {
+            requiresAuth: true,
+        },
+    },
+    {
+        path: "/search",
+        component: SearchPage,
         meta: {
             requiresAuth: true,
         },
