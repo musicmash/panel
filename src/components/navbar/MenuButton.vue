@@ -41,8 +41,10 @@ import "firebase/auth";
 export default {
     methods: {
         moveToLogin() {
+            // todo: extract into service.js?
             this.$store.commit("releases/reset");
             this.$store.commit("subscriptions/reset");
+            this.$store.commit("search/reset");
             this.$router.replace({ name: "login" });
         },
         signOut() {
