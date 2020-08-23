@@ -73,7 +73,12 @@
             </div>
         </div>
 
-        <a class="btn-scroll-top show" href="#top" data-scroll="">
+        <a
+            class="btn-scroll-top show"
+            href="#top"
+            data-scroll=""
+            v-if="this.artists.length > 0 && this.releases.length > 0"
+        >
             <span class="btn-scroll-top-tooltip text-muted font-size-sm mr-2"
                 >Top</span
             >
