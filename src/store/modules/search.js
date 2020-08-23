@@ -2,6 +2,7 @@ import SearchService from "@/common/search.service";
 
 // initial state
 const state = {
+    isLoading: false,
     artists: [],
     releases: [],
 };
@@ -11,10 +12,12 @@ const getters = {};
 
 // actions
 const actions = {
-    doSearch({ commit }, query) {
+    doSearch({ state, commit }, query) {
+        state.isLoading = true;
         SearchService.do(query)
             .then((resp) => resp.data)
             .then((result) => {
+                state.isLoading = false;
                 commit("set", result);
             });
     },

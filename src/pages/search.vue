@@ -14,6 +14,7 @@
 
         <div class="container">
             <div class="row justify-content-center my-3">
+                <loader v-if="isLoading" />
                 <artist
                     class="mr-3 mb-3 p-0"
                     v-for="artist in artists"
@@ -53,25 +54,28 @@
 <script>
 import NavBar from "@/components/navbar/NavBar";
 import artist from "@/components/artist";
+import loader from "@/components/loader";
 import { mapState } from "vuex";
 
 export default {
     computed: mapState({
         artists: (state) => state.search.artists,
         releases: (state) => state.search.releases,
+        isLoading: (state) => state.search.isLoading,
     }),
     components: {
         navbar: NavBar,
         artist,
+        loader,
     },
     watch: {
         $route() {
-            this.query = this.$route.query.query;
+            this.query = this.$route.query.query ? this.$route.query.query : "";
             this.doSearch(this.query);
         },
     },
     mounted() {
-        this.query = this.$route.query.query;
+        this.query = this.$route.query.query ? this.$route.query.query : "";
         this.doSearch(this.query);
     },
     data() {
@@ -81,7 +85,8 @@ export default {
     },
     methods: {
         doSearch(query) {
-            this.$store.dispatch("search/doSearch", query);
+            if (query.length > 0)
+                this.$store.dispatch("search/doSearch", query);
         },
     },
 };
