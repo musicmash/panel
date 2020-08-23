@@ -4,17 +4,35 @@
         <div class="container">
             <ul class="nav nav-tabs justify-content-center mb-4" id="top">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Artists</a>
+                    <a
+                        href="#"
+                        class="nav-link"
+                        v-bind:class="{ active: currentView === View.Artists }"
+                        v-on:click="setArtistsAsCurrentView()"
+                    >
+                        Artists
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Releases</a>
+                    <a
+                        href="#"
+                        class="nav-link"
+                        v-bind:class="{ active: currentView === View.Releases }"
+                        v-on:click="setReleasesAsCurrentView()"
+                    >
+                        Releases
+                    </a>
                 </li>
             </ul>
         </div>
 
         <div class="container">
-            <div class="row justify-content-center my-3">
-                <loader v-if="isLoading" />
+            <loader v-if="isLoading" />
+
+            <div
+                class="row justify-content-center my-3"
+                v-if="currentView === 'artists'"
+            >
                 <artist
                     class="mr-3 mb-3 p-0"
                     v-for="artist in artists"
@@ -23,6 +41,20 @@
                     :key="artist.id"
                 >
                 </artist>
+            </div>
+
+            <div
+                class="row justify-content-center my-3"
+                v-if="currentView === 'releases'"
+            >
+                <release
+                    class="mr-3 mb-3 p-0"
+                    v-for="release in releases"
+                    :release="release"
+                    :text="release"
+                    :key="release.id"
+                >
+                </release>
             </div>
         </div>
 
@@ -54,8 +86,14 @@
 <script>
 import NavBar from "@/components/navbar/NavBar";
 import artist from "@/components/artist";
+import release from "@/components/release";
 import loader from "@/components/loader";
 import { mapState } from "vuex";
+
+const View = {
+    Artists: "artists",
+    Releases: "releases",
+};
 
 export default {
     computed: mapState({
@@ -66,6 +104,7 @@ export default {
     components: {
         navbar: NavBar,
         artist,
+        release,
         loader,
     },
     watch: {
@@ -80,7 +119,9 @@ export default {
     },
     data() {
         return {
+            View,
             query: "",
+            currentView: View.Artists,
         };
     },
     methods: {
@@ -88,6 +129,12 @@ export default {
             this.$store.commit("search/reset");
             if (query.length > 0)
                 this.$store.dispatch("search/doSearch", query);
+        },
+        setArtistsAsCurrentView() {
+            this.currentView = View.Artists;
+        },
+        setReleasesAsCurrentView() {
+            this.currentView = View.Releases;
         },
     },
 };
