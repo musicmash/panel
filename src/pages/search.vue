@@ -67,19 +67,23 @@ export default {
     watch: {
         $route() {
             this.query = this.$route.query.query;
-            this.$store.dispatch("search/doSearch", this.query);
+            this.doSearch(this.query);
         },
     },
     mounted() {
         this.query = this.$route.query.query;
-        this.$store.dispatch("search/doSearch", this.query);
+        this.doSearch(this.query);
     },
     data() {
         return {
             query: "",
         };
     },
-    methods: {},
+    methods: {
+        doSearch(query) {
+            this.$store.dispatch("search/doSearch", query);
+        },
+    },
 };
 </script>
 
