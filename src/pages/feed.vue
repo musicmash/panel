@@ -3,10 +3,9 @@
         <navbar />
 
         <b-tabs class="block" position="is-centered">
-            <b-tab-item label="Recent"></b-tab-item>
-            <b-tab-item label="Daily"></b-tab-item>
-            <b-tab-item label="Weekly"></b-tab-item>
-            <b-tab-item label="Monthly"></b-tab-item>
+            <b-tab-item label="Feed"></b-tab-item>
+            <b-tab-item label="Subscriptions"></b-tab-item>
+            <b-tab-item label="Settings"></b-tab-item>
         </b-tabs>
 
         <div class="container">
