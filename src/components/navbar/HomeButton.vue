@@ -25,7 +25,7 @@ export default {};
 .companyName {
     color: black;
     font-size: 20px;
-    letter-spacing: .03em;
+    letter-spacing: 0.03em;
     font-weight: 600;
     margin: 0 15px 0 0;
 }

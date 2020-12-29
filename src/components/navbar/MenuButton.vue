@@ -1,7 +1,7 @@
 <template>
     <div
         class="dropdown"
-        style="min-width: 40px; min-height: 40px;"
+        style="min-width: 40px; min-height: 40px"
         id="dropdownMenuButton"
         data-toggle="dropdown"
         aria-haspopup="true"
@@ -20,7 +20,7 @@
         <div
             class="dropdown-menu dropdown-menu-right"
             aria-labelledby="dropdownMenuButton"
-            style="font-size: 14px;"
+            style="font-size: 14px"
         >
             <router-link class="dropdown-item" to="/subscriptions"
                 >My subscriptions</router-link
