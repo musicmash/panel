@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "buefy": "^0.9.4",
     "core-js": "^3.6.5",
     "firebase": "^7.17.2",
     "minimist": "1.2.5",
