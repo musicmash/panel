@@ -1,6 +1,8 @@
 <template>
-    <router-link to="/feed">
-        <div class="logo"></div>
+    <router-link class="company" to="/feed">
+        <div class="logo">
+            <div class="companyName">musicmash</div>
+        </div>
     </router-link>
 </template>
 
@@ -9,9 +11,22 @@ export default {};
 </script>
 
 <style scoped>
-.logo {
-    min-width: 40px;
-    min-height: 40px;
-    background-color: black;
+.company {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.companyName {
+    color: black;
+    font-size: 20px;
+    letter-spacing: .03em;
+    font-weight: 600;
+    margin: 0 15px 0 0;
 }
 </style>
