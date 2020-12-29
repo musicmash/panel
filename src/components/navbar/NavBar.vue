@@ -1,24 +1,31 @@
 <template>
     <div class="container">
-        <div class="d-flex justify-content-between pt-2">
-            <nav-home-button />
-            <nav-search-box />
-            <nav-menu-button />
-        </div>
+        <b-navbar>
+            <template slot="brand">
+                <nav-home-button />
+            </template>
+
+            <template slot="end">
+                <b-navbar-item tag="div">
+                    <div class="buttons">
+                        <a class="button is-primary">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light"> Log in </a>
+                    </div>
+                </b-navbar-item>
+            </template>
+        </b-navbar>
     </div>
 </template>
 
 <script>
 import HomeButton from "@/components/navbar/HomeButton";
-import MenuButton from "@/components/navbar/MenuButton";
-import SearchBox from "@/components/navbar/SearchBox";
 
 export default {
     name: "navbar",
     components: {
         "nav-home-button": HomeButton,
-        "nav-menu-button": MenuButton,
-        "nav-search-box": SearchBox,
     },
 };
 </script>
