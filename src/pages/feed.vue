@@ -1,25 +1,13 @@
 <template>
     <div>
         <navbar />
-        <div class="container">
-            <ul class="nav nav-tabs justify-content-center mb-4" id="top">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#!">Recent</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#!">Daily</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#!">Weekly</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#!">Monthly</a>
-                </li>
-                <!-- <li class="nav-item"> -->
-                <!-- <a class="nav-link disabled" href="#!">Disabled</a> -->
-                <!-- </li> -->
-            </ul>
-        </div>
+
+        <b-tabs class="block" position="is-centered">
+            <b-tab-item label="Recent"></b-tab-item>
+            <b-tab-item label="Daily"></b-tab-item>
+            <b-tab-item label="Weekly"></b-tab-item>
+            <b-tab-item label="Monthly"></b-tab-item>
+        </b-tabs>
 
         <div class="container">
             <div class="row justify-content-center my-3">
@@ -87,57 +75,6 @@ export default {
 </script>
 
 <style>
-.nav-tabs {
-    border-bottom: 1px solid #e3ebf6;
-}
-.nav-tabs .nav-item:first-child {
-    margin-left: 0;
-}
-.nav-tabs .nav-item {
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
-}
-.nav-tabs .nav-item.show .nav-link,
-.nav-tabs .nav-link.active {
-    color: #12263f;
-    background-color: transparent;
-    border-color: transparent transparent #2c7be5;
-}
-.nav-tabs .nav-link {
-    padding: 1rem 0;
-    border-bottom: 1px solid transparent;
-    border-bottom-color: transparent;
-    border-left-width: 0;
-    border-right-width: 0;
-    border-top-width: 0;
-}
-.nav-tabs .nav-link {
-    border: 1px solid transparent;
-    border-top-color: transparent;
-    border-top-width: 1px;
-    border-right-color: transparent;
-    border-right-width: 1px;
-    border-bottom-color: transparent;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-left-color: transparent;
-    border-left-width: 1px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: left;
-}
-.nav-tabs .nav-link:not(.active) {
-    color: #95aac9;
-    border: 0px;
-}
-.nav-tabs .nav-link:not(.active):hover {
-    color: #6e84a3;
-}
-
 .btn-scroll-top.show {
     right: 1.25rem;
     opacity: 1;
