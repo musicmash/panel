@@ -20,6 +20,7 @@ export default {};
     -webkit-box-align: center;
     align-items: center;
     text-decoration: none;
+    padding-left: 15px;
 }
 
 .companyName {
