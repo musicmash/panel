@@ -3,7 +3,7 @@
         <svg
             viewBox="0 0 20 20"
             class="icon mx-4"
-            style="width: 1em;"
+            style="width: 1em"
             title="search"
         >
             <path

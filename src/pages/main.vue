@@ -12,7 +12,7 @@
                                 <router-link
                                     to="/login"
                                     class="btn btn-md btn-link"
-                                    style="color: white;"
+                                    style="color: white"
                                 >
                                     Login
                                 </router-link>
@@ -27,14 +27,14 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <h1 style="color: white;" class="heading_1">
+                            <h1 style="color: white" class="heading_1">
                                 Musicmash
                             </h1>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <h2 style="color: white;">
+                            <h2 style="color: white">
                                 Explore the world's largest catalog of song
                                 lyrics and translations
                             </h2>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="row mt-3 pb-3">
                         <div class="col-12">
-                            <p class="text-center" style="line-height: 2.2;">
+                            <p class="text-center" style="line-height: 2.2">
                                 <hashtag
                                     class="mr-3 mt-3"
                                     v-for="(trending, index) in trendings"
@@ -78,7 +78,7 @@
                     <div class="col-12 mt-2">
                         <div
                             class="d-flex"
-                            style="overflow: scroll; height: 350px;"
+                            style="overflow: scroll; height: 350px"
                         >
                             <release
                                 class="mr-2 p-0"
@@ -99,7 +99,7 @@
                     <div class="col-12 mt-2">
                         <div
                             class="d-flex"
-                            style="overflow: scroll; height: 350px;"
+                            style="overflow: scroll; height: 350px"
                         >
                             <release
                                 class="mr-2 p-0"
