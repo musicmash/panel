@@ -4,9 +4,7 @@ import "firebase/auth";
 
 Vue.use(VueRouter);
 
-const routes = [
-
-];
+const routes = [];
 
 const router = new VueRouter({
     routes,
