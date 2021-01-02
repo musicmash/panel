@@ -19,9 +19,9 @@
 
         <div class="tabs is-centered">
             <ul>
-                <li class="is-active"><a>Releases</a></li>
-                <li><a>Subscriptions</a></li>
-                <li><a>Settings</a></li>
+                <!-- <li class="is-active"><a>Releases</a></li> -->
+                <!-- <li><a>Subscriptions</a></li> -->
+                <!-- <li><a>Settings</a></li> -->
             </ul>
         </div>
     </div>
