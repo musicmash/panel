@@ -1,6 +1,5 @@
 import Vue from "vue";
-import Buefy from "buefy";
-import "buefy/dist/buefy.css";
+import "bulma/css/bulma.css";
 // import VueResource from "vue-resource";
 import App from "@/App";
 import router from "@/routes";
@@ -10,7 +9,6 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import ApiService from "./common/api.service";
 
-Vue.use(Buefy);
 Vue.config.productionTip = false;
 // Vue.use(VueResource);
 Vue.filter("date", DateFilter);
