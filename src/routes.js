@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import "firebase/auth";
 import ReleasesPage from "@/pages/ReleasesPage";
 
 Vue.use(VueRouter);
