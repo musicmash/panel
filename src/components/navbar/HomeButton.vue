@@ -1,5 +1,5 @@
 <template>
-    <router-link class="company" to="/feed">
+    <router-link class="company" to="/">
         <div class="logo">
             <div class="companyName">musicmash</div>
         </div>
