@@ -1,27 +1,29 @@
 <template>
     <div class="container">
-        <b-navbar>
-            <template slot="brand">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
                 <nav-home-button />
-            </template>
+            </div>
 
-            <template slot="end">
-                <b-navbar-item tag="div">
+            <div class="navbar-end">
+                <div class="navbar-item">
                     <div class="buttons">
                         <a class="button is-primary">
                             <strong>Sign up</strong>
                         </a>
                         <a class="button is-light"> Log in </a>
                     </div>
-                </b-navbar-item>
-            </template>
-        </b-navbar>
+                </div>
+            </div>
+        </nav>
 
-        <b-tabs class="block" position="is-centered">
-            <!-- <b-tab-item label="Feed"></b-tab-item> -->
-            <!-- <b-tab-item label="Subscriptions"></b-tab-item> -->
-            <!-- <b-tab-item label="Settings"></b-tab-item> -->
-        </b-tabs>
+        <div class="tabs is-centered">
+            <ul>
+                <!-- <li class="is-active"><a>Releases</a></li> -->
+                <!-- <li><a>Subscriptions</a></li> -->
+                <!-- <li><a>Settings</a></li> -->
+            </ul>
+        </div>
     </div>
 </template>
 
