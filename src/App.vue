@@ -1,9 +1,18 @@
 <template>
-    <router-view></router-view>
+    <div>
+        <navbar />
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
-export default {};
+import NavBar from "@/components/navbar/NavBar";
+
+export default {
+    components: {
+        navbar: NavBar,
+    },
+};
 </script>
 
 <style>
@@ -14,17 +23,5 @@ export default {};
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     -moz-font-feature-settings: "liga" on;
-}
-
-.heading_1 {
-    font-size: 72px;
-    line-height: 74px;
-    font-weight: 700;
-}
-
-.heading_2 {
-    font-size: 32px;
-    line-height: 74px;
-    font-weight: 700;
 }
 </style>
