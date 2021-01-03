@@ -13,6 +13,9 @@
 import ReleasesOnboardingBanner from "@/components/ReleasesOnboardingBanner";
 
 export default {
+    mounted() {
+        console.log(this.$store.state.releases.items);
+    },
     components: {
         "releases-onboarding-banner": ReleasesOnboardingBanner,
     },
