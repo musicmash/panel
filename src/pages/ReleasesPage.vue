@@ -13,6 +13,8 @@
             >
             </release>
 
+            <observer v-on:intersect="intersected"></observer>
+
             <div class="box has-text-centered" v-show="isReleasesLoading">
                 <button class="button is-success is-loading">Loading</button>
             </div>
@@ -22,25 +24,23 @@
 
 <script>
 import Release from "@/components/release";
+import observer from "@/components/observer";
 import ReleasesOnboardingBanner from "@/components/ReleasesOnboardingBanner";
 import { mapState } from "vuex";
 
 export default {
-    mounted() {
-        if (!this.$store.state.releases.isLoaded)
-            this.fetchReleases();
-    },
     computed: mapState({
         releases: (state) => state.releases.items,
         isReleasesLoading: (state) => state.releases.isLoading,
     }),
     methods: {
-        fetchReleases() {
-            return this.$store.dispatch("releases/fetch");
+        intersected() {
+            this.$store.dispatch("releases/fetch");
         },
     },
     components: {
-        "release": Release,
+        observer,
+        release: Release,
         "releases-onboarding-banner": ReleasesOnboardingBanner,
     },
 };

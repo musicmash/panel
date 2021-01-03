@@ -10,7 +10,6 @@ const state = {
     batch: [],
 
     isLoading: false,
-    isLoaded: false,
     items: [],
 };
 
@@ -77,8 +76,19 @@ const actions = {
         );
     },
 
-    fetch({commit}) {
+    fetch({ state, commit }) {
+        // api returns releases that released < till.
+        // so, to get releases for current day, we should request
+        // releases until next day.
+        const till = moment().add(1, "day").format("YYYY-MM-DD");
+        const params = {
+            till,
+            offset: state.items.length,
+        };
+
+        console.log("fetching releases with params", params);
         commit("setLoading", true);
+
         const delay = 5000; // ms
         setTimeout(() => {
             const items = [
@@ -225,8 +235,7 @@ const actions = {
             ];
 
             commit("setLoading", false);
-            commit("setLoaded", true);
-            commit("setItems", items);
+            commit("appendItems", items);
         }, delay);
     },
 };
@@ -254,9 +263,9 @@ const mutations = {
     setLoaded(state, isLoaded) {
         state.isLoaded = isLoaded;
     },
-    setItems(state, releases) {
-        state.items = releases;
-    }
+    appendItems(state, releases) {
+        state.items = state.items.concat(releases);
+    },
 };
 
 export default {
