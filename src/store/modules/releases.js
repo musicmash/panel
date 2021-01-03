@@ -1,7 +1,6 @@
 import api from "@/api";
 import moment from "moment";
 
-// initial state
 const state = {
     filter: "",
     filterType: "",
@@ -11,10 +10,8 @@ const state = {
     batch: [],
 };
 
-// getters
 const getters = {};
 
-// actions
 const actions = {
     getPastMonthReleases({ dispatch, commit }) {
         api.getPastMonthReleases((releases) => {
@@ -77,7 +74,6 @@ const actions = {
     },
 };
 
-// mutations
 const mutations = {
     setReleases(state, Releases) {
         state.all = Releases;

@@ -1,16 +1,13 @@
 import SearchService from "@/common/search.service";
 
-// initial state
 const state = {
     isLoading: false,
     artists: [],
     releases: [],
 };
 
-// getters
 const getters = {};
 
-// actions
 const actions = {
     doSearch({ state, commit }, query) {
         state.isLoading = true;
@@ -23,7 +20,6 @@ const actions = {
     },
 };
 
-// mutations
 const mutations = {
     set(state, result) {
         state.artists = result.artists;
