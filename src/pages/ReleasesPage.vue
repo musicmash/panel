@@ -12,6 +12,10 @@
                 :key="release.id"
             >
             </release>
+
+            <div class="box has-text-centered" v-show="isReleasesLoading">
+                <button class="button is-success is-loading">Loading</button>
+            </div>
         </div>
     </div>
 </template>
@@ -28,6 +32,7 @@ export default {
     },
     computed: mapState({
         releases: (state) => state.releases.items,
+        isReleasesLoading: (state) => state.releases.isLoading,
     }),
     methods: {
         fetchReleases() {
