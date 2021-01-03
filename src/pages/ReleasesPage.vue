@@ -1,6 +1,8 @@
 .
 <template>
     <div>
+        <releases-onboarding-banner />
+
         <div class="container">
             <h1>this is releases</h1>
         </div>
@@ -8,5 +10,11 @@
 </template>
 
 <script>
-export default {};
+import ReleasesOnboardingBanner from "@/components/ReleasesOnboardingBanner";
+
+export default {
+    components: {
+        "releases-onboarding-banner": ReleasesOnboardingBanner,
+    },
+};
 </script>
