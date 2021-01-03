@@ -144,9 +144,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .release {
-    max-width: 264px;
-    max-height: auto;
-    width: 264px;
+    /* max-width: 264px; */
+    /* max-height: auto; */
+    width: 295px;
 }
 .release-poster {
     height: 264px;

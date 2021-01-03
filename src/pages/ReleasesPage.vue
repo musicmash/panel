@@ -3,16 +3,18 @@
     <div>
         <releases-onboarding-banner />
 
-        <div class="container">
+        <div class="columns is-multiline is-centered p-4">
             <release
-                class="mr-3 mb-3 p-0"
+                class="column is-3"
                 v-for="release in releases"
                 :release="release"
                 :text="release"
                 :key="release.id"
             >
             </release>
+        </div>
 
+        <div class="container">
             <observer v-on:intersect="intersected"></observer>
 
             <div class="box has-text-centered" v-show="isReleasesLoading">
