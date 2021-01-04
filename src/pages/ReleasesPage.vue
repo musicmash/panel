@@ -3,7 +3,7 @@
     <div>
         <releases-onboarding-banner />
 
-        <div class="columns is-multiline is-centered p-4">
+        <div class="columns is-multiline is-centered pl-5 pt-5 pr-5">
             <release
                 class="column is-3"
                 v-for="release in releases"
@@ -17,7 +17,7 @@
         <div class="container">
             <observer v-on:intersect="intersected"></observer>
 
-            <div class="has-text-centered" v-show="isReleasesLoading">
+            <div class="has-text-centered pb-5" v-show="isReleasesLoading">
                 <button class="button is-success is-loading">Loading</button>
             </div>
         </div>
