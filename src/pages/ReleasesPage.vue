@@ -17,7 +17,7 @@
         <div class="container">
             <observer v-on:intersect="intersected"></observer>
 
-            <div class="box has-text-centered" v-show="isReleasesLoading">
+            <div class="has-text-centered" v-show="isReleasesLoading">
                 <button class="button is-success is-loading">Loading</button>
             </div>
         </div>
