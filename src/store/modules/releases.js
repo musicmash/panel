@@ -84,11 +84,17 @@ const actions = {
         const till = moment().add(1, "day").format("YYYY-MM-DD");
         const params = {
             till,
-            offset: state.items.length,
             limit: 24,
         };
 
-        console.log("fetching releases with params", params);
+        // use pagination if we've already load some releases
+        if (state.items.length > 0) {
+            const firstRelease = state.items[0];
+            params.before = firstRelease.id;
+
+            params.offset = state.items.length;
+        }
+
         commit("setLoading", true);
 
         ReleasesService.get(params)
