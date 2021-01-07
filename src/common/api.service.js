@@ -1,17 +1,12 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
-import AuthService from "@/common/auth.service";
 
 const ApiService = {
     init() {
         Vue.use(VueAxios, axios);
         Vue.axios.defaults.baseURL = "/v1/";
-        AuthService.getToken().then((token) => {
-            Vue.axios.defaults.headers.common[
-                "x-musicmash-access-token"
-            ] = token;
-        });
+        Vue.axios.defaults.withCredentials = true;
     },
 
     query(resource, params) {

@@ -1,15 +1,12 @@
 import { SubscriptionService } from "@/common/api.service";
 
-// initial state
 const state = {
     batchSize: 24,
     batch: [],
 };
 
-// getters
 const getters = {};
 
-// actions
 const actions = {
     loadNextBatch({ state, commit }) {
         const limit = state.batchSize;
@@ -21,7 +18,6 @@ const actions = {
     },
 };
 
-// mutations
 const mutations = {
     append(state, batch) {
         state.batch = state.batch.concat(batch);

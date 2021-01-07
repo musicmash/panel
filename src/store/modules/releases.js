@@ -1,7 +1,7 @@
 import api from "@/api";
+import ReleasesService from "@/common/releases.service";
 import moment from "moment";
 
-// initial state
 const state = {
     filter: "",
     filterType: "",
@@ -9,12 +9,13 @@ const state = {
 
     batchSize: 24,
     batch: [],
+
+    isLoading: false,
+    items: [],
 };
 
-// getters
 const getters = {};
 
-// actions
 const actions = {
     getPastMonthReleases({ dispatch, commit }) {
         api.getPastMonthReleases((releases) => {
@@ -75,9 +76,36 @@ const actions = {
             }
         );
     },
+
+    fetch({ state, commit }) {
+        // api returns releases that released < till.
+        // so, to get releases for current day, we should request
+        // releases until next day.
+        const till = moment().add(1, "day").format("YYYY-MM-DD");
+        const params = {
+            till,
+            limit: 24,
+        };
+
+        // use pagination if we've already load some releases
+        if (state.items.length > 0) {
+            const firstRelease = state.items[0];
+            params.before = firstRelease.id;
+
+            params.offset = state.items.length;
+        }
+
+        commit("setLoading", true);
+
+        ReleasesService.get(params)
+            .then((resp) => resp.data)
+            .then((releases) => {
+                commit("setLoading", false);
+                commit("appendItems", releases);
+            });
+    },
 };
 
-// mutations
 const mutations = {
     setReleases(state, Releases) {
         state.all = Releases;
@@ -93,6 +121,16 @@ const mutations = {
     },
     reset(state) {
         state.batch = [];
+    },
+
+    setLoading(state, isLoading) {
+        state.isLoading = isLoading;
+    },
+    setLoaded(state, isLoaded) {
+        state.isLoaded = isLoaded;
+    },
+    appendItems(state, releases) {
+        state.items = state.items.concat(releases);
     },
 };
 
