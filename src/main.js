@@ -6,8 +6,6 @@ import store from "@/store";
 
 Vue.config.productionTip = false;
 
-// Vue.http.headers.common["x-user-name"] = "objque@gmail.com";
-
 new Vue({
     store,
     router,
