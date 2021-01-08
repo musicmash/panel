@@ -1,7 +1,7 @@
 .
 <template>
     <div>
-        <releases-onboarding-banner />
+        <releases-onboarding-banner v-show="!isAuthed" />
 
         <div class="columns is-multiline is-centered pl-5 pt-5 pr-5">
             <release
@@ -32,6 +32,7 @@ import { mapState } from "vuex";
 
 export default {
     computed: mapState({
+        isAuthed: (state) => state.user.isAuthed,
         releases: (state) => state.releases.items,
         isReleasesLoading: (state) => state.releases.isLoading,
     }),

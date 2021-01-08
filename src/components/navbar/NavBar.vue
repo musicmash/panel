@@ -8,7 +8,7 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary">
+                        <a class="button is-primary" v-show="!isAuthed">
                             <strong>Log in with Spotify</strong>
                         </a>
                     </div>
@@ -28,9 +28,13 @@
 
 <script>
 import HomeButton from "@/components/navbar/HomeButton";
+import { mapState } from "vuex";
 
 export default {
     name: "navbar",
+    computed: mapState({
+        isAuthed: (state) => state.user.isAuthed,
+    }),
     components: {
         "nav-home-button": HomeButton,
     },
