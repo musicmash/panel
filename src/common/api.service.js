@@ -1,37 +1,37 @@
 import axios from "axios";
 
-const ApiService = {
-    init() {
-        axios.defaults.baseURL = "/v1/";
-        axios.defaults.withCredentials = true;
-    },
+const client = axios.create({
+    baseURL: "/v1/",
+    withCredentials: true,
+});
 
+const ApiService = {
     query(resource, params) {
-        return axios.get(resource, params).catch((error) => {
+        return client.get(resource, params).catch((error) => {
             throw new Error(`ApiService ${error}`);
         });
     },
 
     get(resource, slug = "") {
-        return axios.get(`${resource}/${slug}`).catch((error) => {
+        return client.get(`${resource}/${slug}`).catch((error) => {
             throw new Error(`ApiService ${error}`);
         });
     },
 
     post(resource, params) {
-        return axios.post(`${resource}`, params);
+        return client.post(`${resource}`, params);
     },
 
     update(resource, slug, params) {
-        return axios.put(`${resource}/${slug}`, params);
+        return client.put(`${resource}/${slug}`, params);
     },
 
     put(resource, params) {
-        return axios.put(`${resource}`, params);
+        return client.put(`${resource}`, params);
     },
 
     delete(resource) {
-        return axios.delete(resource).catch((error) => {
+        return client.delete(resource).catch((error) => {
             throw new Error(`ApiService ${error}`);
         });
     },
