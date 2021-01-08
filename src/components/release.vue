@@ -49,6 +49,8 @@
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
     name: "release",
     props: {
@@ -60,6 +62,9 @@ export default {
         },
     },
     filters: {
+        date(date) {
+            return moment(date).format("MMMM D, YYYY");
+        },
         resizeImage(value, to) {
             return value.replace("500x500", to);
         },

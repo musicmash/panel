@@ -1,23 +1,15 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es2020": true,
-        "node": true
+    env: {
+        browser: true,
+        es2020: true,
+        node: true,
     },
-    "extends": [
-        "airbnb-base",
-        "plugin:vue/essential",
-        "prettier"
-    ],
-    "parserOptions": {
-        "parser": "babel-eslint"
+    extends: ["airbnb-base", "plugin:vue/essential", "prettier"],
+    parserOptions: {
+        parser: "babel-eslint",
     },
-    "plugins": [
-        "node",
-        "prettier",
-        "vue"
-    ],
-    "rules": {
+    plugins: ["node", "prettier", "vue"],
+    rules: {
         "func-names": "off",
         "import/no-unresolved": "off",
         "no-console": "off",
@@ -30,7 +22,7 @@ module.exports = {
         "no-var": "error",
         "one-var": "error",
         "prefer-const": "error",
-        "semi": "error",
+        semi: "error",
         "space-in-parens": "error",
-    }
+    },
 };
