@@ -1,36 +1,36 @@
 {
-  "name": "musicmash",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "axios": "^0.21.1",
-    "bulma": "^0.9.1",
-    "core-js": "^3.6.5",
-    "minimist": "1.2.5",
-    "moment": "^2.27.0",
-    "vue": "^2.6.11",
-    "vue-router": "^3.4.3",
-    "vuex": "^3.5.1"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.3",
-    "@vue/cli-plugin-eslint": "^4.5.3",
-    "@vue/cli-service": "^4.5.3",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-config-node": "^4.1.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-vue": "^6.2.2",
-    "prettier-eslint": "^11.0.0",
-    "vue-template-compiler": "^2.6.11"
-  }
+    "name": "musicmash",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint"
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "bulma": "^0.9.1",
+        "core-js": "^3.6.5",
+        "minimist": "1.2.5",
+        "moment": "^2.27.0",
+        "vue": "^2.6.11",
+        "vue-router": "^3.4.3",
+        "vuex": "^3.5.1"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^4.5.3",
+        "@vue/cli-plugin-eslint": "^4.5.3",
+        "@vue/cli-service": "^4.5.3",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb-base": "^14.2.0",
+        "eslint-config-node": "^4.1.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-import": "^2.22.0",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "eslint-plugin-vue": "^6.2.2",
+        "prettier-eslint": "^11.0.0",
+        "vue-template-compiler": "^2.6.11"
+    }
 }
