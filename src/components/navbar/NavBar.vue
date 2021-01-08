@@ -8,7 +8,7 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary" v-show="!isAuthed">
+                        <a class="button is-primary" v-show="!isAuthorized">
                             <strong>Log in with Spotify</strong>
                         </a>
                     </div>
@@ -17,7 +17,7 @@
         </nav>
 
         <div class="tabs is-centered">
-            <ul>
+            <ul  v-show="isAuthorized">
                 <!-- <li class="is-active"><a>Releases</a></li> -->
                 <!-- <li><a>Subscriptions</a></li> -->
                 <!-- <li><a>Settings</a></li> -->
@@ -33,7 +33,7 @@ import { mapState } from "vuex";
 export default {
     name: "navbar",
     computed: mapState({
-        isAuthed: (state) => state.user.isAuthed,
+        isAuthorized: (state) => state.user.isAuthorized,
     }),
     components: {
         "nav-home-button": HomeButton,
