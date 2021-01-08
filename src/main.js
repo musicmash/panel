@@ -7,7 +7,6 @@ import DateFilter from "@/filters/date";
 import store from "@/store";
 import firebase from "firebase/app";
 import "firebase/auth";
-import ApiService from "./common/api.service";
 
 Vue.config.productionTip = false;
 // Vue.use(VueResource);
@@ -28,9 +27,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 let app;
-firebase.auth().onAuthStateChanged((state) => {
-    if (state !== null) ApiService.init();
-
+firebase.auth().onAuthStateChanged(() => {
     if (!app) {
         app = new Vue({
             store,
