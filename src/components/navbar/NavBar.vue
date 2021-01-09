@@ -13,11 +13,13 @@
                         </a>
                     </div>
                 </div>
+
+                <nav-profile-button v-show="isAuthorized" />
             </div>
         </nav>
 
         <div class="tabs is-centered">
-            <ul  v-show="isAuthorized">
+            <ul v-show="isAuthorized">
                 <!-- <li class="is-active"><a>Releases</a></li> -->
                 <!-- <li><a>Subscriptions</a></li> -->
                 <!-- <li><a>Settings</a></li> -->
@@ -28,6 +30,7 @@
 
 <script>
 import HomeButton from "@/components/navbar/HomeButton";
+import ProfileButton from "@/components/navbar/ProfileButton";
 import { mapState } from "vuex";
 
 export default {
@@ -36,6 +39,7 @@ export default {
         isAuthorized: (state) => state.user.isAuthorized,
     }),
     components: {
+        "nav-profile-button": ProfileButton,
         "nav-home-button": HomeButton,
     },
 };
