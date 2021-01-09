@@ -6,18 +6,13 @@
             </div>
 
             <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-primary">
-                            <strong>Log in with Spotify</strong>
-                        </a>
-                    </div>
-                </div>
+                <nav-login-button v-show="!isAuthorized" />
+                <nav-profile-button v-show="isAuthorized" />
             </div>
         </nav>
 
         <div class="tabs is-centered">
-            <ul>
+            <ul v-show="isAuthorized">
                 <!-- <li class="is-active"><a>Releases</a></li> -->
                 <!-- <li><a>Subscriptions</a></li> -->
                 <!-- <li><a>Settings</a></li> -->
@@ -27,11 +22,19 @@
 </template>
 
 <script>
+import LoginButton from "@/components/navbar/LoginButton";
 import HomeButton from "@/components/navbar/HomeButton";
+import ProfileButton from "@/components/navbar/ProfileButton";
+import { mapState } from "vuex";
 
 export default {
     name: "navbar",
+    computed: mapState({
+        isAuthorized: (state) => state.user.isAuthorized,
+    }),
     components: {
+        "nav-login-button": LoginButton,
+        "nav-profile-button": ProfileButton,
         "nav-home-button": HomeButton,
     },
 };
