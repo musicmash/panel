@@ -1,0 +1,46 @@
+on:
+  push:
+    branches:
+      - master
+      - develop
+
+name: Build and push latest image to github container registry
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.MUSICMASH_CONTAINER_REGISTRY_PAT }}
+
+      - name: Pull latest images
+        run: |
+          docker pull ghcr.io/musicmash/web-ui-builder:latest || true
+          docker pull ghcr.io/musicmash/web-ui:latest || true
+
+      - name: Build images
+        run: |
+          docker build \
+            --target builder \
+            --cache-from web-ui-builder:latest \
+            -t ghcr.io/musicmash/web-ui-builder:latest \
+            .
+
+          docker build \
+            --cache-from ghcr.io/musicmash/web-ui-builder:latest \
+            --cache-from ghcr.io/musicmash/web-ui:latest \
+            --tag ghcr.io/musicmash/web-ui:latest \
+            .
+
+      - name: Push image to GitHub Container Registry
+        run: |
+          docker push ghcr.io/musicmash/web-ui-builder:latest
+          docker push ghcr.io/musicmash/web-ui:latest
