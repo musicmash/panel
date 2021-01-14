@@ -12,8 +12,8 @@ const ApiService = {
         });
     },
 
-    get(resource, slug = "") {
-        return client.get(`${resource}/${slug}`).catch((error) => {
+    get(resource) {
+        return client.get(`${resource}`).catch((error) => {
             throw new Error(`ApiService ${error}`);
         });
     },
