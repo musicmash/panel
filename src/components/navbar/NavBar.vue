@@ -6,8 +6,8 @@
             </div>
 
             <div class="navbar-end">
-                <nav-login-button v-show="!isAuthorized" />
-                <nav-profile-button v-show="isAuthorized" />
+                <nav-login-button v-show="!isAuthorizing && !isAuthorized" />
+                <nav-profile-button v-show="!isAuthorizing && isAuthorized" />
             </div>
         </nav>
 
@@ -30,6 +30,7 @@ import { mapState } from "vuex";
 export default {
     name: "navbar",
     computed: mapState({
+        isAuthorizing: (state) => state.user.isAuthorizing,
         isAuthorized: (state) => state.user.isAuthorized,
     }),
     components: {

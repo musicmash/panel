@@ -1,5 +1,9 @@
+import ApiService from "@/common/api.service";
+
 const UserService = {
-    do() {},
+    checkAuth() {
+        return ApiService.get("user/info");
+    },
 };
 
 export default UserService;
