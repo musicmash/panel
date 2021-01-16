@@ -7,15 +7,11 @@ const client = axios.create({
 
 const ApiService = {
     query(resource, params) {
-        return client.get(resource, params).catch((error) => {
-            throw new Error(`ApiService ${error}`);
-        });
+        return client.get(resource, params);
     },
 
     get(resource) {
-        return client.get(`${resource}`).catch((error) => {
-            throw new Error(`ApiService ${error}`);
-        });
+        return client.get(`${resource}`);
     },
 
     post(resource, params) {
@@ -31,9 +27,7 @@ const ApiService = {
     },
 
     delete(resource) {
-        return client.delete(resource).catch((error) => {
-            throw new Error(`ApiService ${error}`);
-        });
+        return client.delete(resource);
     },
 };
 
