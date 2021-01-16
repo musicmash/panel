@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import ReleasesPage from "@/pages/ReleasesPage";
+import ReleasesPage from "@/views/Releases";
 
 Vue.use(VueRouter);
 
