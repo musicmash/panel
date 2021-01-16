@@ -14,6 +14,8 @@
             </release>
         </div>
 
+        <back-to-top />
+
         <div class="container">
             <observer v-on:intersect="intersected"></observer>
 
@@ -28,6 +30,7 @@
 import Release from "@/components/release";
 import observer from "@/components/observer";
 import ReleasesOnboardingBanner from "@/components/ReleasesOnboardingBanner";
+import BackToTop from "@/components/BackToTop";
 import { mapState } from "vuex";
 
 export default {
@@ -47,6 +50,7 @@ export default {
         observer,
         release: Release,
         "releases-onboarding-banner": ReleasesOnboardingBanner,
+        "back-to-top": BackToTop,
     },
 };
 </script>
