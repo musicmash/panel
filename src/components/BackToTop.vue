@@ -1,7 +1,7 @@
 <template>
     <transition name="back-to-top-fade">
         <button
-            class="vue-back-to-top button is-success"
+            class="vue-back-to-top button is-success is-rounded is-primary is-light"
             v-show="visible"
             @click="backToTop"
         >
@@ -66,7 +66,7 @@ export default {
     cursor: pointer;
     position: fixed;
     z-index: 1000;
-    bottom: 40px;
-    right: 40px;
+    bottom: 35px;
+    right: 35px;
 }
 </style>
