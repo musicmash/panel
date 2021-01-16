@@ -14,7 +14,7 @@
         </a>
 
         <div class="navbar-dropdown is-right">
-            <a class="navbar-item is-red">Logout</a>
+            <a class="navbar-item is-red" @click="logout()">Logout</a>
         </div>
     </div>
 </template>
@@ -29,6 +29,9 @@ export default {
     methods: {
         toggleMenu() {
             this.isActive = !this.isActive;
+        },
+        logout() {
+            this.$store.dispatch("user/logout");
         },
     },
 };

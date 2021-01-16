@@ -22,6 +22,16 @@ const actions = {
                 commit("setAuthorizing", false);
             });
     },
+
+    logout() {
+        UserService.logout()
+            .then(() => {
+                window.location.replace("/");
+            })
+            .catch(() => {
+                console.log("logout 40x");
+            });
+    },
 };
 
 const mutations = {
