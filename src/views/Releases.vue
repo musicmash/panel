@@ -1,7 +1,7 @@
 .
 <template>
     <div>
-        <releases-onboarding-banner v-show="!isAuthorizing && !isAuthorized" />
+        <releases-onboarding-banner v-if="!isAuthorizing && !isAuthorized" />
 
         <div class="columns is-multiline is-centered pl-5 pt-5 pr-5">
             <release
