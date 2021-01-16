@@ -6,8 +6,8 @@
             </div>
 
             <div class="navbar-end">
-                <nav-login-button v-show="!isAuthorizing && !isAuthorized" />
-                <nav-profile-button v-show="!isAuthorizing && isAuthorized" />
+                <nav-login-button v-if="!isAuthorizing && !isAuthorized" />
+                <nav-profile-button v-else />
             </div>
         </nav>
 
