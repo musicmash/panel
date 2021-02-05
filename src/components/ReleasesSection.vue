@@ -17,7 +17,7 @@
                 class="column is-8-mobile is-4-tablet is-3-desktop is-2-widescreen"
                 v-for="release in releases"
                 :release="release"
-                :showReleaseDate="false"
+                :showReleaseDate="showReleaseDate"
                 :key="release.id"
             />
         </div>
@@ -30,6 +30,7 @@ import { mapState } from "vuex";
 
 export default {
     props: {
+        showReleaseDate: Boolean,
         releases: mapState([]),
         releaseDatePrecision: String,
     },
