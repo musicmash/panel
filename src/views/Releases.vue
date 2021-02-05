@@ -16,18 +16,18 @@
         <back-to-top />
 
         <div class="container">
-            <observer v-on:intersect="intersected"></observer>
-
             <div class="has-text-centered pb-5" v-show="isReleasesLoading">
                 <button class="button is-success is-loading">Loading</button>
             </div>
         </div>
+
+        <infinity-loader v-on:intersect="intersected" />
     </div>
 </template>
 
 <script>
 import Release from "@/components/release";
-import observer from "@/components/observer";
+import InfinityLoader from "@/components/InfinityLoader";
 import ReleasesOnboardingBanner from "@/components/ReleasesOnboardingBanner";
 import BackToTop from "@/components/BackToTop";
 import { mapState } from "vuex";
@@ -40,14 +40,19 @@ export default {
 
         releases: (state) => state.releases.items,
     }),
+    mounted() {
+        this.$store.dispatch("releases/fetch");
+    },
     methods: {
         intersected() {
+            if (this.isReleasesLoading) return;
+
             this.$store.dispatch("releases/fetch");
         },
     },
     components: {
-        observer,
         release: Release,
+        "infinity-loader": InfinityLoader,
         "releases-onboarding-banner": ReleasesOnboardingBanner,
         "back-to-top": BackToTop,
     },
