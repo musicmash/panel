@@ -2,27 +2,27 @@
     <div>
         <releases-onboarding-banner v-if="!isAuthorizing && !isAuthorized" />
 
-        <div class="container pt-5" v-if="releases.length > 0">
-            <nav class="level mb-0">
-                <div class="level-left">
-                    <div class="level-item">
-                        <section class="section p-0">
-                            <h1 class="title">Released today</h1>
-                        </section>
-                    </div>
-                </div>
-            </nav>
+        <releases-section
+            class=""
+            v-if="todayReleases.length > 0"
+            :releases="todayReleases"
+            :releaseDatePrecision="'today'"
+        />
 
-            <div class="columns is-mobile is-centered is-multiline pt-5">
-                <release
-                    class="column is-8-mobile is-4-tablet is-3-desktop is-2-widescreen"
-                    v-for="release in releases"
-                    :release="release"
-                    :showReleaseDate="false"
-                    :key="release.id"
-                />
-            </div>
-        </div>
+        <releases-section
+            class="pt-5"
+            v-if="yesterdayReleases.length > 0"
+            :releases="yesterdayReleases"
+            :releaseDatePrecision="'yesterday'"
+        />
+
+        <releases-section
+            class="pt-5"
+            v-if="recentlyReleases.length > 0"
+            :releases="recentlyReleases"
+            :releaseDatePrecision="'recently'"
+            :showReleaseDate="true"
+        />
 
         <div class="container pt-5">
             <div class="has-text-centered" v-show="isReleasesLoading">
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import Release from "@/components/Release";
+import ReleasesSection from "@/components/ReleasesSection";
 import InfinityLoader from "@/components/InfinityLoader";
 import ReleasesOnboardingBanner from "@/components/ReleasesOnboardingBanner";
 import BackToTop from "@/components/BackToTop";
@@ -48,7 +48,9 @@ export default {
         isAuthorized: (state) => state.user.isAuthorized,
         isReleasesLoading: (state) => state.releases.isLoading,
 
-        releases: (state) => state.releases.items,
+        todayReleases: (state) => state.releases.todayReleases,
+        yesterdayReleases: (state) => state.releases.yesterdayReleases,
+        recentlyReleases: (state) => state.releases.recentlyReleases,
     }),
     mounted() {
         this.$store.dispatch("releases/fetch");
@@ -61,7 +63,7 @@ export default {
         },
     },
     components: {
-        release: Release,
+        "releases-section": ReleasesSection,
         "infinity-loader": InfinityLoader,
         "releases-onboarding-banner": ReleasesOnboardingBanner,
         "back-to-top": BackToTop,
