@@ -2,18 +2,18 @@
     <div>
         <releases-onboarding-banner v-if="!isAuthorizing && !isAuthorized" />
 
-        <div class="columns is-multiline is-centered pl-5 pt-5 pr-5">
-            <release
-                class="column is-3"
-                v-for="release in releases"
-                :release="release"
-                :text="release"
-                :key="release.id"
-            >
-            </release>
+        <div class="container pt-5">
+            <div class="columns is-multiline is-mobile is-centered">
+                <release
+                    class="column is-narrow"
+                    v-for="release in releases"
+                    :release="release"
+                    :text="release"
+                    :key="release.id"
+                >
+                </release>
+            </div>
         </div>
-
-        <back-to-top />
 
         <div class="container">
             <div class="has-text-centered pb-5" v-show="isReleasesLoading">
@@ -21,6 +21,7 @@
             </div>
         </div>
 
+        <back-to-top />
         <infinity-loader v-on:intersect="intersected" />
     </div>
 </template>
