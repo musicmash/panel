@@ -1,4 +1,3 @@
-.
 <template>
     <div>
         <releases-onboarding-banner v-if="!isAuthorizing && !isAuthorized" />

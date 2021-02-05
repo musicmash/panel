@@ -1,4 +1,4 @@
-import { SubscriptionService } from "@/common/api.service";
+import SubscriptionService from "@/common/subscriptions.service";
 
 const state = {
     batchSize: 24,

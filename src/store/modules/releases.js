@@ -2,13 +2,6 @@ import ReleasesService from "@/common/releases.service";
 import moment from "moment";
 
 const state = {
-    filter: "",
-    filterType: "",
-    all: [],
-
-    batchSize: 24,
-    batch: [],
-
     isLoading: false,
     items: [],
     itemIds: new Set([]),
@@ -55,22 +48,6 @@ const actions = {
 };
 
 const mutations = {
-    setReleases(state, Releases) {
-        state.all = Releases;
-    },
-    setFilterType(state, type) {
-        state.filter = "Last 30 days";
-        if (type === "this-week") state.filter = "This week";
-        if (type === "next-week") state.filter = "Next week";
-        state.filterType = type;
-    },
-    append(state, releases) {
-        state.batch = state.batch.concat(releases);
-    },
-    reset(state) {
-        state.batch = [];
-    },
-
     setLoading(state, isLoading) {
         state.isLoading = isLoading;
     },
