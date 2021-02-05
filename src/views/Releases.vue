@@ -3,9 +3,25 @@
         <releases-onboarding-banner v-if="!isAuthorizing && !isAuthorized" />
 
         <releases-section
-            v-if="releases.length > 0"
-            :releases="releases"
+            class=""
+            v-if="todayReleases.length > 0"
+            :releases="todayReleases"
             :releaseDatePrecision="'today'"
+        />
+
+        <releases-section
+            class="pt-5"
+            v-if="yesterdayReleases.length > 0"
+            :releases="yesterdayReleases"
+            :releaseDatePrecision="'yesterday'"
+        />
+
+        <releases-section
+            class="pt-5"
+            v-if="recentlyReleases.length > 0"
+            :releases="recentlyReleases"
+            :releaseDatePrecision="'recently'"
+            :showReleaseDate="true"
         />
 
         <div class="container pt-5">
@@ -32,7 +48,9 @@ export default {
         isAuthorized: (state) => state.user.isAuthorized,
         isReleasesLoading: (state) => state.releases.isLoading,
 
-        releases: (state) => state.releases.items,
+        todayReleases: (state) => state.releases.todayReleases,
+        yesterdayReleases: (state) => state.releases.yesterdayReleases,
+        recentlyReleases: (state) => state.releases.recentlyReleases,
     }),
     mounted() {
         this.$store.dispatch("releases/fetch");

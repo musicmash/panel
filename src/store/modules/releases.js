@@ -5,6 +5,14 @@ const state = {
     isLoading: false,
     items: [],
     itemIds: new Set([]),
+
+    today: moment().format("YYYY-MM-DD"),
+    todayReleases: [],
+
+    yesterday: moment().subtract(1, "day").format("YYYY-MM-DD"),
+    yesterdayReleases: [],
+
+    recentlyReleases: [],
 };
 
 const getters = {};
@@ -59,6 +67,18 @@ const mutations = {
 
         releases.forEach((release) => {
             state.itemIds.add(release.id);
+
+            if (release.released === state.today) {
+                state.todayReleases.push(release);
+                return;
+            }
+
+            if (release.released === state.yesterday) {
+                state.yesterdayReleases.push(release);
+                return;
+            }
+
+            state.recentlyReleases.push(release);
         });
     },
 };
