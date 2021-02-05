@@ -15,14 +15,13 @@
             </div>
         </div>
 
-        <back-to-top />
-
         <div class="container">
             <div class="has-text-centered pb-5" v-show="isReleasesLoading">
                 <button class="button is-success is-loading">Loading</button>
             </div>
         </div>
 
+        <back-to-top />
         <infinity-loader v-on:intersect="intersected" />
     </div>
 </template>
