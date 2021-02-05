@@ -3,7 +3,7 @@
         <div class="release-poster">
             <img
                 class="release-poster-img"
-                :src="release.poster | resizeImage('264x264')"
+                :src="release.poster"
                 alt=""
             />
             <ul class="action">
@@ -64,9 +64,6 @@ export default {
     filters: {
         date(date) {
             return moment(date).format("MMMM D, YYYY");
-        },
-        resizeImage(value, to) {
-            return value.replace("500x500", to);
         },
     },
 };
