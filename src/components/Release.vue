@@ -95,7 +95,7 @@ export default {
 }
 
 .is-slightly-shadowed {
-    box-shadow: 0 0 12px rgba(32,32,32,.2);
+    box-shadow: 0 0 12px rgba(32, 32, 32, 0.2);
 }
 
 .has-ellipsis {
