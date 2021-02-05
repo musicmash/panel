@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import release from "@/components/release";
+import Release from "@/components/Release";
 import InfinityLoader from "@/components/InfinityLoader";
 import ReleasesOnboardingBanner from "@/components/ReleasesOnboardingBanner";
 import BackToTop from "@/components/BackToTop";
@@ -63,7 +63,7 @@ export default {
         },
     },
     components: {
-        release,
+        "release": Release,
         "infinity-loader": InfinityLoader,
         "releases-onboarding-banner": ReleasesOnboardingBanner,
         "back-to-top": BackToTop,
