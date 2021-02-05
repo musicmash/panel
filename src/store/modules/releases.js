@@ -11,6 +11,7 @@ const state = {
 
     isLoading: false,
     items: [],
+    itemIds: new Set([]),
 };
 
 const getters = {};
@@ -28,16 +29,24 @@ const actions = {
 
         // use pagination if we've already load some releases
         if (state.items.length > 0) {
-            const firstRelease = state.items[0];
-            params.before = firstRelease.id;
+            const latestRelease = state.items[state.items.length - 1];
 
-            params.offset = state.items.length;
+            params.before = latestRelease.id;
         }
 
         commit("setLoading", true);
 
         ReleasesService.get(params)
             .then((resp) => resp.data)
+            .then((releases) => {
+                const uniqueReleases = [];
+                releases.forEach((release) => {
+                    if (!state.itemIds.has(release.id))
+                        uniqueReleases.push(release);
+                });
+
+                return uniqueReleases;
+            })
             .then((releases) => {
                 commit("setLoading", false);
                 commit("appendItems", releases);
@@ -70,6 +79,10 @@ const mutations = {
     },
     appendItems(state, releases) {
         state.items = state.items.concat(releases);
+
+        releases.forEach((release) => {
+            state.itemIds.add(release.id);
+        });
     },
 };
 
