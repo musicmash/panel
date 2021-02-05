@@ -4,7 +4,7 @@
             <figure class="image is-square">
                 <a class="action-item-btn" :href="linkOnSpotify">
                     <img
-                        class="is-slightly-rounded is-slightly-shadowed"
+                        class="is-slightly-rounded is-slightly-shadowed is-release-poster"
                         :src="release.poster"
                         :alt="release.title"
                     />
@@ -96,6 +96,21 @@ export default {
 
 .is-slightly-shadowed {
     box-shadow: 0 0 12px rgba(32, 32, 32, 0.2);
+}
+
+.is-release-poster {
+    object-fit: cover;
+    border-radius: 8px;
+    -webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+    -webkit-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+}
+
+.is-release-poster:hover {
+    opacity: 0.7;
 }
 
 .is-release-title {
