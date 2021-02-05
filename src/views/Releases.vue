@@ -2,15 +2,17 @@
     <div>
         <releases-onboarding-banner v-if="!isAuthorizing && !isAuthorized" />
 
-        <div class="columns is-multiline is-mobile is-centered pt-5">
-            <release
-                class="column is-narrow"
-                v-for="release in releases"
-                :release="release"
-                :text="release"
-                :key="release.id"
-            >
-            </release>
+        <div class="container">
+            <div class="columns is-multiline is-mobile is-centered pt-5">
+                <release
+                    class="column is-narrow"
+                    v-for="release in releases"
+                    :release="release"
+                    :text="release"
+                    :key="release.id"
+                >
+                </release>
+            </div>
         </div>
 
         <back-to-top />
