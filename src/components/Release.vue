@@ -6,7 +6,7 @@
                     <img
                         class="is-slightly-rounded"
                         :src="release.poster"
-                        alt=""
+                        :alt="release.title"
                     />
                 </a>
             </figure>
