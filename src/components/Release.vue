@@ -4,7 +4,7 @@
             <figure class="image">
                 <a class="action-item-btn" :href="linkOnSpotify">
                     <img
-                        class="is-slightly-rounded"
+                        class="is-slightly-rounded is-slightly-shadowed"
                         :src="release.poster"
                         :alt="release.title"
                     />
@@ -92,6 +92,10 @@ export default {
 
 .is-slightly-rounded {
     border-radius: 2%;
+}
+
+.is-slightly-shadowed {
+    box-shadow: 0 0 12px rgba(32,32,32,.2);
 }
 
 .has-ellipsis {
