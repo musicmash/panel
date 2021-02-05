@@ -25,9 +25,7 @@ export default {
     },
     methods: {
         excludeVideos(releases) {
-            return releases.filter(function (release) {
-                return release.type !== "music-video";
-            });
+            return releases.filter((release) => release.type !== "music-video");
         },
         loadReleases(since, till) {
             return this.resource.get({ since, till }).then((resp) => {
