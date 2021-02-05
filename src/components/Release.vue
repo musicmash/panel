@@ -34,19 +34,19 @@
                             ></path>
                         </svg>
                     </div>
-                    <span class="is-size-6">{{ release.title }}</span>
+                    <span class="is-release-title">{{ release.title }}</span>
                 </div>
 
-                <div class="has-ellipsis">
-                    <span class="has-text-weight-light is-size-7 mr-1">by</span>
-                    <a class="has-text-weight-medium is-size-6" href="#">{{
+                <div class="has-ellipsis is-release-artist">
+                    <span class="has-text-weight-light mr-1">by</span>
+                    <a class="has-text-weight-medium" href="#">{{
                         release.artist_name
                     }}</a>
                 </div>
 
-                <div v-if="showReleaseDate">
-                    <span class="has-text-weight-light is-size-7 mr-1">on</span>
-                    <span class="has-text-weight-medium is-size-6">{{
+                <div v-if="showReleaseDate" class="is-release-date has-text-weight-light">
+                    <span class="mr-1">on</span>
+                    <span>{{
                         release.released | date
                     }}</span>
                 </div>
@@ -96,6 +96,20 @@ export default {
 
 .is-slightly-shadowed {
     box-shadow: 0 0 12px rgba(32, 32, 32, 0.2);
+}
+
+.is-release-title {
+    font-size: 15px;
+    color: #4a4a4a;
+}
+
+.is-release-artist {
+    font-size: 14px;
+}
+
+.is-release-date {
+    font-size: 13px;
+    font-weight: 400;
 }
 
 .has-ellipsis {
