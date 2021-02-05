@@ -4,7 +4,7 @@
 
         <div class="columns is-multiline is-centered pl-5 pt-5 pr-5">
             <release
-                class="column is-3"
+                class="column is-narrow"
                 v-for="release in releases"
                 :release="release"
                 :text="release"
