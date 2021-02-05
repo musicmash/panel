@@ -7,9 +7,7 @@
                 <div class="level-left">
                     <div class="level-item">
                         <section class="section p-0">
-                            <h1 class="title">
-                                Released today
-                            </h1>
+                            <h1 class="title">Released today</h1>
                         </section>
                     </div>
                 </div>
@@ -63,7 +61,7 @@ export default {
         },
     },
     components: {
-        "release": Release,
+        release: Release,
         "infinity-loader": InfinityLoader,
         "releases-onboarding-banner": ReleasesOnboardingBanner,
         "back-to-top": BackToTop,
