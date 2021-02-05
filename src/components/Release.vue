@@ -1,7 +1,7 @@
 <template>
     <div class="card is-shadowless">
         <div class="card-image">
-            <figure class="image">
+            <figure class="image is-square">
                 <a class="action-item-btn" :href="linkOnSpotify">
                     <img
                         class="is-slightly-rounded is-slightly-shadowed"
