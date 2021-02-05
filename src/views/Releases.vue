@@ -2,8 +2,8 @@
     <div>
         <releases-onboarding-banner v-if="!isAuthorizing && !isAuthorized" />
 
-        <div class="container">
-            <div class="columns is-multiline is-mobile is-centered pt-5">
+        <div class="container pt-5">
+            <div class="columns is-multiline is-mobile is-centered">
                 <release
                     class="column is-narrow"
                     v-for="release in releases"
