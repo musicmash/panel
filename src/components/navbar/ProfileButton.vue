@@ -1,35 +1,14 @@
 <template>
-    <div
-        class="navbar-item has-dropdown"
-        @click="toggleMenu()"
-        v-bind:class="{ 'is-active': isActive }"
-    >
-        <a class="navbar-link">
-            <figure class="image">
-                <img
-                    class="is-rounded"
-                    src="https://bulma.io/images/placeholders/32x32.png"
-                />
-            </figure>
-        </a>
-
-        <div class="navbar-dropdown is-right">
-            <a class="navbar-item is-red" @click="logout()">Logout</a>
+    <div class="navbar-item pr-0">
+        <div class="buttons">
+            <a class="button is-ghost p-0" @click="logout()"> Log out </a>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            isActive: false,
-        };
-    },
     methods: {
-        toggleMenu() {
-            this.isActive = !this.isActive;
-        },
         logout() {
             this.$store.dispatch("user/logout");
         },
