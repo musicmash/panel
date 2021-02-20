@@ -1,17 +1,16 @@
 import ReleasesService from "@/common/releases.service";
 import moment from "moment";
+import { parse, isToday, isYesterday, isThisWeek, isThisMonth } from "date-fns";
 
 const state = {
     isLoading: false,
     items: [],
     itemIds: new Set([]),
 
-    today: moment().format("YYYY-MM-DD"),
     todayReleases: [],
-
-    yesterday: moment().subtract(1, "day").format("YYYY-MM-DD"),
     yesterdayReleases: [],
-
+    thisWeekReleases: [],
+    thisMonthReleases: [],
     recentlyReleases: [],
 };
 
@@ -67,14 +66,25 @@ const mutations = {
 
         releases.forEach((release) => {
             state.itemIds.add(release.id);
+            const released = parse(release.released, "yyyy-MM-dd", new Date());
 
-            if (release.released === state.today) {
+            if (isToday(released)) {
                 state.todayReleases.push(release);
                 return;
             }
 
-            if (release.released === state.yesterday) {
+            if (isYesterday(released)) {
                 state.yesterdayReleases.push(release);
+                return;
+            }
+
+            if (isThisWeek(released, { weekStartsOn: 1 })) {
+                state.thisWeekReleases.push(release);
+                return;
+            }
+
+            if (isThisMonth(released)) {
+                state.thisMonthReleases.push(release);
                 return;
             }
 
