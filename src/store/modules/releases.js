@@ -1,6 +1,13 @@
 import ReleasesService from "@/common/releases.service";
-import moment from "moment";
-import { parse, isToday, isYesterday, isThisWeek, isThisMonth } from "date-fns";
+import {
+    parse,
+    format,
+    startOfTomorrow,
+    isToday,
+    isYesterday,
+    isThisWeek,
+    isThisMonth,
+} from "date-fns";
 
 const state = {
     isLoading: false,
@@ -21,7 +28,8 @@ const actions = {
         // api returns releases that released < till.
         // so, to get releases for current day, we should request
         // releases until next day.
-        const till = moment().add(1, "day").format("YYYY-MM-DD");
+        const tomorrow = startOfTomorrow(new Date());
+        const till = format(tomorrow, "yyyy-MM-dd");
         const params = {
             till,
             limit: 24,

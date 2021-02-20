@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import moment from "moment";
+import { format, parse } from "date-fns";
 
 export default {
     props: {
@@ -71,7 +71,8 @@ export default {
     },
     filters: {
         date(date) {
-            return moment(date).format("MMMM D, YYYY");
+            const released = parse(date, "yyyy-MM-dd", new Date());
+            return format(released, "MMMM d, yyyy", { weekStartsOn: 1 });
         },
     },
 };
