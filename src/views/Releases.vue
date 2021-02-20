@@ -20,7 +20,7 @@
             class="mt-5"
             v-if="recentlyReleases.length > 0"
             :releases="recentlyReleases"
-            :releaseDatePrecision="'recently'"
+            :releaseDatePrecision="'older'"
             :showReleaseDate="true"
         />
 
