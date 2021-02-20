@@ -1,17 +1,23 @@
 import ReleasesService from "@/common/releases.service";
-import moment from "moment";
+import {
+    parse,
+    format,
+    startOfTomorrow,
+    isToday,
+    isYesterday,
+    isThisWeek,
+    isThisMonth,
+} from "date-fns";
 
 const state = {
     isLoading: false,
     items: [],
     itemIds: new Set([]),
 
-    today: moment().format("YYYY-MM-DD"),
     todayReleases: [],
-
-    yesterday: moment().subtract(1, "day").format("YYYY-MM-DD"),
     yesterdayReleases: [],
-
+    thisWeekReleases: [],
+    thisMonthReleases: [],
     recentlyReleases: [],
 };
 
@@ -22,7 +28,8 @@ const actions = {
         // api returns releases that released < till.
         // so, to get releases for current day, we should request
         // releases until next day.
-        const till = moment().add(1, "day").format("YYYY-MM-DD");
+        const tomorrow = startOfTomorrow(new Date());
+        const till = format(tomorrow, "yyyy-MM-dd");
         const params = {
             till,
             limit: 24,
@@ -67,14 +74,25 @@ const mutations = {
 
         releases.forEach((release) => {
             state.itemIds.add(release.id);
+            const released = parse(release.released, "yyyy-MM-dd", new Date());
 
-            if (release.released === state.today) {
+            if (isToday(released)) {
                 state.todayReleases.push(release);
                 return;
             }
 
-            if (release.released === state.yesterday) {
+            if (isYesterday(released)) {
                 state.yesterdayReleases.push(release);
+                return;
+            }
+
+            if (isThisWeek(released, { weekStartsOn: 1 })) {
+                state.thisWeekReleases.push(release);
+                return;
+            }
+
+            if (isThisMonth(released)) {
+                state.thisMonthReleases.push(release);
                 return;
             }
 

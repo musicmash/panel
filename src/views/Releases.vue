@@ -18,9 +18,25 @@
 
         <releases-section
             class="mt-5"
+            v-if="thisWeekReleases.length > 0"
+            :releases="thisWeekReleases"
+            :releaseDatePrecision="'this week'"
+            :showReleaseDate="true"
+        />
+
+        <releases-section
+            class="mt-5"
+            v-if="thisMonthReleases.length > 0"
+            :releases="thisMonthReleases"
+            :releaseDatePrecision="'this month'"
+            :showReleaseDate="true"
+        />
+
+        <releases-section
+            class="mt-5"
             v-if="recentlyReleases.length > 0"
             :releases="recentlyReleases"
-            :releaseDatePrecision="'recently'"
+            :releaseDatePrecision="'older'"
             :showReleaseDate="true"
         />
 
@@ -50,6 +66,8 @@ export default {
 
         todayReleases: (state) => state.releases.todayReleases,
         yesterdayReleases: (state) => state.releases.yesterdayReleases,
+        thisWeekReleases: (state) => state.releases.thisWeekReleases,
+        thisMonthReleases: (state) => state.releases.thisMonthReleases,
         recentlyReleases: (state) => state.releases.recentlyReleases,
     }),
     mounted() {
