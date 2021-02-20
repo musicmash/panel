@@ -4,8 +4,8 @@
             <div class="level-left">
                 <div class="level-item">
                     <section class="section p-0">
-                        <h1 class="title">
-                            Released {{ releaseDatePrecision }}
+                        <h1 class="title is-capitalized">
+                            {{ releaseDatePrecision }}
                         </h1>
                     </section>
                 </div>
