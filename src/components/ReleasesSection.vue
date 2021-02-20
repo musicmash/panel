@@ -1,5 +1,5 @@
 <template>
-    <div class="container pt-5">
+    <div class="container">
         <nav class="level mb-0">
             <div class="level-left">
                 <div class="level-item">
@@ -12,7 +12,7 @@
             </div>
         </nav>
 
-        <div class="columns is-mobile is-centered is-multiline pt-5">
+        <div class="columns is-mobile is-centered is-multiline mt-3">
             <release
                 class="column is-8-mobile is-4-tablet is-3-desktop is-2-widescreen"
                 v-for="release in releases"
@@ -39,3 +39,17 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+/*
+    I don't know how to make centered columns only for mobile screens,
+    so easy-fix is just override is-centered class on our scope.
+*/
+@media screen and (min-width: 768px) {
+    .is-centered {
+        -webkit-box-pack: left;
+        -ms-flex-pack: left;
+        justify-content: left;
+    }
+}
+</style>

@@ -44,11 +44,12 @@
                     }}</a>
                 </div>
 
-                <div v-if="showReleaseDate" class="is-release-date has-text-weight-light">
+                <div
+                    v-if="showReleaseDate"
+                    class="is-release-date has-text-weight-light"
+                >
                     <span class="mr-1">on</span>
-                    <span>{{
-                        release.released | date
-                    }}</span>
+                    <span>{{ release.released | date }}</span>
                 </div>
             </div>
         </div>
