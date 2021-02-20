@@ -3,28 +3,28 @@
         <releases-onboarding-banner v-if="!isAuthorizing && !isAuthorized" />
 
         <releases-section
-            class=""
+            class="mt-5"
             v-if="todayReleases.length > 0"
             :releases="todayReleases"
             :releaseDatePrecision="'today'"
         />
 
         <releases-section
-            class="pt-5"
+            class="mt-5"
             v-if="yesterdayReleases.length > 0"
             :releases="yesterdayReleases"
             :releaseDatePrecision="'yesterday'"
         />
 
         <releases-section
-            class="pt-5"
+            class="mt-5"
             v-if="recentlyReleases.length > 0"
             :releases="recentlyReleases"
             :releaseDatePrecision="'recently'"
             :showReleaseDate="true"
         />
 
-        <div class="container pt-5">
+        <div class="container mt-3">
             <div class="has-text-centered" v-show="isReleasesLoading">
                 <button class="button is-success is-loading">Loading</button>
             </div>

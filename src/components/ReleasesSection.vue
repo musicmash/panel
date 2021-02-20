@@ -1,5 +1,5 @@
 <template>
-    <div class="container pt-5">
+    <div class="container">
         <nav class="level mb-0">
             <div class="level-left">
                 <div class="level-item">
@@ -12,7 +12,7 @@
             </div>
         </nav>
 
-        <div class="columns is-mobile is-centered is-multiline pt-5">
+        <div class="columns is-mobile is-centered is-multiline mt-3">
             <release
                 class="column is-8-mobile is-4-tablet is-3-desktop is-2-widescreen"
                 v-for="release in releases"
