@@ -13,9 +13,20 @@
 
         <div class="tabs is-centered">
             <ul v-show="isAuthorized">
-                <!-- <li class="is-active"><a>Releases</a></li> -->
-                <!-- <li><a>Subscriptions</a></li> -->
-                <!-- <li><a>Settings</a></li> -->
+                <li
+                    :class="{
+                        'is-active': $route.fullPath == '/releases',
+                    }"
+                >
+                    <router-link to="/releases">Releases</router-link>
+                </li>
+                <li
+                    :class="{
+                        'is-active': $route.fullPath == '/subscriptions',
+                    }"
+                >
+                    <router-link to="/subscriptions">Subscriptions</router-link>
+                </li>
             </ul>
         </div>
     </div>
