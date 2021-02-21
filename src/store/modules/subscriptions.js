@@ -1,29 +1,45 @@
 import SubscriptionService from "@/common/subscriptions.service";
 
 const state = {
-    batchSize: 24,
-    batch: [],
+    isLoading: false,
+    items: [],
 };
 
 const getters = {};
 
 const actions = {
-    loadNextBatch({ state, commit }) {
-        const limit = state.batchSize;
-        const offset = state.batch.length;
+    fetch({ state, commit }) {
+        const params = {
+            limit: 24,
+        };
 
-        SubscriptionService.get(limit, offset)
+        // use pagination if we've already load some subscriptions
+        if (state.items.length > 0) {
+            const latestSubscription = state.items[state.items.length - 1];
+
+            params.before = latestSubscription.id;
+        }
+
+        commit("setLoading", true);
+
+        SubscriptionService.get(params)
             .then((resp) => resp.data)
-            .then((subscriptions) => commit("append", subscriptions));
+            .then((subscriptions) => {
+                commit("setLoading", false);
+                commit("appendItems", subscriptions);
+            });
     },
 };
 
 const mutations = {
-    append(state, batch) {
-        state.batch = state.batch.concat(batch);
+    setLoading(state, isLoading) {
+        state.isLoading = isLoading;
     },
-    reset(state) {
-        state.batch = [];
+    setLoaded(state, isLoaded) {
+        state.isLoaded = isLoaded;
+    },
+    appendItems(state, subscriptions) {
+        state.items = state.items.concat(subscriptions);
     },
 };
 
