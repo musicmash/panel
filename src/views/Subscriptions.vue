@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import subscription from "@/components/subscription";
+import Subscription from "@/components/Subscription";
 import InfinityLoader from "@/components/InfinityLoader";
 import BackToTop from "@/components/BackToTop";
 import { mapState } from "vuex";
@@ -43,7 +43,7 @@ export default {
         },
     },
     components: {
-        subscription,
+        subscription: Subscription,
         "infinity-loader": InfinityLoader,
         "back-to-top": BackToTop,
     },
