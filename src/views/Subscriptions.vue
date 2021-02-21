@@ -49,3 +49,19 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+/*
+    I don't know how to make centered columns only for mobile screens,
+    so easy-fix is just override is-centered class on our scope.
+
+    Same fix also uses on releases page.
+*/
+@media screen and (min-width: 768px) {
+    .is-centered {
+        -webkit-box-pack: left;
+        -ms-flex-pack: left;
+        justify-content: left;
+    }
+}
+</style>
