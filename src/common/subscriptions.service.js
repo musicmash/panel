@@ -1,12 +1,9 @@
 import ApiService from "@/common/api.service";
 
 const SubscriptionService = {
-    get(limit = 24, offset = 0) {
+    get(params) {
         return ApiService.query("subscriptions", {
-            params: {
-                limit,
-                offset,
-            },
+            params,
         });
     },
 };
