@@ -40,7 +40,7 @@
             :showReleaseDate="true"
         />
 
-        <div class="container mt-3">
+        <div class="container my-3">
             <div class="has-text-centered" v-show="isReleasesLoading">
                 <button class="button is-success is-loading">Loading</button>
             </div>
