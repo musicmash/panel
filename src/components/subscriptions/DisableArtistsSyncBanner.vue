@@ -10,7 +10,7 @@
             <br />
             <br />
             <button class="button is-danger is-light">
-                I want to disable the sync of artists
+                I want to disable the every night sync right now&nbsp;😠
             </button>
         </div>
     </article>
