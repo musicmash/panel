@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+        <activate-artist-sync-banner class="mt-3" />
+        <disable-artist-sync-banner class="mt-3" />
+
         <div class="columns is-mobile is-centered is-multiline mt-3">
             <subscription
                 class="column is-8-mobile is-4-tablet is-3-desktop is-2-widescreen"
@@ -21,6 +24,8 @@
 </template>
 
 <script>
+import ActivateArtistSyncBanner from "@/components/subscriptions/ActivateArtistsSyncBanner";
+import DisableArtistSyncBanner from "@/components/subscriptions/DisableArtistsSyncBanner";
 import Subscription from "@/components/subscriptions/Subscription";
 import InfinityLoader from "@/components/InfinityLoader";
 import BackToTop from "@/components/BackToTop";
@@ -43,6 +48,8 @@ export default {
         },
     },
     components: {
+        "activate-artist-sync-banner": ActivateArtistSyncBanner,
+        "disable-artist-sync-banner": DisableArtistSyncBanner,
         subscription: Subscription,
         "infinity-loader": InfinityLoader,
         "back-to-top": BackToTop,
