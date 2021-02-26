@@ -15,9 +15,14 @@
             </strong>
             <br />
             <br />
-            <button class="button is-success is-light">
-                Yes, enable it right now&nbsp;🔥
-            </button>
+            <div class="buttons">
+                <button class="button is-link is-light">
+                    No, I just want to once sync my artists
+                </button>
+                <button class="button is-success is-light">
+                    Yes, enable the every night sync right now&nbsp;🔥
+                </button>
+            </div>
         </div>
     </article>
 </template>
