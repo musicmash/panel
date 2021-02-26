@@ -52,9 +52,9 @@
 </template>
 
 <script>
-import ReleasesSection from "@/components/ReleasesSection";
+import ReleasesSection from "@/components/releases/ReleasesSection";
 import InfinityLoader from "@/components/InfinityLoader";
-import ReleasesOnboardingBanner from "@/components/ReleasesOnboardingBanner";
+import ReleasesOnboardingBanner from "@/components/releases/ReleasesOnboardingBanner";
 import BackToTop from "@/components/BackToTop";
 import { mapState } from "vuex";
 
