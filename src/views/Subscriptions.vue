@@ -3,7 +3,7 @@
         <activate-artist-sync-banner class="mt-3" />
         <disable-artist-sync-banner class="mt-3" />
 
-        <div class="columns is-mobile is-centered is-multiline mt-3">
+        <div class="columns is-mobile is-centered is-multiline">
             <subscription
                 class="column is-8-mobile is-4-tablet is-3-desktop is-2-widescreen"
                 v-for="subscription in subscriptions"
