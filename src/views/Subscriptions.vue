@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Subscription from "@/components/Subscription";
+import Subscription from "@/components/subscriptions/Subscription";
 import InfinityLoader from "@/components/InfinityLoader";
 import BackToTop from "@/components/BackToTop";
 import { mapState } from "vuex";
