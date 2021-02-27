@@ -10,18 +10,16 @@
             <br />
             <br />
             <strong>
-                Would you like to enable the auto sync of your Spotify's
-                subscriptions?
+                Would you like to sync every night your Spotify's subscriptions?
             </strong>
             <br />
             <br />
             <div class="buttons">
-                <button class="button is-success is-light">
-                    No, I just want to sync my artists once
+                <button class="button is-light is-link">
+                    No, just sync my artists once
                 </button>
-                <button class="button is-link is-light">
-                    <strong>Yes</strong>, enable the every night sync right
-                    now!&nbsp;🚀
+                <button class="button is-active is-light is-success">
+                    <strong>Yes</strong>, enable it right now!&nbsp;🚀
                 </button>
             </div>
         </div>
