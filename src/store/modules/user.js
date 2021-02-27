@@ -8,21 +8,6 @@ const state = {
 const getters = {};
 
 const actions = {
-    checkAuth({ commit }) {
-        commit("setAuthorizing", true);
-        UserService.checkAuth()
-            .then(() => {
-                commit("setAuthorized", true);
-            })
-            .catch(() => {
-                // catch request error
-                commit("setAuthorized", false);
-            })
-            .finally(() => {
-                commit("setAuthorizing", false);
-            });
-    },
-
     logout() {
         UserService.logout()
             .then(() => {

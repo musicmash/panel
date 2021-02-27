@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <activate-artist-sync-banner class="mt-3" />
-        <disable-artist-sync-banner class="mt-3" />
+        <disable-artist-sync-banner class="mt-3 is-hidden" />
 
         <div class="columns is-mobile is-centered is-multiline">
             <subscription
