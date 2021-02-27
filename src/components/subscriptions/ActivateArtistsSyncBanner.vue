@@ -17,11 +17,11 @@
             <br />
             <div class="buttons">
                 <button class="button is-success is-light">
-                    No, I just want to once sync my artists
+                    No, I just want to sync my artists once
                 </button>
                 <button class="button is-link is-light">
                     <strong>Yes</strong>, enable the every night sync right
-                    now&nbsp;🚀
+                    now!&nbsp;🚀
                 </button>
             </div>
         </div>
