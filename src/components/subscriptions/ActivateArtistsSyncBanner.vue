@@ -53,7 +53,7 @@ export default {
             );
 
             const state = backgroundSyncEnabled
-                ? "sync-in-background-allow"
+                ? "sync-in-background-allowed"
                 : "sync-in-background-denied";
             url.searchParams.append("state", state);
             return url.href;
