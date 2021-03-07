@@ -15,13 +15,55 @@
             <br />
             <br />
             <div class="buttons">
-                <button class="button is-light is-link">
+                <a
+                    class="button is-light is-link"
+                    :href="getAuthUrlWithoutBackgroundSync()"
+                >
                     No, just sync my artists once
-                </button>
-                <button class="button is-active is-light is-success">
+                </a>
+                <a
+                    class="button is-active is-light is-success"
+                    :href="getAuthUrlWithBackgroundSync()"
+                >
                     <strong>Yes</strong>, enable it right now!&nbsp;🚀
-                </button>
+                </a>
             </div>
         </div>
     </article>
 </template>
+
+<script>
+export default {
+    methods: {
+        buildUrl(backgroundSyncEnabled) {
+            const url = new URL("https://accounts.spotify.com/authorize");
+            url.searchParams.append("response_type", "code");
+            url.searchParams.append("show_dialog", "false");
+            url.searchParams.append(
+                "scope",
+                "user-top-read%20user-follow-read"
+            );
+            url.searchParams.append(
+                "client_id",
+                "e8a13cdace274204bd3f7c8526f00361"
+            );
+            url.searchParams.append(
+                "redirect_uri",
+                `https://${window.location.hostname}/v1/artists/sync/connect`
+            );
+
+            const state = backgroundSyncEnabled
+                ? "sync-in-background-allow"
+                : "sync-in-background-denied";
+            url.searchParams.append("state", state);
+            return url.href;
+        },
+        getAuthUrlWithBackgroundSync() {
+            return this.buildUrl(true);
+        },
+        getAuthUrlWithoutBackgroundSync() {
+            return this.buildUrl(false);
+        },
+    },
+};
+</script>
