@@ -1,7 +1,13 @@
 <template>
     <div class="container">
-        <activate-artist-sync-banner class="mt-3" />
-        <disable-artist-sync-banner class="mt-3 is-hidden" />
+        <activate-artist-sync-banner
+            class="mt-3"
+            v-if="!isDailySyncStateLoading && !isDailySyncEnabled"
+        />
+        <disable-artist-sync-banner
+            class="mt-3"
+            v-if="!isDailySyncStateLoading && isDailySyncEnabled"
+        />
 
         <div class="columns is-mobile is-centered is-multiline">
             <subscription
@@ -33,11 +39,14 @@ import { mapState } from "vuex";
 
 export default {
     computed: mapState({
-        isSubscriptionsLoading: (state) => state.subscriptions.isLoading,
+        isDailySyncStateLoading: (state) => state.sync.isLoading,
+        isDailySyncEnabled: (state) => state.sync.isDailySyncEnabled,
 
+        isSubscriptionsLoading: (state) => state.subscriptions.isLoading,
         subscriptions: (state) => state.subscriptions.items,
     }),
     mounted() {
+        this.$store.dispatch("sync/fetch");
         this.$store.dispatch("subscriptions/fetch");
     },
     methods: {
