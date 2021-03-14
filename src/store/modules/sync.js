@@ -1,4 +1,5 @@
 import SyncService from "@/common/sync.service";
+import { parse, format } from "date-fns";
 
 const state = {
     // represents state when we wait daily sync state response
@@ -9,6 +10,9 @@ const state = {
 
     // represents state when we wait disable daily sync response
     isDailySyncDisabling: false,
+
+    // represents date when was last success sync
+    lastSyncDate: "",
 };
 
 const getters = {};
@@ -26,6 +30,7 @@ const actions = {
                 commit("setLoading", false);
             });
     },
+
     disableDailySync({ commit }) {
         commit("setDailySyncDisabling", true);
 
@@ -35,6 +40,26 @@ const actions = {
             })
             .finally(() => {
                 commit("setDailySyncDisabling", false);
+            });
+    },
+
+    getLastSyncDate({ commit }) {
+        SyncService.getLatestSyncInfo()
+            .then((resp) => resp.data)
+            .then((info) => {
+                const latestSync = parse(
+                    info.latest,
+                    "yyyy-MM-dd HH:mm:ss",
+                    new Date()
+                );
+                const date = format(latestSync, "MMMM d, yyyy", {
+                    weekStartsOn: 1,
+                });
+                const time = format(latestSync, "HH:mm:ss", {
+                    weekStartsOn: 1,
+                });
+
+                commit("setLastSyncDate", `${date} at ${time}`);
             });
     },
 };
@@ -48,6 +73,9 @@ const mutations = {
     },
     setDailySyncEnabled(state, enabled) {
         state.isDailySyncEnabled = enabled;
+    },
+    setLastSyncDate(state, date) {
+        state.lastSyncDate = date;
     },
 };
 

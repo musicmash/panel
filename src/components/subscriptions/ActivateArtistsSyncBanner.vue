@@ -26,12 +26,21 @@
                     <strong>Yes</strong>, enable it right now!&nbsp;🚀
                 </a>
             </div>
+            <div class="ml-1" v-if="lastSyncDate != ''">
+                <em>last sync was on {{ lastSyncDate }} UTC</em>
+            </div>
         </div>
     </article>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
+    computed: mapState({
+        lastSyncDate: (state) => state.sync.lastSyncDate,
+        isDailySyncDisabling: (state) => state.sync.isDailySyncDisabling,
+    }),
     methods: {
         buildUrl(backgroundSyncEnabled) {
             const redirectURL = backgroundSyncEnabled

@@ -19,6 +19,9 @@
                     I want to disable the every night sync right now&nbsp;😠
                 </button>
             </div>
+            <div class="ml-1" v-if="lastSyncDate != ''">
+                <em>last sync was on {{ lastSyncDate }} UTC</em>
+            </div>
         </div>
     </article>
 </template>
@@ -28,6 +31,7 @@ import { mapState } from "vuex";
 
 export default {
     computed: mapState({
+        lastSyncDate: (state) => state.sync.lastSyncDate,
         isDailySyncDisabling: (state) => state.sync.isDailySyncDisabling,
     }),
     methods: {

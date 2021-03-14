@@ -47,6 +47,7 @@ export default {
     }),
     mounted() {
         this.$store.dispatch("sync/fetch");
+        this.$store.dispatch("sync/getLastSyncDate");
         this.$store.dispatch("subscriptions/fetch");
     },
     methods: {
