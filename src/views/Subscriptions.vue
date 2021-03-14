@@ -1,6 +1,15 @@
 <template>
     <div class="container">
-        <div class="columns is-mobile is-centered is-multiline mt-3">
+        <activate-artist-sync-banner
+            class="mt-3"
+            v-if="!isDailySyncStateLoading && !isDailySyncEnabled"
+        />
+        <disable-artist-sync-banner
+            class="mt-3"
+            v-if="!isDailySyncStateLoading && isDailySyncEnabled"
+        />
+
+        <div class="columns is-mobile is-centered is-multiline">
             <subscription
                 class="column is-8-mobile is-4-tablet is-3-desktop is-2-widescreen"
                 v-for="subscription in subscriptions"
@@ -21,18 +30,24 @@
 </template>
 
 <script>
-import Subscription from "@/components/Subscription";
+import ActivateArtistSyncBanner from "@/components/subscriptions/ActivateArtistsSyncBanner";
+import DisableArtistSyncBanner from "@/components/subscriptions/DisableArtistsSyncBanner";
+import Subscription from "@/components/subscriptions/Subscription";
 import InfinityLoader from "@/components/InfinityLoader";
 import BackToTop from "@/components/BackToTop";
 import { mapState } from "vuex";
 
 export default {
     computed: mapState({
-        isSubscriptionsLoading: (state) => state.subscriptions.isLoading,
+        isDailySyncStateLoading: (state) => state.sync.isLoading,
+        isDailySyncEnabled: (state) => state.sync.isDailySyncEnabled,
 
+        isSubscriptionsLoading: (state) => state.subscriptions.isLoading,
         subscriptions: (state) => state.subscriptions.items,
     }),
     mounted() {
+        this.$store.dispatch("sync/fetch");
+        this.$store.dispatch("sync/getLastSyncDate");
         this.$store.dispatch("subscriptions/fetch");
     },
     methods: {
@@ -43,6 +58,8 @@ export default {
         },
     },
     components: {
+        "activate-artist-sync-banner": ActivateArtistSyncBanner,
+        "disable-artist-sync-banner": DisableArtistSyncBanner,
         subscription: Subscription,
         "infinity-loader": InfinityLoader,
         "back-to-top": BackToTop,

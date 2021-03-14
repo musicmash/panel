@@ -4,6 +4,7 @@ import user from "@/store/modules/user";
 import releases from "@/store/modules/releases";
 import subscriptions from "@/store/modules/subscriptions";
 import search from "@/store/modules/search";
+import sync from "@/store/modules/sync";
 
 Vue.use(Vuex);
 
@@ -15,6 +16,7 @@ export default new Vuex.Store({
         releases,
         subscriptions,
         search,
+        sync,
     },
     strict: debug,
 });

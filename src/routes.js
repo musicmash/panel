@@ -36,13 +36,6 @@ router.beforeEach((to, from, next) => {
         return;
     }
 
-    // FIXME:
-    //   If user has valid auth cookie and opens path that requires authentication
-    //   then he will be redirected to the home (releases) page,
-    //   instead of desired page.
-    //
-    //   To fix this we should wait until store's user.isAuthorizing property
-    //   will be changed to false. (e.g with promise)
     next({ path: "/releases" });
 });
 

@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import Release from "@/components/Release";
+import Release from "@/components/releases/Release";
 import { mapState } from "vuex";
 
 export default {
