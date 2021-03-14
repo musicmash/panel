@@ -37,8 +37,8 @@ export default {
     methods: {
         buildUrl(backgroundSyncEnabled) {
             const redirectURL = backgroundSyncEnabled
-                ? `https://${window.location.hostname}/v1/artists/sync/once/connect`
-                : `https://${window.location.hostname}/v1/artists/sync/daily/connect`;
+                ? `https://${window.location.hostname}/v1/artists/sync/daily/connect`
+                : `https://${window.location.hostname}/v1/artists/sync/once/connect`;
 
             const url = new URL("https://accounts.spotify.com/authorize");
             url.searchParams.append("response_type", "code");
