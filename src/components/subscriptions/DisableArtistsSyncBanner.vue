@@ -9,9 +9,31 @@
             <strong>musicmash</strong>
             <br />
             <br />
-            <button class="button is-danger is-light">
+            <button
+                class="button is-danger"
+                :class="{
+                    'is-loading': isDailySyncDisabling,
+                    'is-light': !isDailySyncDisabling,
+                }"
+                @click="onDisableClick()"
+            >
                 I want to disable the every night sync right now&nbsp;😠
             </button>
         </div>
     </article>
 </template>
+
+<script>
+import { mapState } from "vuex";
+
+export default {
+    computed: mapState({
+        isDailySyncDisabling: (state) => state.sync.isDailySyncDisabling,
+    }),
+    methods: {
+        onDisableClick() {
+            this.$store.dispatch("sync/disableDailySync");
+        },
+    },
+};
+</script>
