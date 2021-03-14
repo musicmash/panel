@@ -36,6 +36,10 @@
 export default {
     methods: {
         buildUrl(backgroundSyncEnabled) {
+            const redirectURL = backgroundSyncEnabled
+                ? `https://${window.location.hostname}/v1/artists/sync/once/connect`
+                : `https://${window.location.hostname}/v1/artists/sync/daily/connect`;
+
             const url = new URL("https://accounts.spotify.com/authorize");
             url.searchParams.append("response_type", "code");
             url.searchParams.append("show_dialog", "false");
@@ -47,15 +51,7 @@ export default {
                 "client_id",
                 "e8a13cdace274204bd3f7c8526f00361"
             );
-            url.searchParams.append(
-                "redirect_uri",
-                `https://${window.location.hostname}/v1/artists/sync/connect`
-            );
-
-            const state = backgroundSyncEnabled
-                ? "sync-in-background-allowed"
-                : "sync-in-background-denied";
-            url.searchParams.append("state", state);
+            url.searchParams.append("redirect_uri", redirectURL);
             return url.href;
         },
         getAuthUrlWithBackgroundSync() {
