@@ -12,9 +12,7 @@
             <strong>
                 Would you like to sync every night your Spotify's subscriptions?
             </strong>
-            <br />
-            <br />
-            <div class="buttons">
+            <div class="buttons mt-3 mb-0">
                 <a
                     class="button is-light is-link"
                     :href="getAuthUrlWithoutBackgroundSync()"

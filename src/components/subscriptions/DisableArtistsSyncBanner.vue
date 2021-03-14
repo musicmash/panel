@@ -7,18 +7,18 @@
             Every night at <em>03:00 UTC</em> we scan the artists you follow on
             <strong>Spotify</strong> and move them to subscriptions on
             <strong>musicmash</strong>
-            <br />
-            <br />
-            <button
-                class="button is-danger"
-                :class="{
-                    'is-loading': isDailySyncDisabling,
-                    'is-light': !isDailySyncDisabling,
-                }"
-                @click="onDisableClick()"
-            >
-                I want to disable the every night sync right now&nbsp;😠
-            </button>
+            <div class="buttons mt-3 mb-0">
+                <button
+                    class="button is-danger"
+                    :class="{
+                        'is-loading': isDailySyncDisabling,
+                        'is-light': !isDailySyncDisabling,
+                    }"
+                    @click="onDisableClick()"
+                >
+                    I want to disable the every night sync right now&nbsp;😠
+                </button>
+            </div>
         </div>
     </article>
 </template>
